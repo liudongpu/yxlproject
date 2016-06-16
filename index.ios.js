@@ -12,6 +12,8 @@ import {
   View
 } from 'react-native';
 
+import MainMain from './js/main/main';
+
 class YxlProject extends Component {
   render() {
     return (
@@ -48,6 +50,17 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  tab: {
+        height: 52,
+        backgroundColor: '#333333',
+        alignItems: 'center'
+    } ,
 });
 
-AppRegistry.registerComponent('YxlProject', () => YxlProject);
+
+
+
+
+
+
+AppRegistry.registerComponent('YxlProject', () => MainMain);

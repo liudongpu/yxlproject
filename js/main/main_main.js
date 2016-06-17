@@ -12,6 +12,7 @@ import TabNavigator from 'react-native-tab-navigator';
 import CommonHeader from '../common/common_header';
 import HomeIndex from '../home/home_index';
 
+import SFuncTop from '../../s/func/s_func_top';
 
 
 const HOME = 'home';

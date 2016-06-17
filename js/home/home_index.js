@@ -16,7 +16,7 @@ export default class HomeIndex extends Component {
 
         return (
             <View style={styles.container}>
-              <CommonHeader />
+              <CommonHeader text="b"/>
               <Text style={styles.welcome}>
                 HomeIndex
               </Text>

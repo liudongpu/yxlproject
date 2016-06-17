@@ -4,7 +4,7 @@
 'use strict';
 import React, { Component } from 'react';
 import {
-    
+
     Image,
     TextInput,
     View,
@@ -18,7 +18,7 @@ export default class CommonHeader extends Component {
         return (
             <View style={styles.container}>
               <Text style={styles.welcome}>
-                Welcome to React Native!
+                {this.props.text}
               </Text>
             </View>
         )

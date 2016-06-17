@@ -12,7 +12,7 @@ import {
   View
 } from 'react-native';
 
-import MainMain from './js/main/main';
+import MainMain from './js/main/main_main';
 
 class YxlProject extends Component {
   render() {

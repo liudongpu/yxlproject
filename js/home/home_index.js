@@ -27,7 +27,7 @@ export default class HomeIndex extends CommonRoot {
 
        nav.push({name: 'PageTemplate',title:'xxx'});
     */
-    this.rootNavPage('PageTemplate');
+    this.rootNavPage('PageTemplate',PageTemplate);
    }
 
     render() {

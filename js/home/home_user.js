@@ -11,6 +11,9 @@ import {
     StyleSheet
 } from 'react-native';
 
+import PageInfo from '../page/page_info';
+
+
 
 import CommonRoot from '../common/common_root';
 
@@ -24,7 +27,7 @@ export default class HomeUser extends CommonRoot {
 
        nav.push({name: 'PageTemplate',title:'xxx'});
     */
-    this.rootNavPage('PageTemplate');
+    this.rootNavPage('PageInfo',PageInfo);
    }
 
     render() {

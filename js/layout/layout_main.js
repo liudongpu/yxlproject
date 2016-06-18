@@ -11,32 +11,15 @@ import PageTemplate from '../page/page_template';
 import PStyleBase from '../../p/style/p_style_base';
 
 
-
-
 export default class LayoutMain extends Component {
   constructor(props) {
         super(props);
-
-
     }
 
   _renderScene(router, navigator) {
 
-    var Com = null;
-        switch(router.name){
-          case "MainMain":
-            Com = MainMain;
-            break;
-          case "PageTemplate":
-            Com = PageTemplate;
-            break;
-          default: //default view
-            Com = MainMain;
-        }
 
-    return <Com nav={navigator}  />
-
-
+    return <router.component nav={navigator}  />
 
   }
 
@@ -55,8 +38,8 @@ export default class LayoutMain extends Component {
                   <TouchableOpacity
                     underlayColor='transparent'
                     onPress={() => {if (index > 0) {navigator.pop()}}}>
-                    <Text style={PStyleBase.leftNavButtonText}>
-                      后退
+                    <Text style={PStyleBase.navLeftButton}>
+                      {'<后退'}
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -84,7 +67,7 @@ export default class LayoutMain extends Component {
             return (
               <View style={PStyleBase.navContainer}>
                 <Text style={PStyleBase.navTitle}>
-                  应用标题
+                  {route.title}
                 </Text>
               </View>
             );
@@ -95,7 +78,7 @@ export default class LayoutMain extends Component {
       return (
           <Navigator
           style={{flex:1}}
-          initialRoute={{name: 'MainMain'}}
+          initialRoute={{name: 'MainMain',title:'T',component:MainMain}}
           renderScene={this._renderScene}
           navigationBar={
               <Navigator.NavigationBar

@@ -11,14 +11,11 @@ import {
     StyleSheet
 } from 'react-native';
 
-import PageTemplate from '../page/page_template';
 
-
-import PStyleBase from '../../p/style/p_style_base';
 import CommonRoot from '../common/common_root';
 
 
-export default class HomeIndex extends CommonRoot {
+export default class HomeUser extends CommonRoot {
 
 
   onPressFeed() {
@@ -33,13 +30,13 @@ export default class HomeIndex extends CommonRoot {
     render() {
 
       return (
-          <View style={PStyleBase.container}>
+          <View style={this.rootStyleBase().container}>
 
-            <Text style={PStyleBase.welcome}>
+            <Text style={this.rootStyleBase().welcome}>
               {this.props.title}
             </Text>
-            <Text style={PStyleBase.welcome} onPress={this.onPressFeed.bind(this)}>
-              mainmain
+            <Text style={this.rootStyleBase().welcome} onPress={this.onPressFeed.bind(this)}>
+              user
             </Text>
           </View>
       )

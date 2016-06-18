@@ -9,8 +9,9 @@ import {
 
 import TabNavigator from 'react-native-tab-navigator';
 
-import CommonHeader from '../common/common_header';
 import HomeIndex from '../home/home_index';
+import HomeUser from '../home/home_user';
+
 
 import SFuncTop from '../../s/func/s_func_top';
 import PStyleBase from '../../p/style/p_style_base';
@@ -54,6 +55,8 @@ export default class MainMain extends Component {
       );
   }
   static _createChildView(tag) {
+
+
         return (
             <View style={{flex:1,backgroundColor:'#00baff',alignItems:'center',justifyContent:'center'}}>
                 <Text style={{fontSize:22}}>{tag}</Text>
@@ -71,7 +74,7 @@ export default class MainMain extends Component {
                     {this._renderTabItem(CATEGORY_NORMAL, CATEGORY_FOCUS, CATEGORY, MainMain._createChildView(CATEGORY))}
                     {this._renderTabItem(FAXIAN_NORMAL, FAXIAN_FOCUS, FAXIAN, MainMain._createChildView(FAXIAN))}
                     {this._renderTabItem(CART_NORMAL, CART_FOCUS, CART, MainMain._createChildView(CART))}
-                    {this._renderTabItem(PERSONAL_NORMAL, PERSONAL_FOCUS, PERSONAL, MainMain._createChildView(PERSONAL))}
+                    {this._renderTabItem(PERSONAL_NORMAL, PERSONAL_FOCUS, PERSONAL,<HomeUser nav={this.props.nav}/>)}
                 </TabNavigator>
             </View >
         );

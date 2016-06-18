@@ -10,9 +10,9 @@ import {
     Navigator,
     StyleSheet
 } from 'react-native';
-import CommonHeader from '../common/common_page';
+import CommonRoot from '../common/common_root';
 
-export default class CommonPage extends Component {
+export default class CommonPage extends CommonRoot {
   constructor(props) {
           super(props);
           this.state = {};
@@ -23,7 +23,7 @@ export default class CommonPage extends Component {
          nav.pop();
   }
 
-  subTitle(){return 'page not found';}
+
 
   render() {
 
@@ -31,11 +31,13 @@ export default class CommonPage extends Component {
 
     var SubNode=(this.subNode());
 
-    return (
-        <View style={PStyleBase.container}>
-          <View style={PStyleBase.headerView}>
+    this.props.nav.title=sTitle;
 
-            <Text style={PStyleBase.welcome}>
+    return (
+        <View style={this.rootStyleBase().container}>
+          <View style={this.rootStyleBase().headerView}>
+
+            <Text style={this.rootStyleBase().welcome}>
               {sTitle}
             </Text>
 

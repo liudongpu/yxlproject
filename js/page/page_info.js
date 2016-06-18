@@ -14,7 +14,7 @@ import {
 
 import CommonPage from '../common/common_page';
 
-export default class PageTemplate extends CommonPage {
+export default class PageInfo extends CommonPage {
 
   subTitle(){return 'page title';}
 

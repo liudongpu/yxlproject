@@ -9,6 +9,7 @@ import PRouteList from '../../p/route/p_route_list';
 
 export default class CommonRoot extends Component {
 
+  
   //获取根样式
    rootStyleBase(){return PStyleBase;}
 

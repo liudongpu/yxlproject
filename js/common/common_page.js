@@ -13,10 +13,7 @@ import {
 import CommonRoot from '../common/common_root';
 
 export default class CommonPage extends CommonRoot {
-  constructor(props) {
-          super(props);
-          this.state = {};
-      }
+  
 
   onPressFeed() {
      const { nav } = this.props;

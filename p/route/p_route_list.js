@@ -14,7 +14,7 @@ export default class PRouteList
 const  rootList =
     {
       'PageTemplate':{
-        name: 'PageTemplate',title:'测试页'
+        name: 'PageTemplate',title:'测试1页'
       },
       'PageInfo':{
         name: 'PageInfo',title:'测试页2'

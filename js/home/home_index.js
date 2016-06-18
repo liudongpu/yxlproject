@@ -20,7 +20,10 @@ import CommonRoot from '../common/common_root';
 
 export default class HomeIndex extends CommonRoot {
 
+  constructor(props) {
+          super(props);
 
+      }
   onPressFeed() {
     /*
    const { nav } = this.props;

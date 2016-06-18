@@ -36,11 +36,7 @@ export default class HomeIndex extends CommonRoot {
     render() {
 
       return (
-          <View style={PStyleBase.container}>
-
-            <Text style={PStyleBase.welcome}>
-              {this.props.title}
-            </Text>
+          <View>
             <Text style={PStyleBase.welcome} onPress={this.onPressFeed.bind(this)}>
               mainmain
             </Text>

@@ -43,13 +43,18 @@ export default class MainMain extends Component {
           this.state = {selectedTab: HOME}
       }
 
+
+
   _renderTabItem(img, selectedImg, tag, childView) {
+      //this.props.nav.state.title=tag;
+      //this.props.nav.getCurrentRoutes.navigationBar.title='aa';
       return (
           <TabNavigator.Item
               selected={this.state.selectedTab === tag}
               renderIcon={() => <Image style={styles.tabIcon} source={img}/>}
               renderSelectedIcon={() => <Image style={styles.tabIcon} source={selectedImg}/>}
-              onPress={() => this.setState({ selectedTab: tag })}>
+
+              onPress={() => {this.setState({ selectedTab: tag });  }}>
               {childView}
           </TabNavigator.Item>
       );
@@ -73,7 +78,7 @@ export default class MainMain extends Component {
                     {this._renderTabItem(HOME_NORMAL, HOME_FOCUS, HOME, <HomeIndex nav={this.props.nav}/>)}
                     {this._renderTabItem(CATEGORY_NORMAL, CATEGORY_FOCUS, CATEGORY, MainMain._createChildView(CATEGORY))}
                     {this._renderTabItem(FAXIAN_NORMAL, FAXIAN_FOCUS, FAXIAN, MainMain._createChildView(FAXIAN))}
-                    {this._renderTabItem(CART_NORMAL, CART_FOCUS, CART, MainMain._createChildView(CART))}
+
                     {this._renderTabItem(PERSONAL_NORMAL, PERSONAL_FOCUS, PERSONAL,<HomeUser nav={this.props.nav}/>)}
                 </TabNavigator>
             </View >

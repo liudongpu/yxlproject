@@ -9,6 +9,7 @@ import {
 import MainMain from '../main/main_main';
 import PageTemplate from '../page/page_template';
 import PStyleBase from '../../p/style/p_style_base';
+import SComponentNavbar from '../../s/component/s_component_navbar';
 
 
 export default class LayoutMain extends Component {
@@ -64,6 +65,7 @@ export default class LayoutMain extends Component {
           },
           // 标题
           Title(route, navigator, index, navState) {
+            //{route.name=="MainMain"?navigator.state.title:route.title}
             return (
               <View style={PStyleBase.navContainer}>
                 <Text style={PStyleBase.navTitle}>
@@ -78,10 +80,10 @@ export default class LayoutMain extends Component {
       return (
           <Navigator
           style={{flex:1}}
-          initialRoute={{name: 'MainMain',title:'T',component:MainMain}}
+          initialRoute={{name: 'MainMain',title:'YXYZ',component:MainMain}}
           renderScene={this._renderScene}
           navigationBar={
-              <Navigator.NavigationBar
+              <SComponentNavbar
               style={PStyleBase.navContainer}
               routeMapper={NavigationBarRouteMapper}/>
           }

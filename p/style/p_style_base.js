@@ -9,9 +9,9 @@ export default  PStyleBase = StyleSheet.create({
     container: {
       flex: 4,
       //justifyContent: 'center',
-      marginTop: 100,
+      marginTop:60,
       flexDirection: 'column',
-      backgroundColor: '#F5FCFF',
+      backgroundColor: '#FFFFFF',
     },
     welcome: {
       fontSize: 20,
@@ -25,7 +25,7 @@ export default  PStyleBase = StyleSheet.create({
 
     // 导航栏
   navContainer: {
-    backgroundColor: '#81c04d',
+    backgroundColor: '#F37474',
     paddingTop: 12,
     paddingBottom: 10,
   },

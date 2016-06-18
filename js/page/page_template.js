@@ -11,46 +11,19 @@ import {
     StyleSheet
 } from 'react-native';
 
-export default class PageTemplate extends Component {
-  constructor(props) {
-          super(props);
-          this.state = {};
-      }
-  onPressFeed() {
- const { navigator } = this.props;
+import PStyleBase from '../../p/style/p_style_base';
 
-     navigator.push({name: 'feed'});
- }
+import CommonPage from '../common/common_page';
+
+export default class PageTemplate extends CommonPage {
+
+  subTitle(){return 'page title';}
 
 
-    render() {
+  subNode(){
+      return (<Text>my page</Text>)
+  }
 
-      return (
-          <View style={styles.container}>
 
-            <Text style={styles.welcome}>
-              {this.props.title}
-            </Text>
-            <Text style={styles.welcome} onPress={this.onPressFeed.bind(this)}>
-              feed
-            </Text>
-          </View>
-      )
 
-    }
 }
-
-
-const styles = StyleSheet.create({
-    ccontainer: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
-    }
-});

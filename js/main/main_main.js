@@ -13,6 +13,10 @@ import CommonHeader from '../common/common_header';
 import HomeIndex from '../home/home_index';
 
 import SFuncTop from '../../s/func/s_func_top';
+import PStyleBase from '../../p/style/p_style_base';
+
+
+
 
 
 const HOME = 'home';
@@ -60,7 +64,7 @@ export default class MainMain extends Component {
 
     render() {
         return (
-            <View style={{flex: 1}}>
+            <View style={PStyleBase.container}>
 
                 <TabNavigator hidesTabTouch={true} tabBarStyle={styles.tab}>
                     {this._renderTabItem(HOME_NORMAL, HOME_FOCUS, HOME, <HomeIndex nav={this.props.nav}/>)}

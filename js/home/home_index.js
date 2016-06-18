@@ -14,39 +14,31 @@ import CommonHeader from '../common/common_header';
 import PageTemplate from '../page/page_template';
 
 import PConfigBase from '../../p/config/p_config_base';
+import PStyleBase from '../../p/style/p_style_base';
 
 
 export default class HomeIndex extends Component {
 
-  _renderScene(router, navigator) {
 
-        var sText="def";
+  onPressFeed() {
+   const { nav } = this.props;
 
-        var Com = null;
-            switch(router.name){
-              case "welcome":
-                Com = PageTemplate;
-                sText="wel";
-                break;
-              case "feed":
-                Com = PageTemplate;
-                sText="fee";
-                break;
-              default: //default view
-                Com = PageTemplate;
-            }
-
-            return <Com navigator={navigator} title={sText} />
-
-  }
-
+       nav.push({name: 'PageTemplate'});
+   }
 
     render() {
 
-        return (
-            <Navigator initialRoute={{name: 'welcome'}}  renderScene={this._renderScene}>
-            </Navigator>
-        )
+      return (
+          <View style={PStyleBase.container}>
+
+            <Text style={PStyleBase.welcome}>
+              {this.props.title}
+            </Text>
+            <Text style={PStyleBase.welcome} onPress={this.onPressFeed.bind(this)}>
+              mainmain
+            </Text>
+          </View>
+      )
     }
 }
 

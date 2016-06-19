@@ -10,6 +10,10 @@ import MainMain from '../main/main_main';
 import PageTemplate from '../page/page_template';
 import PStyleBase from '../../p/style/p_style_base';
 import SComponentNavbar from '../../s/component/s_component_navbar';
+import PLangBase from '../../p/lang/p_lang_base';
+
+
+
 
 
 export default class LayoutMain extends Component {
@@ -80,7 +84,7 @@ export default class LayoutMain extends Component {
       return (
           <Navigator
           style={{flex:1}}
-          initialRoute={{name: 'MainMain',title:'home',component:MainMain}}
+          initialRoute={{name: 'MainMain',title:PLangBase.upLang('home_index'),component:MainMain}}
           renderScene={this._renderScene}
           navigationBar={
               <SComponentNavbar

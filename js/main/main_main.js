@@ -16,6 +16,8 @@ import HomeUser from '../home/home_user';
 import SFuncTop from '../../s/func/s_func_top';
 import PStyleBase from '../../p/style/p_style_base';
 
+import CommonRoot from '../common/common_root';
+
 
 
 
@@ -37,7 +39,7 @@ const PERSONAL_NORMAL = require('../../images/tabs/personal_normal.png');
 const PERSONAL_FOCUS = require('../../images/tabs/personal_focus.png');
 
 
-export default class MainMain extends Component {
+export default class MainMain extends CommonRoot {
   constructor(props) {
           super(props);
           this.state = {selectedTab: HOME}
@@ -75,11 +77,11 @@ export default class MainMain extends Component {
             <View style={PStyleBase.container}>
 
                 <TabNavigator hidesTabTouch={true} tabBarStyle={styles.tab}>
-                    {this._renderTabItem(HOME_NORMAL, HOME_FOCUS, HOME, <HomeIndex nav={this.props.nav}/>)}
-                    {this._renderTabItem(CATEGORY_NORMAL, CATEGORY_FOCUS, CATEGORY, MainMain._createChildView(CATEGORY))}
-                    {this._renderTabItem(FAXIAN_NORMAL, FAXIAN_FOCUS, FAXIAN, MainMain._createChildView(FAXIAN))}
+                    {this._renderTabItem(HOME_NORMAL, HOME_FOCUS, this.rootLangBase('home_index'), <HomeIndex nav={this.props.nav}/>)}
+                    {this._renderTabItem(CATEGORY_NORMAL, CATEGORY_FOCUS, this.rootLangBase('home_category'), MainMain._createChildView(CATEGORY))}
+                    {this._renderTabItem(FAXIAN_NORMAL, FAXIAN_FOCUS, this.rootLangBase('home_see'), MainMain._createChildView(FAXIAN))}
 
-                    {this._renderTabItem(PERSONAL_NORMAL, PERSONAL_FOCUS, PERSONAL,<HomeUser nav={this.props.nav}/>)}
+                    {this._renderTabItem(PERSONAL_NORMAL, PERSONAL_FOCUS, this.rootLangBase('home_user'),<HomeUser nav={this.props.nav}/>)}
                 </TabNavigator>
             </View >
         );

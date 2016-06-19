@@ -21,5 +21,20 @@ const  rootList =
       },
       'PageNew':{
         name: 'PageNew',title:'测试页3'
-      }
+      },
+      'UserInfo':{
+        name: 'UserInfo',title:'基本信息'
+      },
+      'UserSet':{
+        name: 'UserSet',title:'设置'
+      },
+      'UserPassword':{
+        name: 'UserPassword',title:'修改密码'
+      },
+      'UserAgree':{
+        name: 'UserAgree',title:'意见反馈'
+      },
+      'UserAbout':{
+        name: 'UserAbout',title:'关于'
+      },
    };

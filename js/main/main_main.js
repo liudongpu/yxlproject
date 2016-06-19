@@ -22,27 +22,14 @@ import CommonRoot from '../common/common_root';
 
 
 
-const HOME = 'home';
-const HOME_NORMAL = require('../../images/tabs/home_normal.png');
-const HOME_FOCUS = require('../../images/tabs/home_focus.png');
-const CATEGORY = 'category';
-const CATEGORY_NORMAL = require('../../images/tabs/category_normal.png');
-const CATEGORY_FOCUS = require('../../images/tabs/category_focus.png');
-const FAXIAN = 'faxian';
-const FAXIAN_NORMAL = require('../../images/tabs/faxian_normal.png');
-const FAXIAN_FOCUS = require('../../images/tabs/faxian_focus.png');
-const CART = 'cart';
-const CART_NORMAL = require('../../images/tabs/cart_normal.png');
-const CART_FOCUS = require('../../images/tabs/cart_focus.png');
-const PERSONAL = 'personal';
-const PERSONAL_NORMAL = require('../../images/tabs/personal_normal.png');
-const PERSONAL_FOCUS = require('../../images/tabs/personal_focus.png');
+
 
 
 export default class MainMain extends CommonRoot {
   constructor(props) {
           super(props);
-          this.state = {selectedTab: HOME}
+          //设置默认页
+          this.state = {selectedTab: this.rootLangBase('home_user')}
       }
 
 
@@ -76,12 +63,12 @@ export default class MainMain extends CommonRoot {
         return (
             <View style={PStyleBase.container}>
 
-                <TabNavigator hidesTabTouch={true} tabBarStyle={styles.tab}>
-                    {this._renderTabItem(HOME_NORMAL, HOME_FOCUS, this.rootLangBase('home_index'), <HomeIndex nav={this.props.nav}/>)}
-                    {this._renderTabItem(CATEGORY_NORMAL, CATEGORY_FOCUS, this.rootLangBase('home_category'), MainMain._createChildView(CATEGORY))}
-                    {this._renderTabItem(FAXIAN_NORMAL, FAXIAN_FOCUS, this.rootLangBase('home_see'), MainMain._createChildView(FAXIAN))}
+                <TabNavigator hidesTabTouch={true} tabBarStyle={this.rootStyleBase().mainMainTable}>
+                    {this._renderTabItem(this.rootStyleImage('main_tab_icon_home_default'), this.rootStyleImage('main_tab_icon_home_focus'), this.rootLangBase('home_index'), <HomeIndex nav={this.props.nav}/>)}
+                    {this._renderTabItem(this.rootStyleImage('main_tab_icon_category_default'), this.rootStyleImage('main_tab_icon_category_focus'), this.rootLangBase('home_category'), MainMain._createChildView( this.rootLangBase('home_category')))}
+                    {this._renderTabItem(this.rootStyleImage('main_tab_icon_see_default'), this.rootStyleImage('main_tab_icon_see_focus'), this.rootLangBase('home_see'), MainMain._createChildView(this.rootLangBase('home_see')))}
 
-                    {this._renderTabItem(PERSONAL_NORMAL, PERSONAL_FOCUS, this.rootLangBase('home_user'),<HomeUser nav={this.props.nav}/>)}
+                    {this._renderTabItem(this.rootStyleImage('main_tab_icon_user_default'), this.rootStyleImage('main_tab_icon_user_focus'), this.rootLangBase('home_user'),<HomeUser nav={this.props.nav}/>)}
                 </TabNavigator>
             </View >
         );

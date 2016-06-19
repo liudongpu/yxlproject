@@ -16,5 +16,6 @@ const  rootList =
       'home_index':'首页',
       'home_category':'分类',
       'home_see':'发现',
-      'home_user':'我的'
+      'home_user':'我的',
+      'home_user_welcome':'欢迎您：',
    };

@@ -24,28 +24,45 @@ export default  PStyleBase = StyleSheet.create({
     },
 
     // 导航栏
-  navContainer: {
-    backgroundColor: '#F37474',
-    paddingTop: 12,
-    paddingBottom: 10,
-  },
+    navContainer: {
+      backgroundColor: '#EF4B4B',
+      paddingTop: 12,
+      paddingBottom: 10,
+    },
 
-  // 左面导航按钮
-  navLeftButton: {
-    color: '#ffffff',
-    fontSize: 16,
-    marginLeft: 13
-  },
+    // 左面导航按钮
+    navLeftButton: {
+      color: '#ffffff',
+      fontSize: 16,
+      marginLeft: 13
+    },
 
-  navTitle:{
+    navTitle:{
 
-    fontSize: 18,
-    color: '#fff',
-    textAlign: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontWeight: 'bold',
-    flex: 1                //Step 3
-  }
+      fontSize: 18,
+      color: '#fff',
+      textAlign: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontWeight: 'bold',
+      flex: 1                //Step 3
+    },
+    mainMainTable:
+    {
+      height: 52,
+      backgroundColor: '#fdfdfd',
+      alignItems: 'center',
+    },
+    homeUserViewBack:
+    {
+      backgroundColor: '#efeff2',
+      flex:1
+    },
+    homeUserListInfo:
+    {
+      backgroundColor: '#ffffff',
+      marginTop:15,
+      
+    }
 
 });

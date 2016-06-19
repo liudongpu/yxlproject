@@ -54,7 +54,7 @@ export default class MainMain extends Component {
               renderIcon={() => <Image style={styles.tabIcon} source={img}/>}
               renderSelectedIcon={() => <Image style={styles.tabIcon} source={selectedImg}/>}
 
-              onPress={() => {this.setState({ selectedTab: tag });  }}>
+              onPress={() => {this.props.nav.setState({title:tag});this.setState({ selectedTab: tag });  }}>
               {childView}
           </TabNavigator.Item>
       );

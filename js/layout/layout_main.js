@@ -69,7 +69,7 @@ export default class LayoutMain extends Component {
             return (
               <View style={PStyleBase.navContainer}>
                 <Text style={PStyleBase.navTitle}>
-                  {route.title}
+                  {route.name=="MainMain"&&navState.title?navState.title:route.title}
                 </Text>
               </View>
             );
@@ -80,7 +80,7 @@ export default class LayoutMain extends Component {
       return (
           <Navigator
           style={{flex:1}}
-          initialRoute={{name: 'MainMain',title:'YXYZ',component:MainMain}}
+          initialRoute={{name: 'MainMain',title:'home',component:MainMain}}
           renderScene={this._renderScene}
           navigationBar={
               <SComponentNavbar

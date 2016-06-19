@@ -34,6 +34,7 @@ export default class HomeIndex extends CommonRoot {
    }
 
     render() {
+      //this.props.nav.setState({title:'xx'});
 
       return (
           <View>

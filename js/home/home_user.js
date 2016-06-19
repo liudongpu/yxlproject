@@ -33,11 +33,9 @@ export default class HomeUser extends CommonRoot {
     render() {
 
       return (
-          <View style={this.rootStyleBase().container}>
+          <View>
 
-            <Text style={this.rootStyleBase().welcome}>
-              {this.props.title}
-            </Text>
+
             <Text style={this.rootStyleBase().welcome} onPress={this.onPressFeed.bind(this)}>
               user
             </Text>

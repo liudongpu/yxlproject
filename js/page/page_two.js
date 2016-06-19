@@ -1,4 +1,4 @@
-'use strict';
+
 import React, { Component } from 'react';
 import {
 
@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 
-import {CommonPage} from '../common/common_page';
+import CommonPage from '../common/common_page';
 
 export default class PageNew extends CommonPage {
 

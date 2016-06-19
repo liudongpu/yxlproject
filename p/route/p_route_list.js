@@ -18,5 +18,8 @@ const  rootList =
       },
       'PageInfo':{
         name: 'PageInfo',title:'测试页2'
+      },
+      'PageNew':{
+        name: 'PageNew',title:'测试页3'
       }
    };

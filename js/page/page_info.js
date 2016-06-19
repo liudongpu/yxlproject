@@ -13,14 +13,18 @@ import {
 
 
 import CommonPage from '../common/common_page';
+import PageNew from '../page/page_two';
 
 export default class PageInfo extends CommonPage {
 
   subTitle(){return 'page title';}
+  onPressFeed() {
 
+    this.rootNavPage('PageNew',PageNew);
+   }
 
   subNode(){
-      return (<Text>my page</Text>)
+      return (<Text onPress={this.onPressFeed.bind(this)}>my page</Text>)
   }
 
 

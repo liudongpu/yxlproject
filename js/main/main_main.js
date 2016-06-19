@@ -47,7 +47,7 @@ export default class MainMain extends Component {
 
   _renderTabItem(img, selectedImg, tag, childView) {
       //this.props.nav.state.title=tag;
-      //this.props.nav.getCurrentRoutes.navigationBar.title='aa';
+      //this.props.nav.getCurrentRoutes(0,1)[0].title='aa';
       return (
           <TabNavigator.Item
               selected={this.state.selectedTab === tag}

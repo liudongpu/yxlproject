@@ -14,8 +14,55 @@ const {width, height, scale} = Dimensions.get("window"),
     vmax = Math.max(vw, vh);
 
 export default  PStyleBase = StyleSheet.create({
+    wFlag:
+    {
+      flex:1
+    },
+
+    cListViewItem:
+    {
+      flex: 1,
+      flexDirection : 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    cListViewBox:
+    {
+      flex: 1,
+      flexDirection : 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderBottomWidth: 1,
+      borderBottomColor: '#ebebeb',
+    },
+    cListViewImage:
+    {
+      width : 30,
+      height : 30,
+      margin: 10,
+      marginLeft: 0,
+    },
+    cListViewFix:
+    {
+      flex: 1,
+      flexDirection : 'row',
+    },
+    cListViewText:
+    {
+      fontSize : 16,
+      flex:1,
+      textAlign : 'left',
+    },
+    cListViewIcon:
+    {
+      color : '#cccccc',
+      fontSize : 14,
+      textAlign : 'left',
+      width:30,
+    },
+
     container: {
-      flex: 4,
+      flex: 1,
       //justifyContent: 'center',
       marginTop:60,
       flexDirection: 'column',

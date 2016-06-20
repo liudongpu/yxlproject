@@ -4,7 +4,7 @@ import SFuncTop from '../../s/func/s_func_top';
 
 const apiZooConfig={
     "key": "tesetkey",
-    "token": "6ca95252996b4c4880d3d927e7e436a8cbac2ae686704802a9469bf88c342e856b8c4361"
+    "token": "78af9e8469df4727bfec2e0d20793b34223e6a919642470189ec942aaebe32adfe38deb2"
   }
 
 

@@ -10,6 +10,7 @@ import {
     Navigator,
     TouchableOpacity,
     ListView,
+    RecyclerViewBackedScrollView,
     StyleSheet
 } from 'react-native';
 
@@ -36,12 +37,14 @@ export default class HomeIndex extends CommonRoot {
       fetchSuccess(oData)
       {
         this.setState({
-            dataSource : this.state.dataSource.cloneWithRows(oData.pathInfos)
+            dataSource : this.state.dataSource.cloneWithRows(oData.pageData)
         });
       }
 
       fetchData () {
-          this.rootFuncApi().post("api/zooweb/post/webpath",{},(data)=>{this.fetchSuccess(data)});
+          this.rootFuncApi().post("api/genapp/post/querymember",{
+            keyWord:this.state.text
+          },(data)=>{this.fetchSuccess(data)});
 
       }
 
@@ -61,13 +64,18 @@ export default class HomeIndex extends CommonRoot {
       //this.props.nav.setState({title:'xx'});
 
       return (
-          <View>
-            <Text style={PStyleBase.welcome} onPress={this.onPressFeed.bind(this)}>
-              mainmain
-            </Text>
+          <View  style={this.rootStyleBase().wFlag}>
             <View>
+            <TextInput
+              style={{height: 40, borderColor: 'gray', borderWidth: 1,margin:5}}
+              onChangeText={(text) => {this.setState({text});this.fetchData()}}
+              placeholder='search'
+              value={this.state.text}
+            />
+            </View>
+            <View  style={this.rootStyleBase().wFlag}>
                 <ListView
-
+                renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
                 dataSource={this.state.dataSource}
                 renderRow={this.renderNews.bind(this)}
                  />
@@ -87,13 +95,14 @@ export default class HomeIndex extends CommonRoot {
             return (
                 <TouchableOpacity onPress={()=>{this.onPressNews(news)}}>
                     <View >
-                        <View >
+                        <View style={this.rootStyleBase().cListViewBox}>
                             <Image
                             source={this.rootStyleImage('home_home_ico')}
+                            style={this.rootStyleBase().cListViewImage}
                              />
-                            <View >
-                                <Text >{news.nodeName}</Text>
-                                <Text >{'>'}</Text>
+                            <View style={this.rootStyleBase().cListViewFix}>
+                                <Text style={this.rootStyleBase().cListViewText}>{news.member_name}</Text>
+                                <Text style={this.rootStyleBase().cListViewIcon}>{'>'}</Text>
                             </View>
                         </View>
                     </View>

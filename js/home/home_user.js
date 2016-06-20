@@ -84,9 +84,9 @@ export default class HomeUser extends CommonRoot {
 
       return (
         <View style={this.rootStyleBase().homeUserViewBack}>
-          <View style={{overflow:'hidden'}}>
-            <Image style={{height: 159,alignItems:'center',overflow:'hidden',resizeMode:Image.resizeMode.stretch}} source={this.rootStyleImage('home_user_bg')}>
-              <Text onPress={this.onPressFeed.bind(this)} style={{textAlign: 'center',marginTop:110,padding:5,opacity:0.8,borderRadius:5}} >{this.rootLangBase('home_user_welcome')}11012345678</Text>
+          <View >
+            <Image style={[this.rootStyleBase().homeUserViewBackImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('home_user_bg')}>
+              <Text onPress={this.onPressFeed.bind(this)} style={this.rootStyleBase().homeUserViewBackText} >{this.rootLangBase('home_user_welcome')}11012345678</Text>
             </Image>
           </View>
           <View style={this.rootStyleBase().homeUserViewBack}>

@@ -3,7 +3,15 @@ import {
 
 
     StyleSheet
+    , Dimensions, PixelRatio
 } from 'react-native';
+
+
+const {width, height, scale} = Dimensions.get("window"),
+    vw = width / 100,
+    vh = height / 100,
+    vmin = Math.min(vw, vh),
+    vmax = Math.max(vw, vh);
 
 export default  PStyleBase = StyleSheet.create({
     container: {
@@ -58,11 +66,29 @@ export default  PStyleBase = StyleSheet.create({
       backgroundColor: '#efeff2',
       flex:1
     },
+
+    homeUserViewBackImage:
+    {
+      height: 159,
+      width:width,
+      alignItems:'center',
+      overflow:'hidden',
+    },
+
+    homeUserViewBackText:
+    {
+      textAlign: 'center',
+      marginTop:110,
+      padding:5,
+      opacity:0.8,
+      borderRadius:5
+    },
+
     homeUserListInfo:
     {
       backgroundColor: '#ffffff',
       marginTop:15,
-      
+
     }
 
 });

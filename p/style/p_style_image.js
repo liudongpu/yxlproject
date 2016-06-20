@@ -22,4 +22,5 @@ const  rootList =
       'main_tab_icon_user_default':require('../../images/tabs/personal_normal.png'),
       'main_tab_icon_user_focus':require('../../images/tabs/personal_focus.png'),
       'home_user_bg':require('../../images/home/user_bg.png'),
+      'home_home_ico':require('../../images/home/home_ico.png'),
    };

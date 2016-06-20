@@ -30,40 +30,19 @@ export default class HomeIndex extends CommonRoot {
            };
 
       }
-
       componentDidMount () {
               this.fetchData();
       }
-
       fetchSuccess(oData)
       {
-
         this.setState({
             dataSource : this.state.dataSource.cloneWithRows(oData.pathInfos)
         });
       }
 
       fetchData () {
-
-
           this.rootFuncApi().post("api/zooweb/post/webpath",{},(data)=>{this.fetchSuccess(data)});
-              /*
-              fetch(NEWS_LIST_API_URL)
-                  .then((response) => response.json())
-                  .then((responseData) => {
-                      this.setState({
-                          dataSource : this.state.dataSource.cloneWithRows(responseData),
-                          loaded : true,
-                      });
-                  })
-                  .done();
-            */
-            /*
-            this.setState({
-                dataSource : this.state.dataSource.cloneWithRows([{img:this.rootStyleImage('main_tab_icon_home_default'),title:'基本信息',top:10},{img:this.rootStyleImage('main_tab_icon_home_default'),title:'基本信息'}]),
-                loaded : true,
-            });
-            */
+
       }
 
 
@@ -86,7 +65,7 @@ export default class HomeIndex extends CommonRoot {
             <Text style={PStyleBase.welcome} onPress={this.onPressFeed.bind(this)}>
               mainmain
             </Text>
-            <View style={this.rootStyleBase().homeUserViewBack}>
+            <View>
                 <ListView
 
                 dataSource={this.state.dataSource}
@@ -107,14 +86,14 @@ export default class HomeIndex extends CommonRoot {
       //{this.onPressFeed.bind(this)}
             return (
                 <TouchableOpacity onPress={()=>{this.onPressNews(news)}}>
-                    <View style={news.top==10?styles.pageContainer:{}}>
-                        <View style={[styles.container, styles.newsItemContainer]}>
+                    <View >
+                        <View >
                             <Image
-                            source={news.img}
-                            style={styles.newsPic} />
-                            <View style={styles.rightContainer}>
-                                <Text style={styles.newsTitle}>{news.title}</Text>
-                                <Text style={styles.newsSummary}>{'>'}</Text>
+                            source={this.rootStyleImage('home_home_ico')}
+                             />
+                            <View >
+                                <Text >{news.nodeName}</Text>
+                                <Text >{'>'}</Text>
                             </View>
                         </View>
                     </View>

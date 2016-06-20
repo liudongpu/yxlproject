@@ -8,6 +8,7 @@ import {
     Text,
     Platform,
     Navigator,
+    TouchableOpacity,
     ListView,
     StyleSheet
 } from 'react-native';
@@ -37,11 +38,15 @@ export default class HomeIndex extends CommonRoot {
       fetchSuccess(oData)
       {
 
+        this.setState({
+            dataSource : this.state.dataSource.cloneWithRows(oData.pathInfos)
+        });
       }
 
       fetchData () {
 
-          this.rootFuncApi().post("api/zooweb/post/managerlogin",{},this.fetchSuccess);
+
+          this.rootFuncApi().post("api/zooweb/post/webpath",{},(data)=>{this.fetchSuccess(data)});
               /*
               fetch(NEWS_LIST_API_URL)
                   .then((response) => response.json())
@@ -81,7 +86,41 @@ export default class HomeIndex extends CommonRoot {
             <Text style={PStyleBase.welcome} onPress={this.onPressFeed.bind(this)}>
               mainmain
             </Text>
+            <View style={this.rootStyleBase().homeUserViewBack}>
+                <ListView
+
+                dataSource={this.state.dataSource}
+                renderRow={this.renderNews.bind(this)}
+                 />
+
+
+            </View>
           </View>
+
+
       )
     }
+
+
+    renderNews(news) {
+
+      //{this.onPressFeed.bind(this)}
+            return (
+                <TouchableOpacity onPress={()=>{this.onPressNews(news)}}>
+                    <View style={news.top==10?styles.pageContainer:{}}>
+                        <View style={[styles.container, styles.newsItemContainer]}>
+                            <Image
+                            source={news.img}
+                            style={styles.newsPic} />
+                            <View style={styles.rightContainer}>
+                                <Text style={styles.newsTitle}>{news.title}</Text>
+                                <Text style={styles.newsSummary}>{'>'}</Text>
+                            </View>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+            );
+        }
+
+
 }

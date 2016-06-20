@@ -20,6 +20,25 @@ export default class SFuncTop
       return PConfigBase;
     }
 
+    //异常提示
+    static msgCatch(sMessage)
+    {
+      var oCatchLang=PLangBase.upCatch();
+      for(var p in oCatchLang)
+      {
+
+        if(sMessage.indexOf(p)>-1)
+        {
+          sMessage=sMessage.replace(p,oCatchLang[p]);
+        }
+
+      }
+
+
+      this.msgAlert(sMessage,oCatchLang.default);
+    }
+
+
 
     static msgAlert(sMessage,sTitle)
     {

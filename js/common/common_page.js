@@ -13,7 +13,7 @@ import {
 import CommonRoot from '../common/common_root';
 
 export default class CommonPage extends CommonRoot {
-  
+
 
   onPressFeed() {
      const { nav } = this.props;
@@ -34,9 +34,7 @@ export default class CommonPage extends CommonRoot {
         <View style={this.rootStyleBase().container}>
           <View style={this.rootStyleBase().headerView}>
 
-            <Text style={this.rootStyleBase().welcome}>
-              {sTitle}
-            </Text>
+          
 
             <Text style={PStyleBase.welcome} onPress={this.onPressFeed.bind(this)}>
               {sTitle}

@@ -37,4 +37,7 @@ const  rootList =
       'UserAbout':{
         name: 'UserAbout',title:'关于'
       },
+      'PeopleInfo':{
+        name: 'PeopleInfo',title:'用户信息'
+      },
    };

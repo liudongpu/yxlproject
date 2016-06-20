@@ -27,14 +27,25 @@ export default class CommonRoot extends Component {
     //获取根语言文字
      rootRouteList(sName){return PRouteList.upRoute(sName);}
    //页面路由跳转
-   rootNavPage(sName,eComponent)
+   rootNavPage(sName,eComponent,oProp)
    {
      const { nav } = this.props;
      //console.log(PRouteList.upRoute(sName));
      var eRoute=PRouteList.upRoute(sName);
      eRoute.component=eComponent;
+     if(oProp)
+     {
+       eRoute.nparams=oProp;
+
+     }
+
      //nav.push(PRouteList.upRoute(sName));
      nav.push(eRoute);
+   }
+
+   rootNavParams(sName)
+   {
+     return this.props.nparams[sName];
    }
 
 }

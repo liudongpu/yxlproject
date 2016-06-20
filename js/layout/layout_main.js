@@ -24,7 +24,7 @@ export default class LayoutMain extends Component {
   _renderScene(router, navigator) {
 
 
-    return <router.component nav={navigator}  />
+    return <router.component nav={navigator}  nparams={router.nparams} />
 
   }
 

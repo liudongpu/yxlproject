@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 
 import PageTemplate from '../page/page_template';
+import PeopleInfo from '../people/people_info';
 
 
 import PStyleBase from '../../p/style/p_style_base';
@@ -75,6 +76,7 @@ export default class HomeIndex extends CommonRoot {
             </View>
             <View  style={this.rootStyleBase().wFlag}>
                 <ListView
+
                 renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
                 dataSource={this.state.dataSource}
                 renderRow={this.renderNews.bind(this)}
@@ -88,6 +90,10 @@ export default class HomeIndex extends CommonRoot {
       )
     }
 
+    onPressNews(news)
+    {
+      this.rootNavPage('PeopleInfo',PeopleInfo,{pCode:news.member_code});
+    }
 
     renderNews(news) {
 

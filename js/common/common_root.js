@@ -5,6 +5,7 @@ import PStyleBase from '../../p/style/p_style_base';
 import PRouteList from '../../p/route/p_route_list';
 import PLangBase from '../../p/lang/p_lang_base';
 import PStyleImage from '../../p/style/p_style_image';
+import SFuncApi from '../../s/func/s_func_api';
 
 
 
@@ -19,6 +20,8 @@ export default class CommonRoot extends Component {
 
    //获取根语言文字
     rootLangBase(sName){return PLangBase.upLang(sName);}
+
+    rootFuncApi(){return SFuncApi;}
 
 
     //获取根语言文字

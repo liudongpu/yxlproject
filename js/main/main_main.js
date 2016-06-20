@@ -29,7 +29,7 @@ export default class MainMain extends CommonRoot {
   constructor(props) {
           super(props);
           //设置默认页
-          this.state = {selectedTab: this.rootLangBase('home_user')}
+          this.state = {selectedTab: this.rootLangBase('home_index')}
       }
 
 

@@ -11,6 +11,7 @@ import TabNavigator from 'react-native-tab-navigator';
 
 import HomeIndex from '../home/home_index';
 import HomeUser from '../home/home_user';
+import HomeSee from '../home/home_see';
 
 
 import SFuncTop from '../../s/func/s_func_top';
@@ -66,7 +67,7 @@ export default class MainMain extends CommonRoot {
                 <TabNavigator hidesTabTouch={true} tabBarStyle={this.rootStyleBase().mainMainTable}>
                     {this._renderTabItem(this.rootStyleImage('main_tab_icon_home_default'), this.rootStyleImage('main_tab_icon_home_focus'), this.rootLangBase('home_index'), <HomeIndex nav={this.props.nav}/>)}
                     {this._renderTabItem(this.rootStyleImage('main_tab_icon_category_default'), this.rootStyleImage('main_tab_icon_category_focus'), this.rootLangBase('home_category'), MainMain._createChildView( this.rootLangBase('home_category')))}
-                    {this._renderTabItem(this.rootStyleImage('main_tab_icon_see_default'), this.rootStyleImage('main_tab_icon_see_focus'), this.rootLangBase('home_see'), MainMain._createChildView(this.rootLangBase('home_see')))}
+                    {this._renderTabItem(this.rootStyleImage('main_tab_icon_see_default'), this.rootStyleImage('main_tab_icon_see_focus'), this.rootLangBase('home_see'),  <HomeSee nav={this.props.nav}/> )}
 
                     {this._renderTabItem(this.rootStyleImage('main_tab_icon_user_default'), this.rootStyleImage('main_tab_icon_user_focus'), this.rootLangBase('home_user'),<HomeUser nav={this.props.nav}/>)}
                 </TabNavigator>

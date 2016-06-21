@@ -43,19 +43,23 @@ export default  PStyleBase = StyleSheet.create({
     {
 
     },
+    cListIconBorder:
+    {
+      borderTopWidth: 1,
+      borderTopColor: '#ebebeb',
+    },
+
     cListIconCenter:
     {
       flex:1,
-      borderBottomWidth: 1,
-      borderBottomColor: '#ebebeb',
+
       height:50,
       justifyContent: 'center',
 
     },
     cListIconRight:
     {
-      borderBottomWidth: 1,
-      borderBottomColor: '#ebebeb',
+      
       height:50,
       justifyContent: 'center',
     },

@@ -14,11 +14,6 @@ import {
 } from 'react-native';
 
 import PageInfo from '../page/page_info';
-import UserInfo from '../user/user_info';
-import UserSet from '../user/user_set';
-import UserPassword from '../user/user_password';
-import UserAgree from '../user/user_agree';
-import UserAbout from '../user/user_about';
 
 
 
@@ -35,11 +30,10 @@ export default class HomeUser extends CommonRoot {
 
 
     var   data = [
-                {img:this.rootStyleImage('icon_ua'),title:this.rootRouteList('UserInfo').title,target:UserInfo,link:'UserInfo',top:10},
-                {img:this.rootStyleImage('icon_ub'),title:this.rootRouteList('UserSet').title,target:UserSet,link:'UserSet'},
-                {img:this.rootStyleImage('icon_uc'),title:this.rootRouteList('UserPassword').title,target:UserPassword,link:'UserPassword',top:10},
-                {img:this.rootStyleImage('icon_ud'),title:this.rootRouteList('UserAgree').title,target:UserAgree,link:'UserAgree'},
-                {img:this.rootStyleImage('icon_ue'),title:this.rootRouteList('UserAbout').title,target:UserAbout,link:'UserAbout'}
+                {img:this.rootStyleImage('icon_da'),title:this.rootRouteList('SeeQrcode').title,target:PageInfo,link:'PageInfo',top:10},
+                {img:this.rootStyleImage('icon_db'),title:this.rootRouteList('SeeAdvice').title,target:PageInfo,link:'PageInfo',top:10},
+                {img:this.rootStyleImage('icon_dc'),title:this.rootRouteList('SeeAdadd').title,target:PageInfo,link:'PageInfo'},
+
                 ];
 
       this.state = {
@@ -55,12 +49,7 @@ export default class HomeUser extends CommonRoot {
 
       return (
         <View style={this.rootStyleBase().homeUserViewBack}>
-          <View >
-            <Image style={[this.rootStyleBase().homeUserViewBackImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('home_user_bg')}>
-              <Image style={[this.rootStyleBase().homeUserViewBackPeople,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_img')}></Image>
-              <Text  style={this.rootStyleBase().homeUserViewBackText} >{this.rootLangBase('home_user_welcome')}11012345678</Text>
-            </Image>
-          </View>
+
           <View style={this.rootStyleBase().homeUserViewBack}>
               <ListView
 
@@ -85,7 +74,7 @@ export default class HomeUser extends CommonRoot {
       //{this.onPressFeed.bind(this)}
             return (
                 <TouchableOpacity onPress={()=>{this.onPressNews(news)}}>
-                    <View style={news.top==10?this.rootStyleBase().cListIconSplit:{}}>
+                    <View style={news.top>0?this.rootStyleBase().cListIconSplit:{}}>
                         <View style={this.rootStyleBase().cListIconItem}>
                             <View  style={this.rootStyleBase().cListIconLeft}>
                               <Image

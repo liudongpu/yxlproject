@@ -37,6 +37,15 @@ const  rootList =
       'UserAbout':{
         name: 'UserAbout',title:'关于'
       },
+      'SeeQrcode':{
+        name: 'SeeQrcode',title:'扫描二维码'
+      },
+      'SeeAdvice':{
+        name: 'SeeAdvice',title:'公告列表'
+      },
+      'SeeAdadd':{
+        name: 'SeeAdadd',title:'发布公告'
+      },
       'PeopleInfo':{
         name: 'PeopleInfo',title:'用户信息'
       },

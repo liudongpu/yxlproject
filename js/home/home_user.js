@@ -35,11 +35,11 @@ export default class HomeUser extends CommonRoot {
 
 
     var   data = [
-                {img:this.rootStyleImage('main_tab_icon_home_default'),title:this.rootRouteList('UserInfo').title,target:UserInfo,link:'UserInfo',top:10},
-                {img:this.rootStyleImage('main_tab_icon_home_default'),title:this.rootRouteList('UserSet').title,target:UserSet,link:'UserSet'},
-                {img:this.rootStyleImage('main_tab_icon_home_default'),title:this.rootRouteList('UserPassword').title,target:UserPassword,link:'UserPassword',top:10},
-                {img:this.rootStyleImage('main_tab_icon_home_default'),title:this.rootRouteList('UserAgree').title,target:UserAgree,link:'UserAgree'},
-                {img:this.rootStyleImage('main_tab_icon_home_default'),title:this.rootRouteList('UserAbout').title,target:UserAbout,link:'UserAbout'}
+                {img:this.rootStyleImage('icon_ua'),title:this.rootRouteList('UserInfo').title,target:UserInfo,link:'UserInfo',top:10},
+                {img:this.rootStyleImage('icon_ub'),title:this.rootRouteList('UserSet').title,target:UserSet,link:'UserSet'},
+                {img:this.rootStyleImage('icon_uc'),title:this.rootRouteList('UserPassword').title,target:UserPassword,link:'UserPassword',top:10},
+                {img:this.rootStyleImage('icon_ud'),title:this.rootRouteList('UserAgree').title,target:UserAgree,link:'UserAgree'},
+                {img:this.rootStyleImage('icon_ue'),title:this.rootRouteList('UserAbout').title,target:UserAbout,link:'UserAbout'}
                 ];
 
       this.state = {
@@ -86,6 +86,7 @@ export default class HomeUser extends CommonRoot {
         <View style={this.rootStyleBase().homeUserViewBack}>
           <View >
             <Image style={[this.rootStyleBase().homeUserViewBackImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('home_user_bg')}>
+              <Image style={[this.rootStyleBase().homeUserViewBackPeople,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_img')}></Image>
               <Text onPress={this.onPressFeed.bind(this)} style={this.rootStyleBase().homeUserViewBackText} >{this.rootLangBase('home_user_welcome')}11012345678</Text>
             </Image>
           </View>
@@ -113,14 +114,19 @@ export default class HomeUser extends CommonRoot {
       //{this.onPressFeed.bind(this)}
             return (
                 <TouchableOpacity onPress={()=>{this.onPressNews(news)}}>
-                    <View style={news.top==10?styles.pageContainer:{}}>
-                        <View style={[styles.container, styles.newsItemContainer]}>
-                            <Image
-                            source={news.img}
-                            style={styles.newsPic} />
-                            <View style={styles.rightContainer}>
-                                <Text style={styles.newsTitle}>{news.title}</Text>
-                                <Text style={styles.newsSummary}>{'>'}</Text>
+                    <View style={news.top==10?this.rootStyleBase().cListIconSplit:{}}>
+                        <View style={this.rootStyleBase().cListIconItem}>
+                            <View  style={this.rootStyleBase().cListIconLeft}>
+                              <Image
+                              source={news.img}
+                              style={this.rootStyleBase().cListIconImage} />
+                            </View>
+                            <View style={this.rootStyleBase().cListIconCenter}>
+                              <Text style={this.rootStyleBase().cListIconText}>{news.title}</Text>
+                            </View>
+
+                            <View style={this.rootStyleBase().cListIconRight}>
+                                <Text style={this.rootStyleBase().cListIconLink}>{'>'}</Text>
                             </View>
                         </View>
                     </View>
@@ -133,48 +139,3 @@ export default class HomeUser extends CommonRoot {
 
 
 }
-
-
-
-
-const styles = StyleSheet.create({
-    pageContainer: {
-      marginTop:10
-    },
-    container: {
-        flex: 1,
-        flexDirection : 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#ffffff',
-    },
-    rightContainer: {
-        flex: 1,
-        flexDirection : 'row',
-    },
-    newsItemContainer: {
-        borderBottomWidth: 1,
-        borderBottomColor: '#ebebeb',
-    },
-    listView: {
-        backgroundColor: '#ffffff',
-    },
-    newsPic : {
-        width : 30,
-        height : 30,
-        margin: 10,
-        marginLeft: 0,
-    },
-    newsTitle : {
-
-        fontSize : 16,
-        flex:1,
-        textAlign : 'left',
-    },
-    newsSummary : {
-        color : '#cccccc',
-        fontSize : 14,
-        textAlign : 'left',
-        width:30,
-    },
-})

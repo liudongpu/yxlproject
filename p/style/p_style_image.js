@@ -26,6 +26,15 @@ const  rootList =
       'people_info_bg':require('../../images/home/people_bg.png'),
       'people_info_img':require('../../images/home/people_img.png'),
 
+      'icon_ua':require('../../images/icons/icon_ua.png'),
+      'icon_ub':require('../../images/icons/icon_ub.png'),
+      'icon_uc':require('../../images/icons/icon_uc.png'),
+      'icon_ud':require('../../images/icons/icon_ud.png'),
+      'icon_ue':require('../../images/icons/icon_ue.png'),
+      'icon_da':require('../../images/icons/icon_da.png'),
+      'icon_db':require('../../images/icons/icon_db.png'),
+      'icon_dc':require('../../images/icons/icon_dc.png'),
+
       'people_info_carda':require('../../images/home/people_carda.png'),
       'people_info_cardb':require('../../images/home/people_cardb.png'),
       'people_info_cardc':require('../../images/home/people_cardc.png'),

@@ -26,6 +26,60 @@ export default  PStyleBase = StyleSheet.create({
 
       flexDirection: 'row'
     },
+    cListIconItem:
+    {
+      flex: 1,
+      flexDirection : 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#ffffff',
+
+    },
+    cListIconSplit:
+    {
+      marginTop:10
+    },
+    cListIconLeft:
+    {
+
+    },
+    cListIconCenter:
+    {
+      flex:1,
+      borderBottomWidth: 1,
+      borderBottomColor: '#ebebeb',
+      height:50,
+      justifyContent: 'center',
+
+    },
+    cListIconRight:
+    {
+      borderBottomWidth: 1,
+      borderBottomColor: '#ebebeb',
+      height:50,
+      justifyContent: 'center',
+    },
+    cListIconImage:
+    {
+      width : 30,
+      height : 30,
+      margin: 10,
+    },
+    cListIconText:
+    {
+      fontSize : 16,
+      flex:1,
+      textAlign : 'left',
+      paddingTop: 15,
+    },
+    cListIconLink:
+    {
+      color : '#cccccc',
+      fontSize : 14,
+      textAlign : 'left',
+      width:30,
+    },
+
 
     cListViewItem:
     {
@@ -164,11 +218,20 @@ export default  PStyleBase = StyleSheet.create({
       alignItems:'center',
       overflow:'hidden',
     },
+    homeUserViewBackPeople:
+    {
+      width:80,
+      height:80,
+      borderRadius:40,
+      borderColor:'#ffffff',
+      borderWidth:2,
+      marginTop:20,
+    },
 
     homeUserViewBackText:
     {
       textAlign: 'center',
-      marginTop:110,
+      marginTop:10,
       padding:5,
       opacity:0.8,
       borderRadius:5

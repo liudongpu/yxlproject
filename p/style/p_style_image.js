@@ -23,4 +23,6 @@ const  rootList =
       'main_tab_icon_user_focus':require('../../images/tabs/personal_focus.png'),
       'home_user_bg':require('../../images/home/user_bg.png'),
       'home_home_ico':require('../../images/home/home_ico.png'),
+      'people_info_bg':require('../../images/home/people_bg.png'),
+      'people_info_img':require('../../images/home/people_img.png'),
    };

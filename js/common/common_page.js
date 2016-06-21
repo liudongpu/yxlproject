@@ -32,14 +32,7 @@ export default class CommonPage extends CommonRoot {
 
     return (
         <View style={this.rootStyleBase().container}>
-          <View style={this.rootStyleBase().headerView}>
-
           
-
-            <Text style={PStyleBase.welcome} onPress={this.onPressFeed.bind(this)}>
-              {sTitle}
-            </Text>
-          </View>
           <View>
               {SubNode}
           </View>

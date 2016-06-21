@@ -7,11 +7,14 @@ import {
 } from 'react-native';
 
 
-const {width, height, scale} = Dimensions.get("window"),
-    vw = width / 100,
-    vh = height / 100,
-    vmin = Math.min(vw, vh),
-    vmax = Math.max(vw, vh);
+const topWindow = {width,height}=Dimensions.get("window");
+
+
+const topColor={
+    //导航条的颜色
+   navColor:'#EF4B4B',
+
+};
 
 export default  PStyleBase = StyleSheet.create({
     wFlag:
@@ -25,6 +28,7 @@ export default  PStyleBase = StyleSheet.create({
       flexDirection : 'row',
       justifyContent: 'center',
       alignItems: 'center',
+
     },
     cListViewBox:
     {
@@ -32,8 +36,7 @@ export default  PStyleBase = StyleSheet.create({
       flexDirection : 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      borderBottomWidth: 1,
-      borderBottomColor: '#ebebeb',
+      marginTop:15,
     },
     cListViewImage:
     {
@@ -42,21 +45,56 @@ export default  PStyleBase = StyleSheet.create({
       margin: 10,
       marginLeft: 0,
     },
-    cListViewFix:
+    cListViewLeft:
+    {
+      width : 50,
+      height : 50,
+
+      marginLeft:10,
+      marginRight:10,
+      borderRadius: 25,
+      justifyContent: 'center',
+      alignItems: 'center',
+
+      backgroundColor:'#cccccc',
+    },
+    cListViewName:
+    {
+      color:'#ffffff'
+    },
+
+    cListViewCenter:
     {
       flex: 1,
-      flexDirection : 'row',
+      height:50,
+      paddingLeft:15,
+      paddingTop:5,
+      borderBottomWidth: 1,
+      borderBottomColor: '#ebebeb',
+    },
+    cListViewRight:
+    {
+      height:50,
+      borderBottomWidth: 1,
+      borderBottomColor: '#ebebeb',
+      paddingTop:10,
+
+
     },
     cListViewText:
     {
       fontSize : 16,
-      flex:1,
       textAlign : 'left',
+    },
+    cListViewDesc:
+    {
+      paddingTop:5,
+      color:'#cccccc',
     },
     cListViewIcon:
     {
       color : '#cccccc',
-      fontSize : 14,
+      fontSize : 20,
       textAlign : 'left',
       width:30,
     },
@@ -80,7 +118,7 @@ export default  PStyleBase = StyleSheet.create({
 
     // 导航栏
     navContainer: {
-      backgroundColor: '#EF4B4B',
+      backgroundColor: topColor.navColor,
       paddingTop: 12,
       paddingBottom: 10,
     },
@@ -117,7 +155,7 @@ export default  PStyleBase = StyleSheet.create({
     homeUserViewBackImage:
     {
       height: 159,
-      width:width,
+      width:topWindow.width,
       alignItems:'center',
       overflow:'hidden',
     },
@@ -136,6 +174,50 @@ export default  PStyleBase = StyleSheet.create({
       backgroundColor: '#ffffff',
       marginTop:15,
 
+    },
+    homeIndexTextInput:
+    {
+      height: 30,
+      borderColor: '#cccccc',
+      borderWidth: 1,
+      margin:10,
+      backgroundColor:'#ffffff',
+      borderRadius:5,
+      paddingLeft:10
+    },
+
+    peopleInfoTop:
+    {
+      backgroundColor: topColor.navColor,
+    },
+
+    peopleInfoBg:
+    {
+      height: 170,
+      width:topWindow.width,
+      alignItems:'center',
+      overflow:'hidden',
+
+    },
+    peopleInfoRadius:
+    {
+      marginTop:10,
+      width:80,
+      height:80,
+      padding:5,
+      borderRadius:40,
+      borderWidth:1,
+      borderColor:'#f3a5a5'
+    },
+
+    peopleInfoImg:
+    {
+      width:70,
+      height:70,
+      borderRadius:35,
+      borderWidth:1,
+      borderColor:'#f3a5a5'
     }
+
 
 });

@@ -33,7 +33,7 @@ export default class HomeIndex extends CommonRoot {
 
       }
       componentDidMount () {
-              this.fetchData();
+              this.fetchData('');
       }
       fetchSuccess(oData)
       {
@@ -42,9 +42,10 @@ export default class HomeIndex extends CommonRoot {
         });
       }
 
-      fetchData () {
+      fetchData (sText) {
+
           this.rootFuncApi().post("api/genapp/post/querymember",{
-            keyWord:this.state.text
+            keyWord:sText
           },(data)=>{this.fetchSuccess(data)});
 
       }
@@ -66,11 +67,11 @@ export default class HomeIndex extends CommonRoot {
 
       return (
           <View  style={this.rootStyleBase().wFlag}>
-            <View>
+            <View style={{backgroundColor:'#fbfbfb'}}>
             <TextInput
-              style={{height: 40, borderColor: 'gray', borderWidth: 1,margin:5}}
-              onChangeText={(text) => {this.setState({text});this.fetchData()}}
-              placeholder='search'
+              style={this.rootStyleBase().homeIndexTextInput}
+              onChangeText={(text) => {  this.fetchData(text)}}
+              placeholder='  search'
               value={this.state.text}
             />
             </View>
@@ -98,17 +99,39 @@ export default class HomeIndex extends CommonRoot {
     renderNews(news) {
 
       //{this.onPressFeed.bind(this)}
+      /*
+      <Image
+      source={this.rootStyleImage('home_home_ico')}
+      style={this.rootStyleBase().cListViewImage}
+       />
+       */
+        var sShowName=news.member_name;
+        if(sShowName.length>2)
+        {
+          sShowName=sShowName.substring(sShowName.length-2,sShowName.length);
+        }
+        var aBgColors=['#CC3399','#FF9900','#666633','#99CC33','#CC6600','#336633','#FF6666'];
+
+
+        //var iIndex=Math.floor(Math.random()*aBgColors.length);
+        var iIndex=Math.floor(parseInt(news.member_code.substring(5),16)%aBgColors.length);
+
+        var sBgColor=aBgColors[iIndex];
+
             return (
                 <TouchableOpacity onPress={()=>{this.onPressNews(news)}}>
                     <View >
                         <View style={this.rootStyleBase().cListViewBox}>
-                            <Image
-                            source={this.rootStyleImage('home_home_ico')}
-                            style={this.rootStyleBase().cListViewImage}
-                             />
-                            <View style={this.rootStyleBase().cListViewFix}>
+
+                            <View  style={[this.rootStyleBase().cListViewLeft,{backgroundColor:sBgColor}]}>
+                              <Text  style={this.rootStyleBase().cListViewName}>{sShowName}</Text>
+                            </View>
+                            <View style={this.rootStyleBase().cListViewCenter}>
                                 <Text style={this.rootStyleBase().cListViewText}>{news.member_name}</Text>
-                                <Text style={this.rootStyleBase().cListViewIcon}>{'>'}</Text>
+                                <Text style={this.rootStyleBase().cListViewDesc}>{iIndex}-description</Text>
+                            </View>
+                            <View style={this.rootStyleBase().cListViewRight}>
+                              <Text style={this.rootStyleBase().cListViewIcon}>{'>'}</Text>
                             </View>
                         </View>
                     </View>

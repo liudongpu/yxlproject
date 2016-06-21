@@ -24,14 +24,24 @@ export default class PeopleInfo  extends CommonPage {
         };
   }
 
-  
 
 
-  subTitle(){return 'page title';}
+
+  subTitle(){}
 
 
   subNode(){
-      return (<Text>{this.state.memberCode}</Text>)
+      return (
+        <View style={this.rootStyleBase().peopleInfoTop}>
+          <Image style={[this.rootStyleBase().peopleInfoBg,{resizeMode:Image.resizeMode.stretch}]}>
+            <View style={this.rootStyleBase().peopleInfoRadius}>
+              <Image style={[this.rootStyleBase().peopleInfoImg,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_img')}></Image>
+            </View>
+
+          </Image>
+        </View>
+
+      )
   }
 
 

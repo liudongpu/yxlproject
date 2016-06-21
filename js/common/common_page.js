@@ -32,7 +32,7 @@ export default class CommonPage extends CommonRoot {
 
     return (
         <View style={this.rootStyleBase().container}>
-          
+
           <View>
               {SubNode}
           </View>

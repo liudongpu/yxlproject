@@ -66,7 +66,7 @@ export default class HomeIndex extends CommonRoot {
       //this.props.nav.setState({title:'xx'});
 
       return (
-          <View  style={this.rootStyleBase().wFlag}>
+          <View  style={this.rootStyleBase().wFlex}>
             <View style={{backgroundColor:'#fbfbfb'}}>
             <TextInput
               style={this.rootStyleBase().homeIndexTextInput}
@@ -75,7 +75,7 @@ export default class HomeIndex extends CommonRoot {
               value={this.state.text}
             />
             </View>
-            <View  style={this.rootStyleBase().wFlag}>
+            <View  style={this.rootStyleBase().wFlex}>
                 <ListView
 
                 renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}

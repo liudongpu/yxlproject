@@ -9,17 +9,22 @@ import {
 
 const topWindow = {width,height}=Dimensions.get("window");
 
-
+//导航条的颜色
 const topColor={
-    //导航条的颜色
+
    navColor:'#EF4B4B',
 
 };
 
 export default  PStyleBase = StyleSheet.create({
-    wFlag:
+    wFlex:
     {
       flex:1
+    },
+    wDirectionRow:
+    {
+
+      flexDirection: 'row'
     },
 
     cListViewItem:
@@ -204,7 +209,7 @@ export default  PStyleBase = StyleSheet.create({
       marginTop:10,
       width:80,
       height:80,
-      padding:5,
+      padding:4,
       borderRadius:40,
       borderWidth:1,
       borderColor:'#f3a5a5'
@@ -217,6 +222,26 @@ export default  PStyleBase = StyleSheet.create({
       borderRadius:35,
       borderWidth:1,
       borderColor:'#f3a5a5'
+    },
+    peopleInfoCard:
+    {
+      flexDirection: 'row',
+      flex:1,
+      width:topWindow.width,
+
+    },
+
+    peopleInfoCardCell:
+    {
+        flex:1,
+        height:40,
+        alignItems:'center'
+    },
+    peopleInfoCardImage:
+    {
+      width:30,
+      height:30,
+
     }
 
 

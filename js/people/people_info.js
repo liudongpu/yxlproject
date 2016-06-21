@@ -33,12 +33,23 @@ export default class PeopleInfo  extends CommonPage {
   subNode(){
       return (
         <View style={this.rootStyleBase().peopleInfoTop}>
-          <Image style={[this.rootStyleBase().peopleInfoBg,{resizeMode:Image.resizeMode.stretch}]}>
+          <View style={[this.rootStyleBase().peopleInfoBg]}>
             <View style={this.rootStyleBase().peopleInfoRadius}>
               <Image style={[this.rootStyleBase().peopleInfoImg,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_img')}></Image>
             </View>
+            <View style={this.rootStyleBase().peopleInfoCard}>
+              <View style={this.rootStyleBase().peopleInfoCardCell}>
+                <Image style={[this.rootStyleBase().peopleInfoCardImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_carda')}></Image>
+              </View>
+              <View style={this.rootStyleBase().peopleInfoCardCell}>
+                <Image style={[this.rootStyleBase().peopleInfoCardImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_cardb')}></Image>
+              </View>
+              <View style={this.rootStyleBase().peopleInfoCardCell}>
+                <Image style={[this.rootStyleBase().peopleInfoCardImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_cardc')}></Image>
+              </View>
 
-          </Image>
+            </View>
+          </View>
         </View>
 
       )

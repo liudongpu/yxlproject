@@ -29,4 +29,8 @@ const  rootList =
       'people_info_carda':require('../../images/home/people_carda.png'),
       'people_info_cardb':require('../../images/home/people_cardb.png'),
       'people_info_cardc':require('../../images/home/people_cardc.png'),
+      'people_info_icona':require('../../images/home/people_icona.png'),
+      'people_info_iconb':require('../../images/home/people_iconb.png'),
+      'people_info_iconc':require('../../images/home/people_iconc.png'),
+      'people_info_icond':require('../../images/home/people_icond.png'),
    };

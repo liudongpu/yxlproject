@@ -36,6 +36,11 @@ export default class CommonRoot extends Component {
      if(oProp)
      {
        eRoute.nparams=oProp;
+       //如果属性上有navName属性 则将页面标题设置为navName
+       if(oProp.navName)
+       {
+         eRoute.title=oProp.navName;
+       }
 
      }
 

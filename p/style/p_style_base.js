@@ -198,7 +198,7 @@ export default  PStyleBase = StyleSheet.create({
 
     peopleInfoBg:
     {
-      height: 170,
+      height: 180,
       width:topWindow.width,
       alignItems:'center',
       overflow:'hidden',
@@ -225,6 +225,7 @@ export default  PStyleBase = StyleSheet.create({
     },
     peopleInfoCard:
     {
+      marginTop:10,
       flexDirection: 'row',
       flex:1,
       width:topWindow.width,
@@ -242,6 +243,49 @@ export default  PStyleBase = StyleSheet.create({
       width:30,
       height:30,
 
+    },
+    peopleInfoCardText:
+    {
+      color:'#ffffff',
+      marginTop:10
+
+    },
+    peopleInfoCardBorder:
+    {
+
+
+    },
+    peopleInfoAdd:
+    {
+      textAlign:'center',
+      color:'#2f2f2f',
+      marginTop:30,
+      marginBottom:20
+    },
+    peopleInfoLine:
+    {
+        color:'#dedede'
+    },
+    peopleInfoItem:
+    {
+      marginTop:10,
+      flexDirection: 'row',
+      flex:1,
+      width:topWindow.width,
+    },
+    peopleInfoItemBox:
+    {
+      flex:1,
+      alignItems:'center'
+    },
+    peopleInfoItemImage:
+    {
+      width:100,
+      height:100,
+    },
+    peopleInfoItemText:
+    {
+      padding:10,
     }
 
 

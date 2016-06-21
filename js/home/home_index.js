@@ -72,6 +72,8 @@ export default class HomeIndex extends CommonRoot {
               style={this.rootStyleBase().homeIndexTextInput}
               onChangeText={(text) => {  this.fetchData(text)}}
               placeholder='  search'
+              autoCapitalize='none'
+              autoCorrect={false}
               value={this.state.text}
             />
             </View>
@@ -93,7 +95,7 @@ export default class HomeIndex extends CommonRoot {
 
     onPressNews(news)
     {
-      this.rootNavPage('PeopleInfo',PeopleInfo,{pCode:news.member_code});
+      this.rootNavPage('PeopleInfo',PeopleInfo,{pCode:news.member_code,navName:news.member_name});
     }
 
     renderNews(news) {

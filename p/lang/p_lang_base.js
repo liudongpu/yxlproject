@@ -33,6 +33,15 @@ const  rootList =
       'home_see':'发现',
       'home_user':'我的',
       'home_user_welcome':'欢迎您：',
+      'people_info_carda':'照片管理',
+      'people_info_cardb':'查房历史',
+      'people_info_cardc':'健康数据',
+      'people_info_add_text':'  添加数据   ',
+      'people_info_add_line':'——————',
+      'people_info_icona':'血压',
+      'people_info_iconb':'血氧',
+      'people_info_iconc':'血糖',
+      'people_info_icond':'体温',
 
 
    };

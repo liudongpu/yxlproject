@@ -13,7 +13,7 @@ import {
   Text,
   View
 } from 'react-native';
-import MainMain from './js/main/main_main';
+import LayoutMain from './js/layout/layout_main';
 class YxlProject extends Component {
   render() {
     return (
@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
 });
 
 
-AppRegistry.registerComponent('YxlProject', () => MainMain);
+AppRegistry.registerComponent('YxlProject', () => LayoutMain);

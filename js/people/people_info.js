@@ -8,13 +8,16 @@ import {
     Text,
     Platform,
     Navigator,
+    TouchableOpacity,
     StyleSheet
 } from 'react-native';
 
 
-import CommonPage from '../common/common_page';
+import CommonRoot from '../common/common_root';
+import CommonForm from '../common/common_form';
 
-export default class PeopleInfo  extends CommonPage {
+
+export default class PeopleInfo  extends CommonRoot {
 
   constructor(props) {
         super(props);
@@ -26,31 +29,19 @@ export default class PeopleInfo  extends CommonPage {
 
 
 
-
-  subTitle(){}
-
-
-  subNode(){
+  render(){
       return (
-        <View>
+        <View  style={this.rootStyleBase().container}>
           <View style={this.rootStyleBase().peopleInfoTop}>
             <View style={[this.rootStyleBase().peopleInfoBg]}>
               <View style={this.rootStyleBase().peopleInfoRadius}>
                 <Image style={[this.rootStyleBase().peopleInfoImg,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_img')}></Image>
               </View>
               <View style={this.rootStyleBase().peopleInfoCard}>
-                <View style={this.rootStyleBase().peopleInfoCardCell}>
-                  <Image style={[this.rootStyleBase().peopleInfoCardImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_carda')}></Image>
-                  <Text style={[this.rootStyleBase().peopleInfoCardText,this.rootStyleBase().peopleInfoCardBorder]}>{this.rootLangBase('people_info_carda')}</Text>
-                </View>
-                <View style={this.rootStyleBase().peopleInfoCardCell}>
-                  <Image style={[this.rootStyleBase().peopleInfoCardImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_cardb')}></Image>
-                  <Text style={[this.rootStyleBase().peopleInfoCardText,this.rootStyleBase().peopleInfoCardBorder]}>{this.rootLangBase('people_info_cardb')}</Text>
-                </View>
-                <View style={this.rootStyleBase().peopleInfoCardCell}>
-                  <Image style={[this.rootStyleBase().peopleInfoCardImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_cardc')}></Image>
-                  <Text style={this.rootStyleBase().peopleInfoCardText}>{this.rootLangBase('people_info_cardc')}</Text>
-                </View>
+                {this._nodeCard('people_info_carda')}
+                {this._nodeCard('people_info_cardb')}
+                {this._nodeCard('people_info_cardc')}
+
 
               </View>
             </View>
@@ -65,25 +56,14 @@ export default class PeopleInfo  extends CommonPage {
             </View>
           </View>
           <View style={this.rootStyleBase().peopleInfoItem}>
-            <View  style={this.rootStyleBase().peopleInfoItemBox}>
-              <Image style={[this.rootStyleBase().peopleInfoItemImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_icona')}></Image>
-              <Text style={this.rootStyleBase().peopleInfoItemText}>{this.rootLangBase('people_info_icona')}</Text>
-            </View>
-            <View  style={this.rootStyleBase().peopleInfoItemBox}>
-              <Image style={[this.rootStyleBase().peopleInfoItemImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_iconb')}></Image>
-              <Text style={this.rootStyleBase().peopleInfoItemText}>{this.rootLangBase('people_info_iconb')}</Text>
-            </View>
+            {this._nodeIcon('people_info_icona')}
+            {this._nodeIcon('people_info_iconb')}
 
           </View>
           <View style={this.rootStyleBase().peopleInfoItem}>
-            <View  style={this.rootStyleBase().peopleInfoItemBox}>
-              <Image style={[this.rootStyleBase().peopleInfoItemImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_iconc')}></Image>
-              <Text style={this.rootStyleBase().peopleInfoItemText}>{this.rootLangBase('people_info_iconc')}</Text>
-            </View>
-            <View  style={this.rootStyleBase().peopleInfoItemBox}>
-              <Image style={[this.rootStyleBase().peopleInfoItemImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_icond')}></Image>
-              <Text style={this.rootStyleBase().peopleInfoItemText}>{this.rootLangBase('people_info_icond')}</Text>
-            </View>
+            {this._nodeIcon('people_info_iconc')}
+            {this._nodeIcon('people_info_icond')}
+
 
           </View>
         </View>
@@ -91,6 +71,26 @@ export default class PeopleInfo  extends CommonPage {
       )
   }
 
+  _nodeCard(sCard)
+  {
+    return(
+      <View style={this.rootStyleBase().peopleInfoCardCell}>
+        <Image style={[this.rootStyleBase().peopleInfoCardImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage(sCard)}></Image>
+        <Text style={[this.rootStyleBase().peopleInfoCardText,this.rootStyleBase().peopleInfoCardBorder]}>{this.rootLangBase(sCard)}</Text>
+      </View>
+    )
+  }
 
+  _nodeIcon(sIcon)
+  {
+    return (
+      <TouchableOpacity onPress={()=>{this.rootNavPage('PeoplePressureAdd',CommonForm)}} style={this.rootStyleBase().peopleInfoItemBox}>
+
+          <Image style={[this.rootStyleBase().peopleInfoItemImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage(sIcon)}></Image>
+          <Text style={this.rootStyleBase().peopleInfoItemText}>{this.rootLangBase(sIcon)}</Text>
+
+      </TouchableOpacity>
+    )
+  }
 
 }

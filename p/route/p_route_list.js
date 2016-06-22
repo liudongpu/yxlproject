@@ -49,4 +49,7 @@ const  rootList =
       'PeopleInfo':{
         name: 'PeopleInfo',title:'用户信息'
       },
+      'PeoplePressureAdd':{
+        name: 'PeoplePressureAdd',title:'添加血压'
+      },
    };

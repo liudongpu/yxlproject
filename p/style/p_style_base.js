@@ -35,6 +35,74 @@ export default  PStyleBase = StyleSheet.create({
       borderRightWidth:2
     },
 
+    cFormPageBack:
+    {
+      backgroundColor:'#efeff2'
+    },
+    cFormPageBox:
+    {
+      marginTop:20
+    },
+    cFormPageItem:
+    {
+      flexDirection: 'row',
+      flex:1,
+      borderBottomWidth:1,
+      borderBottomColor:'#dedede',
+      backgroundColor:'#ffffff',
+      height:50,
+
+    },
+    cFormPageLeft:
+    {
+      width:70,
+
+    },
+    cFormPageText:
+    {
+      marginTop:18,
+      paddingLeft:10,
+
+    },
+    cFormPageButton:
+    {
+      width:topWindow.width-30,
+      marginLeft:15,
+      backgroundColor:'#fc5755',
+      height:42,
+      marginTop:20,
+      alignItems:'center',
+      borderRadius:5
+    },
+    cFormPageOperate:
+    {
+      textAlign:'center',
+      color:'#ffffff',
+      fontSize:20,
+      marginTop:10,
+
+    },
+
+    cFormPageLabel:
+    {
+
+    },
+    cFormPageCenter:
+    {
+      flex:1
+    },
+    cFormTextInput:
+    {
+      height:45,
+
+      backgroundColor:'#ffffff',
+
+      paddingLeft:10
+    },
+
+
+
+
     cListIconItem:
     {
       flex: 1,

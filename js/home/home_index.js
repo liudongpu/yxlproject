@@ -24,7 +24,7 @@ import CommonRoot from '../common/common_root';
 
 export default class HomeIndex extends CommonRoot {
 
-  constructor(props) {
+      constructor(props) {
           super(props);
            var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
            this.state = {

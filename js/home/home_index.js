@@ -133,7 +133,7 @@ export default class HomeIndex extends CommonRoot {
                                 <Text style={this.rootStyleBase().cListViewDesc}>{iIndex}-description</Text>
                             </View>
                             <View style={this.rootStyleBase().cListViewRight}>
-                              <Text style={this.rootStyleBase().cListViewIcon}>{'>'}</Text>
+                              <View style={[this.rootStyleBase().cListViewIcon,this.rootStyleBase().wArrowTip]}></View>
                             </View>
                         </View>
                     </View>

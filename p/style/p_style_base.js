@@ -26,6 +26,15 @@ export default  PStyleBase = StyleSheet.create({
 
       flexDirection: 'row'
     },
+    wArrowTip:
+    {
+      transform:[{rotate:'45deg'}],
+      borderTopWidth:2,
+      borderTopColor:'#C8C8CD',
+      borderRightColor:'#C8C8CD',
+      borderRightWidth:2
+    },
+
     cListIconItem:
     {
       flex: 1,
@@ -156,10 +165,13 @@ export default  PStyleBase = StyleSheet.create({
     },
     cListViewIcon:
     {
-      color : '#cccccc',
-      fontSize : 20,
-      textAlign : 'left',
-      width:30,
+
+      width:10,
+      height:10,
+      marginTop:10,
+      marginRight:15
+
+
     },
 
     container: {
@@ -270,7 +282,7 @@ export default  PStyleBase = StyleSheet.create({
     homeIndexTextInput:
     {
       height: 30,
-      borderColor: '#cccccc',
+      borderColor: '#C8C8CD',
       borderWidth: 1,
       margin:10,
       backgroundColor:'#ffffff',

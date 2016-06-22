@@ -56,8 +56,8 @@ export default class HomeUser extends CommonRoot {
       return (
         <View style={this.rootStyleBase().homeUserViewBack}>
           <View >
-            <Image style={[this.rootStyleBase().homeUserViewBackImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('home_user_bg')}>
-              <Image style={[this.rootStyleBase().homeUserViewBackPeople,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_img')}></Image>
+            <Image style={[this.rootStyleBase().homeUserViewBackImage]} source={this.rootStyleImage('home_user_bg')}>
+              <Image style={[this.rootStyleBase().homeUserViewBackPeople]} source={this.rootStyleImage('people_info_img')}></Image>
               <Text  style={this.rootStyleBase().homeUserViewBackText} >{this.rootLangBase('home_user_welcome')}11012345678</Text>
             </Image>
           </View>

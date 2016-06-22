@@ -39,7 +39,7 @@ export default class LayoutMain extends Component {
           LeftButton(route, navigator, index, navState) {
             if (index > 0) {
               return (
-                <View style={PStyleBase.navContainer}>
+                <View  style={PStyleBase.navLeft}>
                   <TouchableOpacity
                     underlayColor='transparent'
                     onPress={() => {if (index > 0) {navigator.pop()}}}>
@@ -50,28 +50,30 @@ export default class LayoutMain extends Component {
                 </View>
               );
             } else {
-              return null;
+              return <View  style={PStyleBase.navLeft}></View>;
             }
           },
           // 右键
           RightButton(route, navigator, index, navState) {
-            if (route.onPress)
+            if (route.onRightPress){
               return (
-                <View style={PStyleBase.navContainer}>
+                <View style={PStyleBase.navRight}>
                   <TouchableOpacity
-                    onPress={() => route.onPress()}>
-                    <Text style={PStyleBase.rightNavButtonText}>
+                    onPress={() => route.onRightPress()}>
+                    <Text style={PStyleBase.navRightButton}>
                       {route.rightText || '右键'}
                     </Text>
                   </TouchableOpacity>
                 </View>
-              );
+              )}else {
+                return <View  style={PStyleBase.navRight}></View>;
+              }
           },
           // 标题
           Title(route, navigator, index, navState) {
             //{route.name=="MainMain"?navigator.state.title:route.title}
             return (
-              <View style={PStyleBase.navContainer}>
+              <View style={PStyleBase.navCenter}>
                 <Text style={PStyleBase.navTitle}>
                   {route.name=="MainMain"&&navState.title?navState.title:route.title}
                 </Text>

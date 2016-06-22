@@ -3,7 +3,7 @@ import {
 
 
     StyleSheet
-    , Dimensions, PixelRatio
+    , Dimensions, PixelRatio,Platform
 } from 'react-native';
 
 
@@ -59,7 +59,7 @@ export default  PStyleBase = StyleSheet.create({
     },
     cListIconRight:
     {
-      
+
       height:50,
       justifyContent: 'center',
     },
@@ -165,7 +165,7 @@ export default  PStyleBase = StyleSheet.create({
     container: {
       flex: 1,
       //justifyContent: 'center',
-      marginTop:60,
+      marginTop:Platform.OS === 'ios' ? 68 : 48,
       flexDirection: 'column',
       backgroundColor: '#FFFFFF',
     },
@@ -182,26 +182,47 @@ export default  PStyleBase = StyleSheet.create({
     // 导航栏
     navContainer: {
       backgroundColor: topColor.navColor,
-      paddingTop: 12,
-      paddingBottom: 10,
+
+      flexDirection: 'row',
+      flex:1,
+      paddingTop: Platform.OS === 'ios' ? 20 : 0,
+      height: Platform.OS === 'ios' ? 68 : 48,
+      width:topWindow.width,
+      alignItems: 'center',
+
+
+    },
+    navCenter:
+    {
+      flex:1,
+      width:topWindow.width-100,
     },
 
     // 左面导航按钮
     navLeftButton: {
       color: '#ffffff',
-      fontSize: 16,
-      marginLeft: 13
+      fontSize: 14,
+      marginLeft: 13,
+      marginTop:16,
     },
-
+    navLeft:
+    {
+      width:50
+    },
+    navRight:
+    {
+      width:50
+    },
     navTitle:{
-
+      marginTop:16,
       fontSize: 18,
       color: '#fff',
       textAlign: 'center',
-      alignItems: 'center',
+
       justifyContent: 'center',
       fontWeight: 'bold',
-      flex: 1                //Step 3
+      flex: 1,
+
     },
     mainMainTable:
     {
@@ -227,8 +248,7 @@ export default  PStyleBase = StyleSheet.create({
       width:80,
       height:80,
       borderRadius:40,
-      borderColor:'#ffffff',
-      borderWidth:2,
+
       marginTop:20,
     },
 
@@ -287,8 +307,7 @@ export default  PStyleBase = StyleSheet.create({
       width:70,
       height:70,
       borderRadius:35,
-      borderWidth:1,
-      borderColor:'#f3a5a5'
+    
     },
     peopleInfoCard:
     {

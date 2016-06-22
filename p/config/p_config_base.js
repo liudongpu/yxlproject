@@ -5,7 +5,7 @@ const modelRun='dev';
 const apiConfig=
 {
   dev:{
-    apiUrl:'http://dev-yxl.ntw.srnpr.com/'
+    apiUrl:'https://dev-yxl.ntw.srnpr.com/'
   }
 }
 

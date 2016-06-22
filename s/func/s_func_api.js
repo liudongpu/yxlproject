@@ -14,7 +14,7 @@ export default class SFuncApi
     {
       //return sUrl;
       oParam.zoo=apiZooConfig;
-
+      console.warn(SFuncTop.topConfigBase().upApiConfig().apiUrl+sApiName);
       fetch(SFuncTop.topConfigBase().upApiConfig().apiUrl+sApiName,{method:'POST',
           headers: {
             'Accept': 'application/json',

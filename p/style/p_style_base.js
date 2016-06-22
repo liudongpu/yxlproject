@@ -74,7 +74,7 @@ export default  PStyleBase = StyleSheet.create({
       fontSize : 16,
       flex:1,
       textAlign : 'left',
-      paddingTop: 15,
+      marginTop: 15,
     },
     cListIconLink:
     {
@@ -307,7 +307,7 @@ export default  PStyleBase = StyleSheet.create({
       width:70,
       height:70,
       borderRadius:35,
-    
+
     },
     peopleInfoCard:
     {

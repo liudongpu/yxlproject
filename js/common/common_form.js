@@ -14,7 +14,7 @@ import CommonRoot from '../common/common_root';
 import SFuncStorage from '../../s/func/s_func_storage';
 
 
-import {SCFormText,SCFormDate,SCFormButton} from '../../s/component/s_component_form';
+import {SCFormText,SCFormDate,SCFormButton,SCFormSelect} from '../../s/component/s_component_form';
 
 
 export default class CommonForm  extends CommonRoot {
@@ -26,7 +26,7 @@ export default class CommonForm  extends CommonRoot {
          pageModel: {}
        };
 
-       var sKey=this.props.nparams[this.rootConfigBase().upDefineConfig().nparamsPage];
+       var sKey=this.rootNavParams(this.rootConfigBase().upDefineConfig().nparamsPage);
 
 
        var oValue=SFuncStorage.upTempValue('common_form',sKey);
@@ -99,7 +99,7 @@ export default class CommonForm  extends CommonRoot {
         {
           var oOperate=oPage.operates[iOperate];
           aFields.push(
-            <SCFormButton key={'operate'+iOperate} pOpereate={oOperate} pStyle={this.rootStyleBase().cFormPageButton} pOpeStyle={this.rootStyleBase().cFormPageOperate} />
+            <SCFormButton key={'operate'+iOperate} pOpereate={oOperate} pStyle={{box:this.rootStyleBase().cFormPageButton,text:this.rootStyleBase().cFormPageOperate}}  />
           );
 
         }
@@ -125,10 +125,14 @@ export default class CommonForm  extends CommonRoot {
   {
       if(oField["fieldElement"]=="date")
       {
-        return (<SCFormDate pField={oField} pStyle={this.rootStyleBase().cFormTextInput}></SCFormDate>);
+        return (<SCFormDate pField={oField} pStyle={{input:this.rootStyleBase().cFormTextInput}}></SCFormDate>);
+      }
+      else if(oField["fieldElement"]=="select")
+      {
+        return (<SCFormSelect pField={oField} pStyle={{box:this.rootStyleBase().cFormArrowBox,show:this.rootStyleBase().cFormArrowShow,   arrow:[this.rootStyleBase().cFormArrowRight,this.rootStyleBase().wArrowTip]}}></SCFormSelect>);
       }
       else {
-        return (<SCFormText pField={oField} pStyle={this.rootStyleBase().cFormTextInput}></SCFormText>);
+        return (<SCFormText pField={oField} pStyle={{input:this.rootStyleBase().cFormTextInput}}></SCFormText>);
       }
   }
 

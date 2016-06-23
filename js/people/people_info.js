@@ -62,7 +62,7 @@ export default class PeopleInfo  extends CommonRoot {
           </View>
           <View style={this.rootStyleBase().peopleInfoItem}>
             {this._nodeIcon('people_info_iconc','PeopleGlucoseAdd')}
-            {this._nodeIcon('people_info_icond','PeoplePressureAdd')}
+            {this._nodeIcon('people_info_icond','PeopleTemperatureAdd')}
 
 
           </View>

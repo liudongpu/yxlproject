@@ -7,18 +7,23 @@ import {
     View,
     DatePickerIOS,
     TouchableOpacity,
+    Picker,
     Text,
 
 } from 'react-native';
 
+const Item = Picker.Item;
+
 
 export  class SCFormText extends Component{
   render() {
-    var oField=this.props.pField;
+
+
+    var {pField,pStyle} = this.props;
 
     return (
 
-        <TextInput style={this.props.pStyle} placeholder={oField.fieldRemark}></TextInput>
+        <TextInput style={pStyle.input} placeholder={pField.fieldRemark}></TextInput>
 
 
     );
@@ -29,14 +34,11 @@ export  class SCFormText extends Component{
 
 export  class SCFormDate extends Component{
   render() {
-    var oField=this.props.pField;
 
-
+    var {pField,pStyle} = this.props;
 
     return (
-
-
-        <TextInput style={this.props.pStyle} placeholder={oField.fieldRemark}></TextInput>
+        <TextInput style={pStyle.input} placeholder={pField.fieldRemark}></TextInput>
 
     );
   }
@@ -46,9 +48,28 @@ export  class SCFormDate extends Component{
 
 export  class SCFormButton extends Component{
   render() {
-    var oOperate=this.props.pOpereate;
+
+    var {pOpereate,pStyle} = this.props;
+
     return (
-        <TouchableOpacity style={this.props.pStyle} ><Text style={this.props.pOpeStyle}>{oOperate.operateName}</Text></TouchableOpacity>
+        <TouchableOpacity style={pStyle.box} ><Text style={pStyle.text}>{pOpereate.operateName}</Text></TouchableOpacity>
+
+    );
+  }
+}
+
+
+
+export  class SCFormSelect extends Component{
+
+  render() {
+    var {pField,pStyle} = this.props;
+    return (
+      <TouchableOpacity style={pStyle.box} >
+        <View style={pStyle.show} ><Text>please select</Text></View>
+        <View style={pStyle.arrow}></View>
+      </TouchableOpacity>
+
 
     );
   }

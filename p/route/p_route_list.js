@@ -58,4 +58,9 @@ const  rootList =
       'PeopleGlucoseAdd':{
         name: 'PeopleGlucoseAdd',title:'添加血糖',page:'pa/com_uhutu_yxlsite_z_page_DataGlucose'
       },
+      'PeopleTemperatureAdd':{
+        name: 'PeopleTemperatureAdd',title:'添加体温',page:'pa/com_uhutu_yxlsite_z_page_DataTemperature'
+      },
+
+
    };

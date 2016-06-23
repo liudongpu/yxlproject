@@ -46,7 +46,7 @@ export default  PStyleBase = StyleSheet.create({
     cFormPageItem:
     {
       flexDirection: 'row',
-      flex:1,
+      flex:3,
       borderBottomWidth:1,
       borderBottomColor:'#dedede',
       backgroundColor:'#ffffff',
@@ -100,8 +100,26 @@ export default  PStyleBase = StyleSheet.create({
       marginTop:10,
       marginLeft:10
     },
+    cFormArrowBox:
+    {
 
+      flexDirection: 'row',
+    },
+    cFormArrowShow:
+    {
+      flex:1,
+      marginTop:10,
+      marginLeft:10
 
+    },
+    cFormArrowRight:
+    {
+
+      width:10,
+      height:10,
+      marginTop:20,
+      marginRight:15
+    },
 
 
     cListIconItem:

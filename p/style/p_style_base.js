@@ -55,13 +55,14 @@ export default  PStyleBase = StyleSheet.create({
     },
     cFormPageLeft:
     {
-      width:70,
+      width:80,
 
     },
     cFormPageText:
     {
       marginTop:18,
-      paddingLeft:10,
+      marginLeft:10,
+      fontSize:16,
 
     },
     cFormPageButton:
@@ -93,11 +94,11 @@ export default  PStyleBase = StyleSheet.create({
     },
     cFormTextInput:
     {
-      height:45,
+      height:35,
 
       backgroundColor:'#ffffff',
-
-      paddingLeft:10
+      marginTop:10,
+      marginLeft:10
     },
 
 

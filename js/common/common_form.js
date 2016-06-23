@@ -11,6 +11,8 @@ import {
     StyleSheet
 } from 'react-native';
 import CommonRoot from '../common/common_root';
+import SFuncStorage from '../../s/func/s_func_storage';
+
 
 import {SCFormText,SCFormDate,SCFormButton} from '../../s/component/s_component_form';
 
@@ -24,9 +26,23 @@ export default class CommonForm  extends CommonRoot {
          pageModel: {}
        };
 
+       var sKey='pa/com_uhutu_yxlsite_z_page_DataPressure';
+
+
+       var oValue=SFuncStorage.upTempValue('common_form',sKey);
+       if(oValue)
+       {
+         //this.fetchSuccess(oValue);
+         this.state.pageModel=oValue.pageModel;
+       }
+       else {
+         this.fetchData(sKey);
+       }
+
+
   }
   componentDidMount () {
-          this.fetchData('pa/com_uhutu_yxlsite_z_page_DataPressure');
+          //this.fetchData('pa/com_uhutu_yxlsite_z_page_DataPressure');
   }
   fetchSuccess(oData)
   {
@@ -40,7 +56,7 @@ export default class CommonForm  extends CommonRoot {
 
       this.rootFuncApi().post("api/zooweb/post/webpage",{
         pageUrl:'../'+sText
-      },(data)=>{this.fetchSuccess(data)});
+      },(data)=>{ SFuncStorage.inTempValue('common_form',sText,data);   this.fetchSuccess(data)});
 
   }
 
@@ -104,6 +120,7 @@ export default class CommonForm  extends CommonRoot {
     }
   }
 
+  //form上的组件系列
   _formComponent(oField)
   {
       if(oField["fieldElement"]=="date")

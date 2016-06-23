@@ -133,7 +133,7 @@ export default  PStyleBase = StyleSheet.create({
     },
     cListIconSplit:
     {
-      marginTop:10
+      marginTop:15
     },
     cListIconLeft:
     {

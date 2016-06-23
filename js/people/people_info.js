@@ -56,13 +56,13 @@ export default class PeopleInfo  extends CommonRoot {
             </View>
           </View>
           <View style={this.rootStyleBase().peopleInfoItem}>
-            {this._nodeIcon('people_info_icona')}
-            {this._nodeIcon('people_info_iconb')}
+            {this._nodeIcon('people_info_icona','PeoplePressureAdd')}
+            {this._nodeIcon('people_info_iconb','PeopleOxygenAdd')}
 
           </View>
           <View style={this.rootStyleBase().peopleInfoItem}>
-            {this._nodeIcon('people_info_iconc')}
-            {this._nodeIcon('people_info_icond')}
+            {this._nodeIcon('people_info_iconc','PeopleGlucoseAdd')}
+            {this._nodeIcon('people_info_icond','PeoplePressureAdd')}
 
 
           </View>
@@ -81,15 +81,16 @@ export default class PeopleInfo  extends CommonRoot {
     )
   }
 
-  _nodeIcon(sIcon)
+  _nodeIcon(sIcon,sPage)
   {
     return (
-      <TouchableOpacity onPress={()=>{this.rootNavPage('PeoplePressureAdd',CommonForm)}} style={this.rootStyleBase().peopleInfoItemBox}>
-
+      <View style={this.rootStyleBase().peopleInfoItemBox}>
+          <TouchableOpacity onPress={()=>{this.rootNavPage(sPage,CommonForm)}}>
           <Image style={[this.rootStyleBase().peopleInfoItemImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage(sIcon)}></Image>
-          <Text style={this.rootStyleBase().peopleInfoItemText}>{this.rootLangBase(sIcon)}</Text>
 
-      </TouchableOpacity>
+          </TouchableOpacity>
+          <Text style={this.rootStyleBase().peopleInfoItemText}>{this.rootLangBase(sIcon)}</Text>
+      </View>
     )
   }
 

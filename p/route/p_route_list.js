@@ -50,6 +50,12 @@ const  rootList =
         name: 'PeopleInfo',title:'用户信息'
       },
       'PeoplePressureAdd':{
-        name: 'PeoplePressureAdd',title:'添加血压'
+        name: 'PeoplePressureAdd',title:'添加血压',page:'pa/com_uhutu_yxlsite_z_page_DataPressure'
+      },
+      'PeopleOxygenAdd':{
+        name: 'PeoplePressureAdd',title:'添加血氧',page:'pa/com_uhutu_yxlsite_z_page_DataOxygen'
+      },
+      'PeopleGlucoseAdd':{
+        name: 'PeopleGlucoseAdd',title:'添加血糖',page:'pa/com_uhutu_yxlsite_z_page_DataGlucose'
       },
    };

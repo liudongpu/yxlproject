@@ -26,7 +26,7 @@ export default class CommonForm  extends CommonRoot {
          pageModel: {}
        };
 
-       var sKey='pa/com_uhutu_yxlsite_z_page_DataPressure';
+       var sKey=this.props.nparams[this.rootConfigBase().upDefineConfig().nparamsPage];
 
 
        var oValue=SFuncStorage.upTempValue('common_form',sKey);

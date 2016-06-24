@@ -61,6 +61,13 @@ export default class CommonRoot extends Component {
      nav.push(eRoute);
    }
 
+
+   rootNavBack()
+   {
+     const { nav } = this.props;
+     nav.pop();
+   }
+
    rootNavParams(sName)
    {
      return this.props.nparams[sName];

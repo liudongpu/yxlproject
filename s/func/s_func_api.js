@@ -10,7 +10,12 @@ const apiZooConfig={
 
 export default class SFuncApi
 {
+
     static post(sApiName,oParam,fCallBack)
+    {
+      this.postWithError(sApiName,oParam,fCallBack,(oResponse)=>{SFuncTop.msgAlert(oResponse.error);});
+    }
+    static postWithError(sApiName,oParam,fCallBack,fErrorBack)
     {
       //return sUrl;
       oParam.zoo=apiZooConfig;
@@ -29,7 +34,7 @@ export default class SFuncApi
               }
               else {
                 console.warn(JSON.stringify(responseData));
-                SFuncTop.msgAlert(responseData.error);
+                fErrorBack(responseData);
               }
           })
           .catch((error) => {

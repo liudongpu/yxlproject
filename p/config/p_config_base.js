@@ -14,6 +14,7 @@ const apiConfig=
 const defineConfig=
 {
   nparamsPage:'config_base_page_link',
+  nParamsForm:'config_base_form_data',
   modalLoadColor:'#ff0000'
 }
 

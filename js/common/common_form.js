@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import CommonRoot from '../common/common_root';
 import SFuncStorage from '../../s/func/s_func_storage';
+import SFuncTop from '../../s/func/s_func_top';
 
 import SFuncForm from '../../s/func/s_func_form';
 
@@ -25,16 +26,17 @@ import {SCFormText,SCFormDate,SCFormButton,SCFormSelect} from '../../s/component
 
 export default class CommonForm  extends CommonRoot {
 
+
+
+
+
   constructor(props) {
       super(props);
 
        this.state = {
          pageModel: {},
-         pageUnique:'',
          modalShow:false,
          modalText:'',
-         formData:{},
-
        };
 
        var sKey=this.rootNavParams(this.rootConfigBase().upDefineConfig().nparamsPage);
@@ -44,8 +46,9 @@ export default class CommonForm  extends CommonRoot {
        if(oValue)
        {
          //this.fetchSuccess(oValue);
-         //this.state.pageModel=oValue.pageModel;
-         this.fetchSuccess(oValue);
+         this.state.pageModel=oValue.pageModel;
+         this.initFormData();
+         //this.fetchSuccess(oValue);
        }
        else {
          this.fetchData(sKey);
@@ -57,14 +60,34 @@ export default class CommonForm  extends CommonRoot {
           //this.fetchData('pa/com_uhutu_yxlsite_z_page_DataPressure');
   }
 
+  //初始化form的数据
+  initFormData()
+  {
+    //从参数传递中拿  如果拿不到初始化下
+    var oValue=this.rootNavParams(this.rootConfigBase().upDefineConfig().nParamsForm);
+
+    if(!oValue)
+    {
+      oValue={};
+    }
+    SFuncForm.initFormData(this.upPageUnique(),oValue);
+  }
+
+
+  upPageUnique()
+  {
+    return this.state.pageModel[0].struct.pageUnique;
+  }
+
+
+
   fetchSuccess(oData)
   {
 
     this.setState({
         pageModel : oData.pageModel,
-        pageUnique:oData.pageModel[0].struct.pageUnique,
-
     });
+    this.initFormData();
   }
 
   fetchData (sText) {
@@ -95,23 +118,28 @@ export default class CommonForm  extends CommonRoot {
     this.setState({modalShow:true,modalText:this.rootLangBase('load_process')});
 
   }
+  closeLoading()
+  {
+      this.setState({modalShow:false});
+  }
 
   formSubmit(oOperate)
   {
     this.formLoading();
-    var oFormData=SFuncForm.upFormData(this.state.pageUnique);
-    this.rootFuncApi().post("api/zooweb/post/weboperate",{
-      pageUnique:this.state.pageUnique,
+    var oFormData=SFuncForm.upFormData(this.upPageUnique());
+    this.rootFuncApi().postWithError("api/zooweb/post/weboperate",{
+      pageUnique:this.upPageUnique(),
       operateCode:oOperate.operateCode,
       pageUrl:'',
       dataMap:oFormData
-    },(data)=>{this.submitSuccess(data)});
+    },(data)=>{this.submitSuccess(data)},(oResponse)=>{this.closeLoading();SFuncTop.msgAlert(oResponse.error);});
 
   }
   submitSuccess()
   {
     //关闭loading
-    this.setState({modalShow:false});
+    this.closeLoading();
+    this.rootNavBack();
   }
 
 
@@ -131,13 +159,16 @@ export default class CommonForm  extends CommonRoot {
         for(var iField in oPage.fields)
         {
           var oField=oPage.fields[iField];
-
-            aFields.push(
-              <View key={'field'+iField} style={this.rootStyleBase().cFormPageItem}>
-                <View style={this.rootStyleBase().cFormPageLeft}><Text style={this.rootStyleBase().cFormPageText}>{oField["fieldLabel"]}</Text></View>
-                <View style={this.rootStyleBase().cFormPageCenter}>{this._formComponent(oField)}</View>
-              </View>
-            );
+            //判断如果元素不是隐藏元素  则输出展示内容  隐藏元素不输出展示
+            if(oField.fieldElement!='hidden')
+            {
+              aFields.push(
+                <View key={'field'+iField} style={this.rootStyleBase().cFormPageItem}>
+                  <View style={this.rootStyleBase().cFormPageLeft}><Text style={this.rootStyleBase().cFormPageText}>{oField["fieldLabel"]}</Text></View>
+                  <View style={this.rootStyleBase().cFormPageCenter}>{this._formComponent(oField)}</View>
+                </View>
+              );
+            }
         }
 
 
@@ -186,14 +217,14 @@ export default class CommonForm  extends CommonRoot {
   {
       if(oField["fieldElement"]=="date")
       {
-        return (<SCFormDate pField={oField} pChange={this.inFormData} pStyle={{input:this.rootStyleBase().cFormTextInput}}></SCFormDate>);
+        return (<SCFormDate pField={oField}   pStyle={{input:this.rootStyleBase().cFormTextInput}}></SCFormDate>);
       }
       else if(oField["fieldElement"]=="select")
       {
         return (<SCFormSelect pField={oField} pStyle={{box:this.rootStyleBase().cFormArrowBox,show:this.rootStyleBase().cFormArrowShow,   arrow:[this.rootStyleBase().cFormArrowRight,this.rootStyleBase().wArrowTip]}}></SCFormSelect>);
       }
       else {
-        return (<SCFormText pField={oField} pChange={this.inFormData}  pStyle={{input:this.rootStyleBase().cFormTextInput}}></SCFormText>);
+        return (<SCFormText pField={oField}    pStyle={{input:this.rootStyleBase().cFormTextInput}}></SCFormText>);
       }
   }
 

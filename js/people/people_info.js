@@ -83,9 +83,12 @@ export default class PeopleInfo  extends CommonRoot {
 
   _nodeIcon(sIcon,sPage)
   {
+    var oParam={};
+    oParam[this.rootConfigBase().upDefineConfig().nParamsForm]={member_code:this.state.memberCode};
+
     return (
       <View style={this.rootStyleBase().peopleInfoItemBox}>
-          <TouchableOpacity onPress={()=>{this.rootNavPage(sPage,CommonForm)}}>
+          <TouchableOpacity onPress={()=>{this.rootNavPage(sPage,CommonForm,oParam)}}>
           <Image style={[this.rootStyleBase().peopleInfoItemImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage(sIcon)}></Image>
 
           </TouchableOpacity>

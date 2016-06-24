@@ -6,6 +6,12 @@ const form_datas={};
 export default class SFuncForm
 {
 
+  static initFormData(sPageUnique,oFormData)
+  {
+    form_datas[sPageUnique]=oFormData;
+  }
+
+
   static inFormValue(sPageUnique,sDataId,sDataValue)
   {
     this.checkEmpty(sPageUnique);

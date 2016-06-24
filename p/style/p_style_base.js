@@ -55,7 +55,7 @@ export default  PStyleBase = StyleSheet.create({
       borderBottomWidth:1,
       borderBottomColor:'#dedede',
       backgroundColor:'#ffffff',
-      height:50,
+
 
     },
     cFormPageLeft:
@@ -67,6 +67,7 @@ export default  PStyleBase = StyleSheet.create({
     {
       marginTop:18,
       marginLeft:10,
+      marginBottom:12,
       fontSize:16,
 
     },
@@ -125,6 +126,55 @@ export default  PStyleBase = StyleSheet.create({
       marginTop:20,
       marginRight:15
     },
+
+    cFormUploadBox:
+    {
+
+      flexDirection: 'row',
+    },
+    cFormUploadLeft:
+    {
+      width:100,
+      height:100,
+
+    },
+    cFormUploadRight:
+    {
+      flex:1,
+    },
+    cFormUploadTouch:
+    {
+      width:80,
+      height:80,
+
+      justifyContent:'center',
+      alignItems:'center',
+      flexDirection: 'column',
+
+
+    },
+    cFormUploadChoose:
+    {
+      width:40,
+      height:40,
+
+
+    },
+    cFormUploadText:
+    {
+      width:100,
+      textAlign:'center',
+      color:'#cccccc'
+
+
+    },
+    cFormUploadImage:
+    {
+      width:50,
+      height:50,
+      margin:10,
+    },
+
 
 
     cListIconItem:

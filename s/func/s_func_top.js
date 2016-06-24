@@ -1,6 +1,7 @@
 
 import PConfigBase from '../../p/config/p_config_base';
 import PLangBase from '../../p/lang/p_lang_base';
+import PStyleImage from '../../p/style/p_style_image';
 
 import {
   Alert,
@@ -13,6 +14,11 @@ export default class SFuncTop
     static topLangBase()
     {
       return PLangBase;
+    }
+
+    static topStyleImage()
+    {
+      return PStyleImage;
     }
 
     static topConfigBase()

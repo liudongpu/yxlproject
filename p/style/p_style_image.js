@@ -34,6 +34,7 @@ const  rootList =
       'icon_da':require('../../images/icons/icon_da.png'),
       'icon_db':require('../../images/icons/icon_db.png'),
       'icon_dc':require('../../images/icons/icon_dc.png'),
+      'icon_camera':require('../../images/icons/icon_camera.png'),
 
       'people_info_carda':require('../../images/home/people_carda.png'),
       'people_info_cardb':require('../../images/home/people_cardb.png'),

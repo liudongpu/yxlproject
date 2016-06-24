@@ -50,6 +50,8 @@ const  rootList =
       'camera_cancel':'取消',
       'camera_photo':'拍照',
       'camera_lib':'从相册选择',
+      'form_upload':'选择图片',
+      'form_select':'请选择',
 
 
 

@@ -17,6 +17,8 @@ const Item = Picker.Item;
 
 import SFuncForm from '../func/s_func_form';
 import SFuncCamera from '../../s/func/s_func_camera';
+import SFuncTop from '../../s/func/s_func_top';
+
 
 
 
@@ -71,7 +73,7 @@ export  class SCFormSelect extends Component{
     var {pField,pStyle} = this.props;
     return (
       <TouchableOpacity style={pStyle.box} >
-        <View style={pStyle.show} ><Text>please select</Text></View>
+        <View style={pStyle.show} ><Text>{SFuncTop.topLangBase().upLang('form_select')}</Text></View>
         <View style={pStyle.arrow}></View>
       </TouchableOpacity>
     );
@@ -104,11 +106,14 @@ export  class SCFormUpload extends Component{
     return (
       <View style={pStyle.box} >
         <View style={pStyle.left} >
-          <TouchableOpacity style={pStyle.touch} onPress={()=>{SFuncCamera.cammerOpen(this.imageLink.bind(this))}}><Text style={pStyle.text}>xuanze</Text></TouchableOpacity>
+          <TouchableOpacity style={pStyle.touch} onPress={()=>{SFuncCamera.cammerOpen(this.imageLink.bind(this))}}>
+            <Image source={SFuncTop.topStyleImage().upImage('icon_camera')} style={pStyle.choose}/>
+            <Text style={pStyle.text}>{SFuncTop.topLangBase().upLang('form_upload')}</Text>
+          </TouchableOpacity>
         </View>
         <View style={pStyle.right}>
 
-            <Image source={{uri:this.state.url}} style={{width:100,height:100}}/>
+            <Image source={{uri:this.state.url}} style={pStyle.image}/>
 
         </View>
       </View>

@@ -232,7 +232,17 @@ export default class CommonForm  extends CommonRoot {
       }
       else if(oField["fieldElement"]=="upload")
       {
-        return (<SCFormUpload pField={oField}  pStyle={{input:this.rootStyleBase().cFormTextInput}} ></SCFormUpload>);
+        var oStyle={
+          box:this.rootStyleBase().cFormUploadBox,
+          left:this.rootStyleBase().cFormUploadLeft,
+          touch:this.rootStyleBase().cFormUploadTouch,
+          text:this.rootStyleBase().cFormUploadText,
+          right:this.rootStyleBase().cFormUploadRight,
+          image:this.rootStyleBase().cFormUploadImage,
+          choose:this.rootStyleBase().cFormUploadChoose,
+
+        };
+        return (<SCFormUpload pField={oField}  pStyle={oStyle} ></SCFormUpload>);
       }
       else {
         return (<SCFormText pField={oField} pStyle={{input:this.rootStyleBase().cFormTextInput}} ></SCFormText>);

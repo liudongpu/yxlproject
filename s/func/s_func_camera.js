@@ -33,7 +33,8 @@ const options = {
 export default class SFuncCamera
 {
 
-  static cammerOpen(fCallBack)
+  //打开选择相机 fCallBack 选择成功的回调  fLoading 选择文件时的加载动画
+  static cammerOpen(fCallBack,fLoading)
   {
     ImagePicker.showImagePicker(options, (response) => {
     //console.log('Response = ', response);
@@ -52,8 +53,8 @@ export default class SFuncCamera
       //const source = {uri: response.uri.replace('file://', ''), isStatic: true};
       // uri (on android)
       //const source = {uri: response.uri, isStatic: true};
-
-      SFuncApi.uploadFile(response.uri,(o)=>{fCallBack(o.fileUrl);});
+      fLoading(true);
+      SFuncApi.uploadFile(response.uri,(o)=>{fLoading(false);fCallBack(o.fileUrl);});
       //fetch('',opt).then((response)=>
     }
     });

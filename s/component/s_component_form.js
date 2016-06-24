@@ -93,11 +93,11 @@ export  class SCFormUpload extends Component{
   imageLink(sUrl)
   {
     var {pField} = this.props;
-    this.setState({url:sUrl})
+    this.setState({url:sUrl});
     SFuncForm.inFormValue(pField.pageUnique,pField.fieldData,sUrl);
   }
   render() {
-    var {pField,pStyle} = this.props;
+    var {pField,pStyle,pLoading} = this.props;
     var sUrl=this.state.fileUrl;
 
 
@@ -106,7 +106,7 @@ export  class SCFormUpload extends Component{
     return (
       <View style={pStyle.box} >
         <View style={pStyle.left} >
-          <TouchableOpacity style={pStyle.touch} onPress={()=>{SFuncCamera.cammerOpen(this.imageLink.bind(this))}}>
+          <TouchableOpacity style={pStyle.touch} onPress={()=>{SFuncCamera.cammerOpen(this.imageLink.bind(this),pLoading)}}>
             <Image source={SFuncTop.topStyleImage().upImage('icon_camera')} style={pStyle.choose}/>
             <Text style={pStyle.text}>{SFuncTop.topLangBase().upLang('form_upload')}</Text>
           </TouchableOpacity>

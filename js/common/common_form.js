@@ -119,33 +119,35 @@ export default class CommonForm  extends CommonRoot {
   }
 
   //显示form正在加载
-  formLoading()
+  formLoading(bFlagShow)
   {
-
-    this.setState({modalShow:true,modalText:this.rootLangBase('load_process')});
-
-  }
-  closeLoading()
-  {
+    if(bFlagShow)
+    {
+      this.setState({modalShow:true,modalText:this.rootLangBase('load_process')});
+    }
+    else {
       this.setState({modalShow:false});
+    }
+
   }
+
 
   formSubmit(oOperate)
   {
-    this.formLoading();
+    this.formLoading(true);
     var oFormData=SFuncForm.upFormData(this.upPageUnique());
     this.rootFuncApi().postWithError("api/zooweb/post/weboperate",{
       pageUnique:this.upPageUnique(),
       operateCode:oOperate.operateCode,
       pageUrl:'',
       dataMap:oFormData
-    },(data)=>{this.submitSuccess(data)},(oResponse)=>{this.closeLoading();SFuncTop.msgAlert(oResponse.error);});
+    },(data)=>{this.submitSuccess(data)},(oResponse)=>{this.formLoading(false);SFuncTop.msgAlert(oResponse.error);});
 
   }
   submitSuccess()
   {
     //关闭loading
-    this.closeLoading();
+    this.formLoading(false);
     this.rootNavBack();
   }
 
@@ -242,7 +244,7 @@ export default class CommonForm  extends CommonRoot {
           choose:this.rootStyleBase().cFormUploadChoose,
 
         };
-        return (<SCFormUpload pField={oField}  pStyle={oStyle} ></SCFormUpload>);
+        return (<SCFormUpload pField={oField}  pStyle={oStyle} pLoading={this.formLoading.bind(this)} ></SCFormUpload>);
       }
       else {
         return (<SCFormText pField={oField} pStyle={{input:this.rootStyleBase().cFormTextInput}} ></SCFormText>);

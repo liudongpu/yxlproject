@@ -13,7 +13,8 @@ const apiConfig=
 
 const defineConfig=
 {
-  nparamsPage:'config_base_page_link'
+  nparamsPage:'config_base_page_link',
+  modalLoadColor:'#ff0000'
 }
 
 

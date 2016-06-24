@@ -261,6 +261,43 @@ export default  PStyleBase = StyleSheet.create({
 
     },
 
+    cModalLoadBack:
+    {
+      height:topWindow.height,
+       alignItems: 'center',
+       justifyContent: 'center',
+
+    },
+    cModalLoadBox:
+    {
+      borderRadius:10,
+      backgroundColor:'#fbfbfb',
+      width:120,
+      height:120,
+
+    },
+    cModalLoadIndicator:
+    {
+      height: 40,
+      marginTop:10,
+    },
+
+  cModalLoadText:
+  {
+    marginTop:20,
+    textAlign:'center',
+    fontSize:16,
+    height:20,
+  },
+
+
+
+
+
+
+
+
+
     container: {
       flex: 1,
       //justifyContent: 'center',

@@ -7,7 +7,10 @@ import {
     View,
     Text,
     Platform,
+
+    Modal,
     Navigator,
+    ActivityIndicator,
     StyleSheet
 } from 'react-native';
 import CommonRoot from '../common/common_root';
@@ -23,7 +26,8 @@ export default class CommonForm  extends CommonRoot {
       super(props);
 
        this.state = {
-         pageModel: {}
+         pageModel: {},
+         modalShow:false,
        };
 
        var sKey=this.rootNavParams(this.rootConfigBase().upDefineConfig().nparamsPage);
@@ -65,14 +69,23 @@ export default class CommonForm  extends CommonRoot {
       return (
         <View style={[this.rootStyleBase().container,this.rootStyleBase().cFormPageBack]}>
 
-          {this.form_render(this.state.pageModel)}
+          {this.formRender(this.state.pageModel)}
+
+
         </View>
 
       )
   }
 
+  //显示form正在加载
+  formLoading()
+  {
+    this.setState({modalShow:true,modalText:this.rootLangBase('load_process')});
 
-  form_render(oPageModel) {
+  }
+
+
+  formRender(oPageModel) {
     var aViews=[];
     if(oPageModel&&oPageModel.length>0)
     {
@@ -99,11 +112,9 @@ export default class CommonForm  extends CommonRoot {
         {
           var oOperate=oPage.operates[iOperate];
           aFields.push(
-            <SCFormButton key={'operate'+iOperate} pOpereate={oOperate} pStyle={{box:this.rootStyleBase().cFormPageButton,text:this.rootStyleBase().cFormPageOperate}}  />
+            <SCFormButton key={'operate'+iOperate}  pPress={()=>{this.formLoading()}} pOpereate={oOperate} pStyle={{box:this.rootStyleBase().cFormPageButton,text:this.rootStyleBase().cFormPageOperate}}  />
           );
-
         }
-
         aViews.push(<View key={'page'+iPage} style={this.rootStyleBase().cFormPageBox}>{aFields}</View>);
 
       }
@@ -112,7 +123,24 @@ export default class CommonForm  extends CommonRoot {
       return (
         <View>
         {aViews}
+          <Modal visible={this.state.modalShow} transparent={true}>
+            <View style={this.rootStyleBase().cModalLoadBack} >
+
+              <View style={this.rootStyleBase().cModalLoadBox}>
+              <ActivityIndicator
+                animating={true}
+                color={this.rootConfigBase().upDefineConfig().modalLoadColor}
+                style={this.rootStyleBase().cModalLoadIndicator}
+                onRequestClose={() => {this.setState({modalShow:false})}}
+                size="large"
+              />
+                <Text style={this.rootStyleBase().cModalLoadText}>{this.state.modalText}</Text>
+
+              </View>
+            </View>
+          </Modal>
         </View>
+
       );
     }
     else {

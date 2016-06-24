@@ -49,10 +49,10 @@ export  class SCFormDate extends Component{
 export  class SCFormButton extends Component{
   render() {
 
-    var {pOpereate,pStyle} = this.props;
+    var {pOpereate,pStyle,pPress} = this.props;
 
     return (
-        <TouchableOpacity style={pStyle.box} ><Text style={pStyle.text}>{pOpereate.operateName}</Text></TouchableOpacity>
+        <TouchableOpacity style={pStyle.box} onPress={pPress}><Text style={pStyle.text}>{pOpereate.operateName}</Text></TouchableOpacity>
 
     );
   }

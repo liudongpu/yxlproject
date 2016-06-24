@@ -42,6 +42,7 @@ const  rootList =
       'people_info_iconb':'血氧',
       'people_info_iconc':'血糖',
       'people_info_icond':'体温',
+      'load_process':'正在处理',
 
 
    };

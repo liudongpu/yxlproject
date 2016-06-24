@@ -252,7 +252,7 @@ export default  PStyleBase = StyleSheet.create({
       flexDirection : 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop:15,
+
     },
     cListViewImage:
     {
@@ -268,6 +268,7 @@ export default  PStyleBase = StyleSheet.create({
 
       marginLeft:10,
       marginRight:10,
+      marginTop:5,
       borderRadius: 25,
       justifyContent: 'center',
       alignItems: 'center',
@@ -283,17 +284,19 @@ export default  PStyleBase = StyleSheet.create({
     {
       flex: 1,
       height:50,
-      paddingLeft:15,
-      paddingTop:5,
+      marginLeft:10,
+
+      marginTop:20,
       borderBottomWidth: 1,
       borderBottomColor: '#ebebeb',
     },
     cListViewRight:
     {
       height:50,
+      marginTop:20,
       borderBottomWidth: 1,
       borderBottomColor: '#ebebeb',
-      paddingTop:10,
+
 
 
     },

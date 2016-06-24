@@ -6,7 +6,9 @@ const modelRun='dev';
 const apiConfig=
 {
   dev:{
-    apiUrl:'https://dev-yxl.ntw.srnpr.com/'
+    apiUrl:'https://dev-yxl.ntw.srnpr.com/',
+    uploadUrl:'http://ali-cfile.ichsy.com/cfiles/upload/zoofile',
+    apiKey:'tesetkey'
   }
 }
 

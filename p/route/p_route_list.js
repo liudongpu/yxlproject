@@ -64,6 +64,9 @@ const  rootList =
       'PeopleTemperatureAdd':{
         name: 'PeopleTemperatureAdd',title:'添加体温',page:'pa/com_uhutu_yxlsite_z_page_DataTemperature'
       },
+      'MemberImageUploadAdd':{
+        name: 'MemberImageUploadAdd',title:'上传图片',page:'pa/com_uhutu_yxlsite_z_page_PageMemberPic'
+      },
 
 
    };

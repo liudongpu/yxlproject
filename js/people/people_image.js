@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import CommonRoot from '../common/common_root';
 
+import CommonForm from '../common/common_form';
 
 import PStyleProject from '../../p/style/p_style_project';
 
@@ -50,12 +51,22 @@ export default class PeopleImage extends CommonRoot {
 
   }
 
+  pressUpload()
+  {
+    var oParam={};
+    oParam[this.rootConfigBase().upDefineConfig().nParamsForm]={member_code:this.state.memberCode};
+    this.rootNavPage("MemberImageUploadAdd",CommonForm,oParam);
+  }
+
   render() {
 
     return (
         <View style={[this.rootStyleBase().container,this.rootStyleBase().cFormPageBack]}>
           <View>
             <View  style={PStyleProject.peopleImageList}>
+                <TouchableOpacity style={this.rootStyleBase().cFormPageButton} onPress={()=>this.pressUpload()}>
+                  <Text style={this.rootStyleBase().cFormPageOperate}>{this.rootLangBase('people_image_upload')}</Text>
+                </TouchableOpacity>
                 <ListView
                 renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
                 dataSource={this.state.dataSource}

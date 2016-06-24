@@ -44,7 +44,14 @@ const  rootList =
       'people_info_iconc':'血糖',
       'people_info_icond':'体温',
       'people_image_not':'暂无描述信息',
+      'people_image_upload':'上传图片',
       'load_process':'正在处理',
+      'camera_select':'请选择',
+      'camera_cancel':'取消',
+      'camera_photo':'拍照',
+      'camera_lib':'从相册选择',
+
+
 
 
    };

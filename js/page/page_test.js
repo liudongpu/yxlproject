@@ -14,6 +14,7 @@ import {
 
 import SFuncApi from '../../s/func/s_func_api';
 
+import SFuncCamera from '../../s/func/s_func_camera';
 
 
 
@@ -46,17 +47,29 @@ const options = {
 
 export default class PageTest extends Component {
 
+  constructor(props)
+  {
+    super(props);
+    this.state={url:''};
+  }
+
+  imageLink(sFileUrl)
+  {
+    this.setState({url:sFileUrl});
+  }
+
   render()
   {
   return ( <View >
-            <Text onPress={this.cammer}>aaaaaaaaa</Text>
+            <Text onPress={()=>{SFuncCamera.cammerOpen(this.imageLink.bind(this))}}>aaaaaaaaa</Text>
+            <Image source={{uri:this.state.url}} style={{width:100,height:100}}></Image>
           </View>
     );
   }
   cammer()
   {
     ImagePicker.showImagePicker(options, (response) => {
-  console.log('Response = ', response);
+  //console.log('Response = ', response);
 
   if (response.didCancel) {
     console.warn('User cancelled image picker');

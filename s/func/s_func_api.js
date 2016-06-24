@@ -3,9 +3,15 @@ import SFuncTop from '../../s/func/s_func_top';
 
 
 const apiZooConfig={
-    "key": "tesetkey",
+    "key": SFuncTop.topConfigBase().upApiConfig().apiKey,
     "token": "78af9e8469df4727bfec2e0d20793b34223e6a919642470189ec942aaebe32adfe38deb2"
   }
+
+
+const apiUrl={
+  api:SFuncTop.topConfigBase().upApiConfig().apiUrl,
+  upload:SFuncTop.topConfigBase().upApiConfig().uploadUrl,
+}
 
 
 export default class SFuncApi
@@ -20,7 +26,7 @@ export default class SFuncApi
       //return sUrl;
       oParam.zoo=apiZooConfig;
 
-      fetch(SFuncTop.topConfigBase().upApiConfig().apiUrl+sApiName,{method:'POST',
+      fetch(apiUrl.api+sApiName,{method:'POST',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -56,7 +62,7 @@ export default class SFuncApi
       opt.body=formData;
       opt.method='post';
 
-      fetch('http://ali-cfile.ichsy.com/cfiles/upload/zoofile',opt).then((response) => response.json())
+      fetch(apiUrl.upload,opt).then((response) => response.json())
       .then((responseData) => {
           if(responseData.status==1)
           {

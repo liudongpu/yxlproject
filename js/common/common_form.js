@@ -18,10 +18,17 @@ import SFuncStorage from '../../s/func/s_func_storage';
 import SFuncTop from '../../s/func/s_func_top';
 
 import SFuncForm from '../../s/func/s_func_form';
+import SFuncCamera from '../../s/func/s_func_camera';
 
 
 
-import {SCFormText,SCFormDate,SCFormButton,SCFormSelect} from '../../s/component/s_component_form';
+import {
+  SCFormText,
+  SCFormDate,
+  SCFormButton,
+  SCFormSelect,
+  SCFormUpload,
+} from '../../s/component/s_component_form';
 
 
 export default class CommonForm  extends CommonRoot {
@@ -223,8 +230,12 @@ export default class CommonForm  extends CommonRoot {
       {
         return (<SCFormSelect pField={oField} pStyle={{box:this.rootStyleBase().cFormArrowBox,show:this.rootStyleBase().cFormArrowShow,   arrow:[this.rootStyleBase().cFormArrowRight,this.rootStyleBase().wArrowTip]}}></SCFormSelect>);
       }
+      else if(oField["fieldElement"]=="upload")
+      {
+        return (<SCFormUpload pField={oField}  pStyle={{input:this.rootStyleBase().cFormTextInput}} ></SCFormUpload>);
+      }
       else {
-        return (<SCFormText pField={oField}    pStyle={{input:this.rootStyleBase().cFormTextInput}}></SCFormText>);
+        return (<SCFormText pField={oField} pStyle={{input:this.rootStyleBase().cFormTextInput}} ></SCFormText>);
       }
   }
 

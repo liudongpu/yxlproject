@@ -8,6 +8,7 @@ import {
     DatePickerIOS,
     TouchableOpacity,
     Picker,
+    Image,
     Text,
 
 } from 'react-native';
@@ -15,6 +16,7 @@ import {
 const Item = Picker.Item;
 
 import SFuncForm from '../func/s_func_form';
+import SFuncCamera from '../../s/func/s_func_camera';
 
 
 
@@ -72,8 +74,44 @@ export  class SCFormSelect extends Component{
         <View style={pStyle.show} ><Text>please select</Text></View>
         <View style={pStyle.arrow}></View>
       </TouchableOpacity>
+    );
+  }
+}
 
 
+
+export  class SCFormUpload extends Component{
+
+  constructor(props)
+  {
+    super(props);
+    this.state={url:''};
+  }
+
+  imageLink(sUrl)
+  {
+    var {pField} = this.props;
+    this.setState({url:sUrl})
+    SFuncForm.inFormValue(pField.pageUnique,pField.fieldData,sUrl);
+  }
+  render() {
+    var {pField,pStyle} = this.props;
+    var sUrl=this.state.fileUrl;
+
+
+    var cCom=null;
+
+    return (
+      <View style={pStyle.box} >
+        <View style={pStyle.left} >
+          <TouchableOpacity style={pStyle.touch} onPress={()=>{SFuncCamera.cammerOpen(this.imageLink.bind(this))}}><Text style={pStyle.text}>xuanze</Text></TouchableOpacity>
+        </View>
+        <View style={pStyle.right}>
+
+            <Image source={{uri:this.state.url}} style={{width:100,height:100}}/>
+
+        </View>
+      </View>
     );
   }
 }

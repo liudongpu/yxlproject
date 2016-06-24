@@ -1,0 +1,15 @@
+npm install rnpm --global
+
+中文设置：
+工程-PROJECT-info->Localizations，点“+”，选择（Chinese(Simplified)）添加简体中文
+
+
+
+#安装拍照及相片选择插件
+npm install react-native-image-picker@latest --save
+rnpm link react-native-image-picker
+
+
+#安装拍照支持插件  这个没有使用了
+npm install react-native-camera@https://github.com/lwansbrough/react-native-camera.git --save
+rnpm link react-native-camera

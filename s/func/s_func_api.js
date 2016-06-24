@@ -47,4 +47,34 @@ export default class SFuncApi
 
     }
 
+    static uploadFile(sUrl,fCallBack)
+    {
+      let formData = new FormData();
+      //formData.append('token', result.data);
+      formData.append('file', {uri:sUrl, name: 'image.jpg', type: 'application/octex-stream'});
+      let opt={};
+      opt.body=formData;
+      opt.method='post';
+
+      fetch('http://ali-cfile.ichsy.com/cfiles/upload/zoofile',opt).then((response) => response.json())
+      .then((responseData) => {
+          if(responseData.status==1)
+          {
+            fCallBack(responseData);
+          }
+          else {
+            console.warn(JSON.stringify(responseData));
+            SFuncTop.msgAlert(responseData.error);
+          }
+      })
+      .catch((error) => {
+        console.warn(error);
+        //SFuncTop.msgAlert(SFuncTop.topLangBase().upLang('system_network_error'));
+        SFuncTop.msgCatch(error.message);
+      })
+      .done();
+    }
+
+
+
 }

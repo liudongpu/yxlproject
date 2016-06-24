@@ -20,6 +20,7 @@ import PStyleBase from '../../p/style/p_style_base';
 import CommonRoot from '../common/common_root';
 import CommonForm from '../common/common_form';
 
+import PageTest from '../page/page_test';
 
 
 
@@ -66,7 +67,7 @@ export default class MainMain extends CommonRoot {
             <View style={PStyleBase.container}>
 
                 <TabNavigator hidesTabTouch={true} tabBarStyle={this.rootStyleBase().mainMainTable}>
-                    {this._renderTabItem(this.rootStyleImage('main_tab_icon_home_default'), this.rootStyleImage('main_tab_icon_home_focus'), this.rootLangBase('home_index'), <HomeIndex nav={this.props.nav}/>)}
+                    {this._renderTabItem(this.rootStyleImage('main_tab_icon_home_default'), this.rootStyleImage('main_tab_icon_home_focus'), this.rootLangBase('home_index'), <PageTest nav={this.props.nav}/>)}
                     {this._renderTabItem(this.rootStyleImage('main_tab_icon_category_default'), this.rootStyleImage('main_tab_icon_category_focus'), this.rootLangBase('home_category'), MainMain._createChildView( this.rootLangBase('home_category')))}
                     {this._renderTabItem(this.rootStyleImage('main_tab_icon_see_default'), this.rootStyleImage('main_tab_icon_see_focus'), this.rootLangBase('home_see'),  <HomeSee nav={this.props.nav}/> )}
 

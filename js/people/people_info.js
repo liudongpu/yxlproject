@@ -15,7 +15,7 @@ import {
 
 import CommonRoot from '../common/common_root';
 import CommonForm from '../common/common_form';
-
+import PeopleImage from './people_image';
 
 export default class PeopleInfo  extends CommonRoot {
 
@@ -38,9 +38,9 @@ export default class PeopleInfo  extends CommonRoot {
                 <Image style={[this.rootStyleBase().peopleInfoImg,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_img')}></Image>
               </View>
               <View style={this.rootStyleBase().peopleInfoCard}>
-                {this._nodeCard('people_info_carda')}
-                {this._nodeCard('people_info_cardb')}
-                {this._nodeCard('people_info_cardc')}
+                {this._nodeCard('people_info_carda','PeopleImage',PeopleImage)}
+                {this._nodeCard('people_info_cardb','PeopleImage',PeopleImage)}
+                {this._nodeCard('people_info_cardc','PeopleImage',PeopleImage)}
 
 
               </View>
@@ -71,12 +71,14 @@ export default class PeopleInfo  extends CommonRoot {
       )
   }
 
-  _nodeCard(sCard)
+  _nodeCard(sCard,sPage,cForm)
   {
     return(
       <View style={this.rootStyleBase().peopleInfoCardCell}>
-        <Image style={[this.rootStyleBase().peopleInfoCardImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage(sCard)}></Image>
-        <Text style={[this.rootStyleBase().peopleInfoCardText,this.rootStyleBase().peopleInfoCardBorder]}>{this.rootLangBase(sCard)}</Text>
+        <TouchableOpacity style={this.rootStyleBase().wCenter} onPress={()=>{this.rootNavPage(sPage,cForm,{pCode:this.state.memberCode})}} >
+          <Image style={[this.rootStyleBase().peopleInfoCardImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage(sCard)}></Image>
+          <Text style={[this.rootStyleBase().peopleInfoCardText,this.rootStyleBase().peopleInfoCardBorder]}>{this.rootLangBase(sCard)}</Text>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -88,11 +90,12 @@ export default class PeopleInfo  extends CommonRoot {
 
     return (
       <View style={this.rootStyleBase().peopleInfoItemBox}>
-          <TouchableOpacity onPress={()=>{this.rootNavPage(sPage,CommonForm,oParam)}}>
+          <TouchableOpacity style={{flex:1}} onPress={()=>{this.rootNavPage(sPage,CommonForm,oParam)}}>
           <Image style={[this.rootStyleBase().peopleInfoItemImage,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage(sIcon)}></Image>
 
-          </TouchableOpacity>
+
           <Text style={this.rootStyleBase().peopleInfoItemText}>{this.rootLangBase(sIcon)}</Text>
+          </TouchableOpacity>
       </View>
     )
   }

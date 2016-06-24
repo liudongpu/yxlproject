@@ -49,6 +49,9 @@ const  rootList =
       'PeopleInfo':{
         name: 'PeopleInfo',title:'用户信息'
       },
+      'PeopleImage':{
+        name: 'PeopleImage',title:'照片列表'
+      },
       'PeoplePressureAdd':{
         name: 'PeoplePressureAdd',title:'添加血压',page:'pa/com_uhutu_yxlsite_z_page_DataPressure'
       },

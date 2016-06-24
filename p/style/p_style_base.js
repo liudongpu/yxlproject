@@ -21,6 +21,11 @@ export default  PStyleBase = StyleSheet.create({
     {
       flex:1
     },
+    wCenter:
+    {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     wDirectionRow:
     {
 
@@ -469,7 +474,8 @@ export default  PStyleBase = StyleSheet.create({
     peopleInfoCardText:
     {
       color:'#ffffff',
-      marginTop:10
+      marginTop:10,
+      textAlign:'center',
 
     },
     peopleInfoCardBorder:
@@ -507,7 +513,9 @@ export default  PStyleBase = StyleSheet.create({
     },
     peopleInfoItemText:
     {
-      padding:10,
+      margin:10,
+      flex:1,
+      textAlign:'center',
     }
 
 

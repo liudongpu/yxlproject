@@ -16,6 +16,9 @@ import {
 import CommonRoot from '../common/common_root';
 import SFuncStorage from '../../s/func/s_func_storage';
 
+import SFuncForm from '../../s/func/s_func_form';
+
+
 
 import {SCFormText,SCFormDate,SCFormButton,SCFormSelect} from '../../s/component/s_component_form';
 
@@ -27,7 +30,11 @@ export default class CommonForm  extends CommonRoot {
 
        this.state = {
          pageModel: {},
+         pageUnique:'',
          modalShow:false,
+         modalText:'',
+         formData:{},
+
        };
 
        var sKey=this.rootNavParams(this.rootConfigBase().upDefineConfig().nparamsPage);
@@ -37,7 +44,8 @@ export default class CommonForm  extends CommonRoot {
        if(oValue)
        {
          //this.fetchSuccess(oValue);
-         this.state.pageModel=oValue.pageModel;
+         //this.state.pageModel=oValue.pageModel;
+         this.fetchSuccess(oValue);
        }
        else {
          this.fetchData(sKey);
@@ -48,11 +56,14 @@ export default class CommonForm  extends CommonRoot {
   componentDidMount () {
           //this.fetchData('pa/com_uhutu_yxlsite_z_page_DataPressure');
   }
+
   fetchSuccess(oData)
   {
 
     this.setState({
-        pageModel : oData.pageModel
+        pageModel : oData.pageModel,
+        pageUnique:oData.pageModel[0].struct.pageUnique,
+
     });
   }
 
@@ -80,9 +91,31 @@ export default class CommonForm  extends CommonRoot {
   //显示form正在加载
   formLoading()
   {
+
     this.setState({modalShow:true,modalText:this.rootLangBase('load_process')});
 
   }
+
+  formSubmit(oOperate)
+  {
+    this.formLoading();
+    var oFormData=SFuncForm.upFormData(this.state.pageUnique);
+    this.rootFuncApi().post("api/zooweb/post/weboperate",{
+      pageUnique:this.state.pageUnique,
+      operateCode:oOperate.operateCode,
+      pageUrl:'',
+      dataMap:oFormData
+    },(data)=>{this.submitSuccess(data)});
+
+  }
+  submitSuccess()
+  {
+    //关闭loading
+    this.setState({modalShow:false});
+  }
+
+
+
 
 
   formRender(oPageModel) {
@@ -112,7 +145,7 @@ export default class CommonForm  extends CommonRoot {
         {
           var oOperate=oPage.operates[iOperate];
           aFields.push(
-            <SCFormButton key={'operate'+iOperate}  pPress={()=>{this.formLoading()}} pOpereate={oOperate} pStyle={{box:this.rootStyleBase().cFormPageButton,text:this.rootStyleBase().cFormPageOperate}}  />
+            <SCFormButton key={'operate'+iOperate}  pPress={()=>{this.formSubmit(oOperate)}} pOpereate={oOperate} pStyle={{box:this.rootStyleBase().cFormPageButton,text:this.rootStyleBase().cFormPageOperate}}  />
           );
         }
         aViews.push(<View key={'page'+iPage} style={this.rootStyleBase().cFormPageBox}>{aFields}</View>);
@@ -153,14 +186,14 @@ export default class CommonForm  extends CommonRoot {
   {
       if(oField["fieldElement"]=="date")
       {
-        return (<SCFormDate pField={oField} pStyle={{input:this.rootStyleBase().cFormTextInput}}></SCFormDate>);
+        return (<SCFormDate pField={oField} pChange={this.inFormData} pStyle={{input:this.rootStyleBase().cFormTextInput}}></SCFormDate>);
       }
       else if(oField["fieldElement"]=="select")
       {
         return (<SCFormSelect pField={oField} pStyle={{box:this.rootStyleBase().cFormArrowBox,show:this.rootStyleBase().cFormArrowShow,   arrow:[this.rootStyleBase().cFormArrowRight,this.rootStyleBase().wArrowTip]}}></SCFormSelect>);
       }
       else {
-        return (<SCFormText pField={oField} pStyle={{input:this.rootStyleBase().cFormTextInput}}></SCFormText>);
+        return (<SCFormText pField={oField} pChange={this.inFormData}  pStyle={{input:this.rootStyleBase().cFormTextInput}}></SCFormText>);
       }
   }
 

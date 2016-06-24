@@ -14,6 +14,9 @@ import {
 
 const Item = Picker.Item;
 
+import SFuncForm from '../func/s_func_form';
+
+
 
 export  class SCFormText extends Component{
   render() {
@@ -23,7 +26,7 @@ export  class SCFormText extends Component{
 
     return (
 
-        <TextInput style={pStyle.input} placeholder={pField.fieldRemark}></TextInput>
+        <TextInput onChangeText={(text) => SFuncForm.inFormValue(pField.pageUnique,pField.fieldData,text)}  style={pStyle.input} placeholder={pField.fieldRemark}></TextInput>
 
 
     );
@@ -38,7 +41,7 @@ export  class SCFormDate extends Component{
     var {pField,pStyle} = this.props;
 
     return (
-        <TextInput style={pStyle.input} placeholder={pField.fieldRemark}></TextInput>
+        <TextInput onChangeText={(text) => SFuncForm.inFormValue(pField.pageUnique,pField.fieldData,text)} style={pStyle.input} placeholder={pField.fieldRemark}></TextInput>
 
     );
   }

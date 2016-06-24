@@ -20,7 +20,8 @@ const rootCatch=
 {
   'default':'异常提示',
   'Network request failed':'网络请求异常',
-  'Can\'t find variable':'无法找到变量'
+  'Can\'t find variable':'无法找到变量',
+  'Internal Server Error':'服务器出现异常错误',
 }
 
 //定义路由页面列表的设置

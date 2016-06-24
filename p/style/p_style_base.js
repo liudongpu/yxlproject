@@ -173,6 +173,8 @@ export default  PStyleBase = StyleSheet.create({
       width:50,
       height:50,
       margin:10,
+      borderColor:'#cccccc',
+      borderWidth:1,
     },
 
 

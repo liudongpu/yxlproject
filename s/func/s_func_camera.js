@@ -13,12 +13,12 @@ const options = {
   mediaType: 'photo', // 'photo' or 'video'
   videoQuality: 'high', // 'low', 'medium', or 'high'
   durationLimit: 10, // video recording max time in seconds
-  maxWidth: 1000, // photos only
-  maxHeight: 1000, // photos only
-  aspectX: 2, // android only - aspectX:aspectY, the cropping image's ratio of width to height
-  aspectY: 1, // android only - aspectX:aspectY, the cropping image's ratio of width to height
+  //maxWidth: 1000, // photos only
+  //maxHeight: 1000, // photos only
+  //aspectX: 2, // android only - aspectX:aspectY, the cropping image's ratio of width to height
+  //aspectY: 1, // android only - aspectX:aspectY, the cropping image's ratio of width to height
   quality: 1, // 0 to 1, photos only
-  angle: 0, // android only, photos only
+  //angle: 0, // android only, photos only
   allowsEditing: true, // Built in functionality to resize/reposition the image after selection
   noData: true, // photos only - disables the base64 `data` field from being generated (greatly improves performance on large photos)
   storageOptions: { // if this key is provided, the image will get saved in the documents directory on ios, and the pictures directory on android (rather than a temporary directory)

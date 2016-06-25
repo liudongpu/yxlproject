@@ -27,14 +27,29 @@ import {
 
 
 export  class SCFormText extends Component{
+
+
+
+  constructor(props)
+  {
+    super(props);
+    var {pField} = this.props;
+    var sVal=SFuncForm.upFormValueDefaultEmpty(pField.pageUnique,pField.fieldData);
+    this.state={val:sVal};
+  }
+
+
+
   render() {
 
 
     var {pField,pStyle} = this.props;
 
+
+
     return (
 
-        <TextInput onChangeText={(text) => SFuncForm.inFormValue(pField.pageUnique,pField.fieldData,text)}  style={pStyle.input} placeholder={pField.fieldRemark}></TextInput>
+        <TextInput onChangeText={(text) => {SFuncForm.inFormValue(pField.pageUnique,pField.fieldData,text);this.setState({val:text})}}  style={pStyle.input} placeholder={pField.fieldRemark} value={this.state.val}></TextInput>
 
 
     );
@@ -91,7 +106,9 @@ export  class SCFormUpload extends Component{
   constructor(props)
   {
     super(props);
-    this.state={url:''};
+    var {pField} = this.props;
+    var sVal=SFuncForm.upFormValueDefaultEmpty(pField.pageUnique,pField.fieldData);
+    this.state={url:sVal};
   }
 
   imageLink(sUrl)
@@ -103,6 +120,7 @@ export  class SCFormUpload extends Component{
   render() {
     var {pField,pStyle,pLoading} = this.props;
     var sUrl=this.state.fileUrl;
+
 
 
     var cCom=null;

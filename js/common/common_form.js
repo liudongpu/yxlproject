@@ -31,6 +31,7 @@ import {
   SCFormUpload,
 } from '../../s/component/s_component_form';
 
+var iCount=0;
 
 export default class CommonForm  extends CommonRoot {
 
@@ -77,32 +78,66 @@ export default class CommonForm  extends CommonRoot {
   }
 
   //初始化form的数据
-  initFormData()
+  initFormStruct(oData)
   {
     //从参数传递中拿  如果拿不到初始化下
+    this.setState({
+        pageModel : oData.pageModel,
+    });
+
+
+  }
+
+
+
+  fetchSuccess(oData)
+  {
     var oValue=this.rootNavParams(this.rootConfigBase().upDefineConfig().nParamsForm);
     if(!oValue)
     {
       oValue={};
     }
 
-    for(var i in this.state.pageModel)
-    {
-      var oModel=this.state.pageModel[i];
-      SFuncForm.initFormData(oModel.struct.pageUnique,oValue);
-    }
-  }
 
-  fetchSuccess(oData)
+
+    var aPromise=[];
+
+    for(var i in oData.pageModel)
+    {
+      var oModel=oData.pageModel[i];
+      SFuncForm.initFormData(oModel.struct.pageUnique,oValue);
+      if(oModel.struct.pageType!='pa')
+      {
+        var pFunc=()=>this.fetchData(oModel,oValue) ;
+
+        aPromise.push(new Promise((resolve)=>{this.fetchData(oModel,oValue,resolve)}));
+      }
+
+    }
+
+    if(aPromise.length==0)
+    {
+      this.initFormStruct(oData);
+    }
+    else {
+      Promise.all(aPromise).then(()=>this.initFormStruct(oData));
+    }
+
+
+
+    //this.initFormData(oData);
+
+
+  }
+  fetchData(oModel,oValue,resolve)
   {
 
-    this.setState({
-        pageModel : oData.pageModel,
-    });
-    this.initFormData();
-
-
+    this.rootFuncApi().post("api/zooweb/post/webdata",{
+      pageUnique:oModel.struct.pageUnique,
+      pageQuery:oValue
+    },(data)=>{SFuncForm.initFormData(oModel.struct.pageUnique,data.dataMaps[0]); resolve('ok'); });
   }
+
 
   fetchStruct (sText) {
 
@@ -116,11 +151,7 @@ export default class CommonForm  extends CommonRoot {
         pageUrl:'../'+sText
       },(data)=>{ SFuncStorage.inTempValue('common_form',sText,data); this.fetchSuccess(data)});
     }
-
-
-
   }
-
 
   render(){
       return (

@@ -24,6 +24,18 @@ export default class SFuncForm
     return form_datas[sPageUnique][sDataId];
   }
 
+  //获取值 如果值不存在 返回空
+  static upFormValueDefaultEmpty(sPageUnique,sDataId)
+  {
+    var sValue=form_datas[sPageUnique][sDataId];
+    if(sValue==null||sValue==undefined)
+    {
+      sValue='';
+    }
+    return sValue;
+  }
+
+
   static checkEmpty(sPageUnique)
   {
     if(!form_datas[sPageUnique])

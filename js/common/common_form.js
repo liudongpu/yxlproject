@@ -34,10 +34,6 @@ import {
 
 export default class CommonForm  extends CommonRoot {
 
-
-
-
-
   constructor(props) {
       super(props);
 
@@ -50,11 +46,14 @@ export default class CommonForm  extends CommonRoot {
 
        var sKey=this.rootNavParams(this.rootConfigBase().upDefineConfig().nparamsPage);
 
+
+       //定义操作成功后的事件通知
        var sFireEvent=this.rootNavParams(this.rootConfigBase().upDefineConfig().nParamsEvent);
        if(sFireEvent)
        {
          this.state.fireEvent=sFireEvent;
        }
+
 
        var oValue=SFuncStorage.upTempValue('common_form',sKey);
        if(oValue)
@@ -67,8 +66,6 @@ export default class CommonForm  extends CommonRoot {
        else {
          this.fetchData(sKey);
        }
-
-
   }
   componentDidMount () {
           //this.fetchData('pa/com_uhutu_yxlsite_z_page_DataPressure');

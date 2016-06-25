@@ -21,6 +21,11 @@ import PStyleProject from '../../p/style/p_style_project';
 import SFuncEvent from '../../s/func/s_func_event';
 import SFuncTop from '../../s/func/s_func_top';
 
+import {
+  SCBaseImage,
+
+} from '../../s/component/s_component_base';
+
 
 const eventPeopleImageChange='eventPeopleImageChange';
 
@@ -107,7 +112,7 @@ export default class PeopleImage extends CommonRoot {
                 <View style={[PStyleProject.peopleImageItem]}>
 
                     <View  style={[PStyleProject.peopleImageLeft]}>
-                      <Image style={PStyleProject.peopleImagePic}  source={{uri:SFuncTop.upImageThumber(news.pic_url,200)}}></Image>
+                      <SCBaseImage style={PStyleProject.peopleImagePic} pUrl={news.pic_url} pWidth='200'  ></SCBaseImage>
                     </View>
                     <View style={PStyleProject.peopleImageCenter}>
                         <Text style={PStyleProject.peopleImageDesc}>{sRemark}</Text>

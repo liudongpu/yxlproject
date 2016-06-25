@@ -1,7 +1,7 @@
 
 const event_caches={};
 
-const nav_caches={};
+const nav_caches=new Map();
 
 
 export default class SFuncEvent
@@ -48,16 +48,16 @@ export default class SFuncEvent
     var oData=router._data.route;
     //console.warn(JSON.stringify(oData));
     var sName=oData.name;
-    if(nav_caches.hasOwnProperty(sName))
+    if(nav_caches.has(sName))
     {
-      nav_caches[sName]();
+      nav_caches.get(sName)();
     }
 
   }
 
   static navAddEvent(sName,fCall)
   {
-    nav_caches[sName]=fCall;
+    nav_caches.set(sName,fCall);
   }
 
 

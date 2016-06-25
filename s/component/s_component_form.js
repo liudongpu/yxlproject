@@ -19,6 +19,10 @@ import SFuncForm from '../func/s_func_form';
 import SFuncCamera from '../../s/func/s_func_camera';
 import SFuncTop from '../../s/func/s_func_top';
 
+import {
+  SCBaseImage,
+
+} from '../../s/component/s_component_base';
 
 
 
@@ -113,7 +117,7 @@ export  class SCFormUpload extends Component{
         </View>
         <View style={pStyle.right}>
 
-            <Image source={{uri:SFuncTop.upImageThumber(this.state.url,100)}} style={pStyle.image}/>
+            <SCBaseImage pUrl={this.state.url} pWidth="100" style={pStyle.image}/>
 
         </View>
       </View>

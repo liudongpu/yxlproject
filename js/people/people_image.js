@@ -18,7 +18,9 @@ import CommonRoot from '../common/common_root';
 import CommonForm from '../common/common_form';
 
 import PStyleProject from '../../p/style/p_style_project';
+import SFuncEvent from '../../s/func/s_func_event';
 
+const eventPeopleImageChange='eventPeopleImageChange';
 
 export default class PeopleImage extends CommonRoot {
 
@@ -35,6 +37,10 @@ export default class PeopleImage extends CommonRoot {
   }
   componentDidMount () {
           this.fetchData('');
+
+          SFuncEvent.addEvent(eventPeopleImageChange,(event)=>{this.fetchData('')});
+
+
   }
   fetchSuccess(oData)
   {
@@ -55,6 +61,9 @@ export default class PeopleImage extends CommonRoot {
   {
     var oParam={};
     oParam[this.rootConfigBase().upDefineConfig().nParamsForm]={member_code:this.state.memberCode};
+    oParam[this.rootConfigBase().upDefineConfig().nParamsEvent]=eventPeopleImageChange;
+
+
     this.rootNavPage("MemberImageUploadAdd",CommonForm,oParam);
   }
 

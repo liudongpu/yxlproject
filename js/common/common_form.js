@@ -19,6 +19,7 @@ import SFuncTop from '../../s/func/s_func_top';
 
 import SFuncForm from '../../s/func/s_func_form';
 import SFuncCamera from '../../s/func/s_func_camera';
+import SFuncEvent from '../../s/func/s_func_event';
 
 
 
@@ -44,10 +45,16 @@ export default class CommonForm  extends CommonRoot {
          pageModel: {},
          modalShow:false,
          modalText:'',
+         fireEvent:'',
        };
 
        var sKey=this.rootNavParams(this.rootConfigBase().upDefineConfig().nparamsPage);
 
+       var sFireEvent=this.rootNavParams(this.rootConfigBase().upDefineConfig().nParamsEvent);
+       if(sFireEvent)
+       {
+         this.state.fireEvent=sFireEvent;
+       }
 
        var oValue=SFuncStorage.upTempValue('common_form',sKey);
        if(oValue)
@@ -148,6 +155,10 @@ export default class CommonForm  extends CommonRoot {
   {
     //关闭loading
     this.formLoading(false);
+
+    //form提交完成后  如果有触发事件  则触发对应的事件操作
+    SFuncEvent.fireEvent(this.state.fireEvent);
+
     this.rootNavBack();
   }
 

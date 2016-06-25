@@ -23,3 +23,10 @@ rnpm link react-native-image-picker
     <uses-feature android:name="android.hardware.camera" android:required="false"/>
     <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
     <!-- -->
+
+
+
+#安装二维码相关
+npm install --save react-native-barcode-scanner-universal
+rnpm link react-native-camera
+rnpm link react-native-barcodescanner

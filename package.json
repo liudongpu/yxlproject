@@ -8,6 +8,7 @@
   "dependencies": {
     "react": "^15.1.0",
     "react-native": "^0.28.0",
+    "react-native-autogrow-textinput": "^2.0.3",
     "react-native-image-picker": "^0.19.6",
     "react-native-tab-navigator": "^0.3.2"
   }

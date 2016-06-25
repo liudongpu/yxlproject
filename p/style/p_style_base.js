@@ -51,7 +51,7 @@ export default  PStyleBase = StyleSheet.create({
     cFormPageItem:
     {
       flexDirection: 'row',
-      flex:3,
+      
       borderBottomWidth:1,
       borderBottomColor:'#dedede',
       backgroundColor:'#ffffff',
@@ -108,10 +108,11 @@ export default  PStyleBase = StyleSheet.create({
     },
     cFormTextArea:
     {
-      height:90,
+
 
       backgroundColor:'#ffffff',
       marginTop:10,
+      fontSize:16,
       marginLeft:10
     },
     cFormArrowBox:

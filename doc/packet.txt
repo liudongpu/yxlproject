@@ -5,6 +5,9 @@ npm install rnpm --global
 
 
 
+npm i react-native-autogrow-textinput --save
+
+
 #安装拍照及相片选择插件
 npm install react-native-image-picker@latest --save
 rnpm link react-native-image-picker

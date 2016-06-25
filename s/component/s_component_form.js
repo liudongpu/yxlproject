@@ -19,6 +19,9 @@ import SFuncForm from '../func/s_func_form';
 import SFuncCamera from '../../s/func/s_func_camera';
 import SFuncTop from '../../s/func/s_func_top';
 
+import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
+
+
 import {
   SCBaseImage,
 
@@ -57,10 +60,18 @@ export  class SCFormTextInput extends Component{
 export  class SCFormTextArea extends Component{
 
 
+  constructor(props)
+  {
+    super(props);
+    var {pField} = this.props;
+    var sVal=SFuncForm.upFormValueDefaultEmpty(pField.pageUnique,pField.fieldData);
+    this.state={val:sVal};
+  }
   render() {
-
-      return (  <SCFormSourceText multiline={true}  numberOfLines="5" {...this.props}></SCFormSourceText>)
-
+    var {pField,pStyle} = this.props;
+    return (
+        <AutoGrowingTextInput autoCapitalize='none'  autoCorrect={false}  onChangeText={(text) => {SFuncForm.inFormValue(pField.pageUnique,pField.fieldData,text);this.setState({val:text})}}  style={pStyle.input} placeholder={pField.fieldRemark} value={this.state.val}></AutoGrowingTextInput>
+    );
   }
 }
 

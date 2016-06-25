@@ -103,6 +103,13 @@ export default class PeopleImage extends CommonRoot {
     )
   }
 
+  onPressNews(news){
+    var oParam={};
+    oParam[this.rootConfigBase().upDefineConfig().nParamsForm]={member_code:this.state.memberCode};
+    oParam[this.rootConfigBase().upDefineConfig().nParamsEvent]=eventPeopleImageChange;
+    this.rootNavPage("MemberImageUploadEdit",CommonForm,oParam);
+  }
+
   renderNews(news) {
 
     var sRemark=news.pic_remark?news.pic_remark:this.rootLangBase('people_image_not');

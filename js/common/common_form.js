@@ -42,11 +42,10 @@ export default class CommonForm  extends CommonRoot {
          modalShow:false,
          modalText:'',
          fireEvent:'',
+
        };
 
        var sKey=this.rootNavParams(this.rootConfigBase().upDefineConfig().nparamsPage);
-
-
        //定义操作成功后的事件通知
        var sFireEvent=this.rootNavParams(this.rootConfigBase().upDefineConfig().nParamsEvent);
        if(sFireEvent)
@@ -112,10 +111,7 @@ export default class CommonForm  extends CommonRoot {
   render(){
       return (
         <View style={[this.rootStyleBase().container,this.rootStyleBase().cFormPageBack]}>
-
           {this.formRender(this.state.pageModel)}
-
-
         </View>
 
       )

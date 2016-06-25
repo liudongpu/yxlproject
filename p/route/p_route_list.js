@@ -67,6 +67,9 @@ const  rootList =
       'MemberImageUploadAdd':{
         name: 'MemberImageUploadAdd',title:'上传图片',page:'pa/com_uhutu_yxlsite_z_page_PageMemberPic'
       },
+      'MemberImageUploadEdit':{
+        name: 'MemberImageUploadEdit',title:'图片',page:'pe/com_uhutu_yxlsite_z_page_PageMemberPic'
+      },
 
 
    };

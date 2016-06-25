@@ -1,9 +1,16 @@
 
 const event_caches={};
 
+const nav_caches={};
+
+
 export default class SFuncEvent
 {
 
+  /**
+  添加全局监听事件   注意监听一次只能添加一种 暂不支持同一事件的多次监听
+  调用完监听后  在componentWillUnmount(){}时最好调用下removeEvent
+  */
   static addEvent(sTarget,fCallBack)
   {
     if(!event_caches[sTarget])
@@ -29,6 +36,30 @@ export default class SFuncEvent
       }
     }
   }
+
+
+  static navInitEvent(nav)
+  {
+    nav.navigationContext.addListener('didfocus', this.navFireEvent);
+  }
+  static navFireEvent(router)
+  {
+
+    var oData=router._data.route;
+    //console.warn(JSON.stringify(oData));
+    var sName=oData.name;
+    if(nav_caches.hasOwnProperty(sName))
+    {
+      nav_caches[sName]();
+    }
+
+  }
+
+  static navAddEvent(sName,fCall)
+  {
+    nav_caches[sName]=fCall;
+  }
+
 
 
 }

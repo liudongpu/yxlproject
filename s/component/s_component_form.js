@@ -113,7 +113,7 @@ export  class SCFormUpload extends Component{
         </View>
         <View style={pStyle.right}>
 
-            <Image source={{uri:this.state.url}} style={pStyle.image}/>
+            <Image source={{uri:SFuncTop.upImageThumber(this.state.url,100)}} style={pStyle.image}/>
 
         </View>
       </View>

@@ -7,6 +7,7 @@ import PLangBase from '../../p/lang/p_lang_base';
 import PStyleImage from '../../p/style/p_style_image';
 import SFuncApi from '../../s/func/s_func_api';
 import PConfigBase from '../../p/config/p_config_base';
+import SFuncEvent from '../../s/func/s_func_event';
 
 
 
@@ -60,6 +61,18 @@ export default class CommonRoot extends Component {
      //nav.push(PRouteList.upRoute(sName));
      nav.push(eRoute);
    }
+
+
+   //页面加载完成时调用该逻辑
+   rootNavMount(sRouterName,fCall)
+   {
+     //const { nav } = this.props;
+     //nav.navigationContext.addListener('didfocus', fCall);
+     SFuncEvent.navAddEvent(sRouterName,fCall);
+   }
+
+
+
 
 
    rootNavBack()

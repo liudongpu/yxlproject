@@ -79,7 +79,6 @@ export default class CommonForm  extends CommonRoot {
   {
     //从参数传递中拿  如果拿不到初始化下
     var oValue=this.rootNavParams(this.rootConfigBase().upDefineConfig().nParamsForm);
-
     if(!oValue)
     {
       oValue={};

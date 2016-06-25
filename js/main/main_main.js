@@ -19,6 +19,7 @@ import PStyleBase from '../../p/style/p_style_base';
 
 import CommonRoot from '../common/common_root';
 import CommonForm from '../common/common_form';
+import SFuncEvent from '../../s/func/s_func_event';
 
 import PageTest from '../page/page_test';
 
@@ -33,6 +34,9 @@ export default class MainMain extends CommonRoot {
           super(props);
           //设置默认页
           this.state = {selectedTab: this.rootLangBase('home_index')}
+
+          //在这里初始化一次nav的监听函数
+          SFuncEvent.navInitEvent(this.props.nav);
       }
 
 

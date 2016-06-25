@@ -14,6 +14,11 @@ export default  PStyleProject = StyleSheet.create({
 
   peopleImageList:
   {
+
+    flex: 1,
+  },
+  peopleImageMtop:
+  {
     marginTop:10,
   },
   peopleImageItem:

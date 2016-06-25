@@ -19,6 +19,8 @@ import CommonForm from '../common/common_form';
 
 import PStyleProject from '../../p/style/p_style_project';
 import SFuncEvent from '../../s/func/s_func_event';
+import SFuncTop from '../../s/func/s_func_top';
+
 
 const eventPeopleImageChange='eventPeopleImageChange';
 
@@ -36,11 +38,17 @@ export default class PeopleImage extends CommonRoot {
         };
   }
   componentDidMount () {
-          this.fetchData('');
+
+
+          this.rootNavMount('PeopleImage',()=>{this.fetchData('')});
 
           SFuncEvent.addEvent(eventPeopleImageChange,(event)=>{this.fetchData('')});
 
 
+  }
+  componentWillUnmount(){
+
+    SFuncEvent.removeEvent(eventPeopleImageChange);
   }
   fetchSuccess(oData)
   {
@@ -70,18 +78,19 @@ export default class PeopleImage extends CommonRoot {
   render() {
 
     return (
-        <View style={[this.rootStyleBase().container,this.rootStyleBase().cFormPageBack]}>
-          <View>
+        <View style={[this.rootStyleBase().container,this.rootStyleBase().wFlex,this.rootStyleBase().cFormPageBack]}>
+          <View  style={this.rootStyleBase().wFlex}>
             <View  style={PStyleProject.peopleImageList}>
                 <TouchableOpacity style={this.rootStyleBase().cFormPageButton} onPress={()=>this.pressUpload()}>
                   <Text style={this.rootStyleBase().cFormPageOperate}>{this.rootLangBase('people_image_upload')}</Text>
                 </TouchableOpacity>
+                <View style={[this.rootStyleBase().wFlex,PStyleProject.peopleImageMtop]}>
                 <ListView
                 renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
                 dataSource={this.state.dataSource}
                 renderRow={this.renderNews.bind(this)}
                  />
-
+                </View>
 
             </View>
           </View>
@@ -98,7 +107,7 @@ export default class PeopleImage extends CommonRoot {
                 <View style={[PStyleProject.peopleImageItem]}>
 
                     <View  style={[PStyleProject.peopleImageLeft]}>
-                      <Image style={PStyleProject.peopleImagePic} source={{uri:news.pic_url}}></Image>
+                      <Image style={PStyleProject.peopleImagePic}  source={{uri:SFuncTop.upImageThumber(news.pic_url,200)}}></Image>
                     </View>
                     <View style={PStyleProject.peopleImageCenter}>
                         <Text style={PStyleProject.peopleImageDesc}>{sRemark}</Text>

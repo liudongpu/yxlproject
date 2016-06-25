@@ -17,6 +17,7 @@ const defineConfig=
 {
   //参数  链接
   nparamsPage:'config_base_page_link',
+  nparamsName:'config_base_router_name',
   //参数  form值传递
   nParamsForm:'config_base_form_data',
   //参数 触发事件

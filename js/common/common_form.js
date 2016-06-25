@@ -35,6 +35,8 @@ import {
 export default class CommonForm  extends CommonRoot {
 
   constructor(props) {
+
+
       super(props);
 
        this.state = {
@@ -45,7 +47,7 @@ export default class CommonForm  extends CommonRoot {
 
        };
 
-       var sKey=this.rootNavParams(this.rootConfigBase().upDefineConfig().nparamsPage);
+
        //定义操作成功后的事件通知
        var sFireEvent=this.rootNavParams(this.rootConfigBase().upDefineConfig().nParamsEvent);
        if(sFireEvent)
@@ -53,7 +55,7 @@ export default class CommonForm  extends CommonRoot {
          this.state.fireEvent=sFireEvent;
        }
 
-
+       /*
        var oValue=SFuncStorage.upTempValue('common_form',sKey);
        if(oValue)
        {
@@ -65,9 +67,13 @@ export default class CommonForm  extends CommonRoot {
        else {
          this.fetchData(sKey);
        }
+       */
   }
   componentDidMount () {
-          //this.fetchData('pa/com_uhutu_yxlsite_z_page_DataPressure');
+
+
+    var sKey=this.rootNavParams(this.rootConfigBase().upDefineConfig().nparamsPage);
+    this.fetchStruct(sKey);
   }
 
   //初始化form的数据
@@ -79,16 +85,13 @@ export default class CommonForm  extends CommonRoot {
     {
       oValue={};
     }
-    SFuncForm.initFormData(this.upPageUnique(),oValue);
+
+    for(var i in this.state.pageModel)
+    {
+      var oModel=this.state.pageModel[i];
+      SFuncForm.initFormData(oModel.struct.pageUnique,oValue);
+    }
   }
-
-
-  upPageUnique()
-  {
-    return this.state.pageModel[0].struct.pageUnique;
-  }
-
-
 
   fetchSuccess(oData)
   {
@@ -97,13 +100,24 @@ export default class CommonForm  extends CommonRoot {
         pageModel : oData.pageModel,
     });
     this.initFormData();
+
+
   }
 
-  fetchData (sText) {
+  fetchStruct (sText) {
 
+    var oValue=SFuncStorage.upTempValue('common_form',sText);
+    if(oValue)
+    {
+      this.fetchSuccess(oValue);
+    }
+    else {
       this.rootFuncApi().post("api/zooweb/post/webpage",{
         pageUrl:'../'+sText
-      },(data)=>{ SFuncStorage.inTempValue('common_form',sText,data);   this.fetchSuccess(data)});
+      },(data)=>{ SFuncStorage.inTempValue('common_form',sText,data); this.fetchSuccess(data)});
+    }
+
+
 
   }
 
@@ -134,9 +148,9 @@ export default class CommonForm  extends CommonRoot {
   formSubmit(oOperate)
   {
     this.formLoading(true);
-    var oFormData=SFuncForm.upFormData(this.upPageUnique());
+    var oFormData=SFuncForm.upFormData(oOperate.pageUnique);
     this.rootFuncApi().postWithError("api/zooweb/post/weboperate",{
-      pageUnique:this.upPageUnique(),
+      pageUnique:oOperate.pageUnique,
       operateCode:oOperate.operateCode,
       pageUrl:'',
       dataMap:oFormData

@@ -40,7 +40,7 @@ export default class CommonRoot extends Component {
        oProp={};
      }
 
-
+     oProp[PConfigBase.upDefineConfig().nparamsName]=sName;
 
        //如果属性上有navName属性 则将页面标题设置为navName
       if(oProp.navName)
@@ -68,6 +68,11 @@ export default class CommonRoot extends Component {
    {
      //const { nav } = this.props;
      //nav.navigationContext.addListener('didfocus', fCall);
+     if(sRouterName=="")
+     {
+       sRouterName=this.rootNavParams(PConfigBase.upDefineConfig().nparamsName);
+     }
+
      SFuncEvent.navAddEvent(sRouterName,fCall);
    }
 

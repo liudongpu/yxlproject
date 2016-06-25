@@ -29,6 +29,8 @@ import {
   SCFormButton,
   SCFormSelect,
   SCFormUpload,
+  SCFormTextInput,
+  SCFormTextArea,
 } from '../../s/component/s_component_form';
 
 var iCount=0;
@@ -115,6 +117,7 @@ export default class CommonForm  extends CommonRoot {
 
     }
 
+    //如果不需要读取数据  直接展示  否则读完数据后再展示
     if(aPromise.length==0)
     {
       this.initFormStruct(oData);
@@ -294,8 +297,12 @@ export default class CommonForm  extends CommonRoot {
         };
         return (<SCFormUpload pField={oField}  pStyle={oStyle} pLoading={this.formLoading.bind(this)} ></SCFormUpload>);
       }
+      else if(oField["fieldElement"]=="textarea")
+      {
+        return (<SCFormTextArea pField={oField} pStyle={{input:this.rootStyleBase().cFormTextArea}} ></SCFormTextArea>);
+      }
       else {
-        return (<SCFormText pField={oField} pStyle={{input:this.rootStyleBase().cFormTextInput}} ></SCFormText>);
+        return (<SCFormTextInput pField={oField} pStyle={{input:this.rootStyleBase().cFormTextInput}} ></SCFormTextInput>);
       }
   }
 

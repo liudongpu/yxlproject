@@ -26,9 +26,7 @@ import {
 
 
 
-export  class SCFormText extends Component{
-
-
+export  class SCFormSourceText extends Component{
 
   constructor(props)
   {
@@ -37,22 +35,32 @@ export  class SCFormText extends Component{
     var sVal=SFuncForm.upFormValueDefaultEmpty(pField.pageUnique,pField.fieldData);
     this.state={val:sVal};
   }
+  render() {
+    var {pField,pStyle} = this.props;
+    return (
+        <TextInput autoCapitalize='none' autoCorrect={false}  onChangeText={(text) => {SFuncForm.inFormValue(pField.pageUnique,pField.fieldData,text);this.setState({val:text})}}  style={pStyle.input} placeholder={pField.fieldRemark} value={this.state.val}></TextInput>
+    );
+  }
+}
 
+
+export  class SCFormTextInput extends Component{
 
 
   render() {
 
+      return (  <SCFormSourceText  {...this.props}></SCFormSourceText>)
 
-    var {pField,pStyle} = this.props;
+  }
+}
 
-
-
-    return (
-
-        <TextInput onChangeText={(text) => {SFuncForm.inFormValue(pField.pageUnique,pField.fieldData,text);this.setState({val:text})}}  style={pStyle.input} placeholder={pField.fieldRemark} value={this.state.val}></TextInput>
+export  class SCFormTextArea extends Component{
 
 
-    );
+  render() {
+
+      return (  <SCFormSourceText multiline={true}  numberOfLines="5" {...this.props}></SCFormSourceText>)
+
   }
 }
 

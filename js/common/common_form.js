@@ -33,6 +33,12 @@ import {
   SCFormTextArea,
 } from '../../s/component/s_component_form';
 
+
+import {
+  SCBaseModal,
+
+} from '../../s/component/s_component_base';
+
 var iCount=0;
 
 export default class CommonForm  extends CommonRoot {
@@ -170,10 +176,12 @@ export default class CommonForm  extends CommonRoot {
   {
     if(bFlagShow)
     {
-      this.setState({modalShow:true,modalText:this.rootLangBase('load_process')});
+      //this.setState({modalShow:true,modalText:this.rootLangBase('load_process')});
+      this.refs.modal.modalShow();
     }
     else {
-      this.setState({modalShow:false});
+      //this.setState({modalShow:false});
+      this.refs.modal.modalHidden();
     }
 
   }
@@ -247,22 +255,8 @@ export default class CommonForm  extends CommonRoot {
       return (
         <View>
         {aViews}
-          <Modal visible={this.state.modalShow} transparent={true}>
-            <View style={this.rootStyleBase().cModalLoadBack} >
+          <SCBaseModal ref="modal"/>
 
-              <View style={this.rootStyleBase().cModalLoadBox}>
-              <ActivityIndicator
-                animating={true}
-                color={this.rootConfigBase().upDefineConfig().modalLoadColor}
-                style={this.rootStyleBase().cModalLoadIndicator}
-                onRequestClose={() => {this.setState({modalShow:false})}}
-                size="large"
-              />
-                <Text style={this.rootStyleBase().cModalLoadText}>{this.state.modalText}</Text>
-
-              </View>
-            </View>
-          </Modal>
         </View>
 
       );

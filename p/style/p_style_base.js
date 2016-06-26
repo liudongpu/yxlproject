@@ -51,7 +51,7 @@ export default  PStyleBase = StyleSheet.create({
     cFormPageItem:
     {
       flexDirection: 'row',
-      
+
       borderBottomWidth:1,
       borderBottomColor:'#dedede',
       backgroundColor:'#ffffff',
@@ -335,6 +335,8 @@ export default  PStyleBase = StyleSheet.create({
       height:topWindow.height,
        alignItems: 'center',
        justifyContent: 'center',
+       backgroundColor:'#000000',
+       opacity:0.8
 
     },
     cModalLoadBox:

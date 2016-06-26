@@ -18,8 +18,8 @@ export default  PStyleProject = StyleSheet.create({
   userLoginItem:
   {
     flexDirection:'row',
-
-    marginTop:20,
+    justifyContent:'center',
+    paddingBottom:10,
     borderBottomWidth:1,
     borderBottomColor:'#dedede',
   },
@@ -31,16 +31,24 @@ export default  PStyleProject = StyleSheet.create({
   },
   userLoginInput:
   {
-
+    borderWidth:0,
     flex:1,
-    marginBottom:20,
+    marginTop:20,
+    backgroundColor:'#ffffff',
+    height:35,
+
+
   },
   userLoginLabel:
   {
     width:80,
+
     fontSize:18,
-    marginLeft:10,
-    marginBottom:20,
+      height:35,
+    marginTop:26,
+
+
+
 
   },
   userLoginButton:

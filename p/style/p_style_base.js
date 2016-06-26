@@ -333,10 +333,9 @@ export default  PStyleBase = StyleSheet.create({
     cModalLoadBack:
     {
       height:topWindow.height,
-       alignItems: 'center',
-       justifyContent: 'center',
-       backgroundColor:'#000000',
-       opacity:0.8
+      alignItems: 'center',
+      justifyContent: 'center',
+      
 
     },
     cModalLoadBox:

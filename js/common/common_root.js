@@ -47,6 +47,11 @@ export default class CommonRoot extends Component {
       {
         eRoute.title=oProp.navName;
       }
+      var sNavType='';
+      if(oProp.navType)
+      {
+        sNavType=oProp.navType;
+      }
 
 
       //如果eRoute上定义有page参数  则设置页面的链接为page参数
@@ -59,7 +64,15 @@ export default class CommonRoot extends Component {
      eRoute.nparams=oProp;
 
      //nav.push(PRouteList.upRoute(sName));
-     nav.push(eRoute);
+
+     if(sNavType=='replace')
+     {
+       nav.replace(eRoute);
+     }
+     else {
+       nav.push(eRoute);
+     }
+
    }
 
 

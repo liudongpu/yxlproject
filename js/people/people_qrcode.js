@@ -16,6 +16,8 @@ import {
 } from 'react-native';
 import CommonRoot from '../common/common_root';
 import BarcodeScanner from 'react-native-barcode-scanner-universal';
+import SFuncTop from '../../s/func/s_func_top';
+import PeopleInfo from '../people/people_info';
 
 
 import {
@@ -37,15 +39,32 @@ export default class PeopleQrcode extends CommonRoot {
   {
     if(this.state.qrcode=='')
     {
-      console.warn(JSON.stringify(code));
+      //console.warn(JSON.stringify(code));
       this.refs.modal.modalShow();
-      this.setState({qrcode:code});
+      this.setState({qrcode:code.data});
+      this.rootFuncApi().post("api/genapp/post/querymember",{
+        qrcode:code.data
+      },(data)=>{this.fetchSuccess(data)});
+    }
+  }
+
+  fetchSuccess(data)
+  {
+    if(data.pageData.length!=1)
+    {
+      this.refs.modal.modalHidden();
+      SFuncTop.msgAlert(this.state.qrcode,this.rootLangBase('people_qrcode_not'),()=>{this.setState({qrcode:''});});
+      //this.setState({qrcode:''});
     }
     else
     {
+      var news=data.pageData[0];
+      this.refs.modal.modalHidden();
 
+      this.rootNavPage('PeopleInfo',PeopleInfo,{pCode:news.member_code,navName:news.member_name,navType:'replace'});
     }
   }
+
 
   render() {
     let scanArea = null;

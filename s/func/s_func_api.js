@@ -57,7 +57,12 @@ export default class SFuncApi
     {
       let formData = new FormData();
       //formData.append('token', result.data);
-      formData.append('file', {uri:sUrl, name: 'image.jpg', type: 'application/octex-stream'});
+      var aNames=sUrl.split('/');
+
+      var sImgName=aNames[aNames.length-1];
+      if(!sImgName)sImgName='img.jpg';
+
+      formData.append('file', {uri:sUrl, name: sImgName, type: 'application/octex-stream'});
       let opt={};
       opt.body=formData;
       opt.method='post';

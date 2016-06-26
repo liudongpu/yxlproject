@@ -46,6 +46,13 @@ const  rootList =
       'people_image_not':'暂无描述信息',
       'people_image_upload':'上传图片',
       'people_qrcode_not':'不支持的内容',
+      'user_login_title':'银杏养助登录',
+      'user_login_name':'用户名',
+      'user_login_pass':'密   码',
+      'user_login_pa':'请输入11位有效手机号',
+      'user_login_pb':'请输入密码',
+      'user_login_button':'登录',
+
       'load_process':'正在处理',
       'camera_select':'请选择',
       'camera_cancel':'取消',

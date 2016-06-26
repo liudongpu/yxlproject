@@ -38,10 +38,15 @@ export default class SFuncEvent
   }
 
 
+  /*
+  初始化一次导航的监听事件   导航在展示完成后执行的事件需要在这里添加一个监听
+  */
   static navInitEvent(nav)
   {
     nav.navigationContext.addListener('didfocus', this.navFireEvent);
   }
+
+  //导航的动画完成时  会触发该方法  该方法判断当前页面是否有加载完成后执行的函数  如果有 则执行
   static navFireEvent(router)
   {
 
@@ -54,7 +59,9 @@ export default class SFuncEvent
     }
 
   }
-
+  /*
+  注册一个页面动画载入完成后执行的函数  注意只支持单事件执行
+  */
   static navAddEvent(sName,fCall)
   {
     nav_caches.set(sName,fCall);

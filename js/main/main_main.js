@@ -35,7 +35,7 @@ export default class MainMain extends CommonRoot {
           //设置默认页
           this.state = {selectedTab: this.rootLangBase('home_index')}
 
-          //在这里初始化一次nav的监听函数
+          //在这里全局初始化一次nav的监听函数  注册下页面加载完成时的触发逻辑  优化展示效果
           SFuncEvent.navInitEvent(this.props.nav);
       }
 

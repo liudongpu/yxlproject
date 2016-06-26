@@ -22,6 +22,9 @@ const  rootList =
       'PageNew':{
         name: 'PageNew',title:'测试页3'
       },
+      'UserLogin':{
+        name: 'UserLogin',title:'用户登录'
+      },
       'UserInfo':{
         name: 'UserInfo',title:'基本信息'
       },

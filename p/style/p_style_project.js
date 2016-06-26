@@ -10,6 +10,62 @@ import {
 
 export default  PStyleProject = StyleSheet.create({
 
+  userLoginBox:
+  {
+    margin:20,
+    marginTop:100,
+  },
+  userLoginItem:
+  {
+    flexDirection:'row',
+
+    marginTop:20,
+    borderBottomWidth:1,
+    borderBottomColor:'#dedede',
+  },
+  userLoginTitle:
+  {
+    textAlign:'center',
+    fontSize:24,
+    marginBottom:40,
+  },
+  userLoginInput:
+  {
+
+    flex:1,
+    marginBottom:20,
+  },
+  userLoginLabel:
+  {
+    width:80,
+    fontSize:18,
+    marginLeft:10,
+    marginBottom:20,
+
+  },
+  userLoginButton:
+  {
+
+    marginLeft:15,
+    backgroundColor:'#fc5755',
+    height:42,
+    marginTop:40,
+    alignItems:'center',
+    borderRadius:5
+  },
+  userLoginBtxt:
+  {
+    textAlign:'center',
+    color:'#ffffff',
+    fontSize:20,
+    marginTop:10,
+  },
+
+
+
+
+
+
 
 
   peopleImageList:

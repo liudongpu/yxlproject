@@ -20,6 +20,7 @@ import PeopleInfo from '../people/people_info';
 
 import PStyleBase from '../../p/style/p_style_base';
 import CommonRoot from '../common/common_root';
+import UserLogin from '../user/user_login';
 
 
 export default class HomeIndex extends CommonRoot {
@@ -42,25 +43,26 @@ export default class HomeIndex extends CommonRoot {
         });
       }
 
+      fetchError(oData)
+      {
+        if(oData.status=='801')
+        {
+          this.rootNavPage('UserLogin',UserLogin);
+        }
+        else
+        {
+
+        }
+      }
+
       fetchData (sText) {
 
-          this.rootFuncApi().post("api/genapp/post/querymember",{
+          this.rootFuncApi().postWithError("api/genapp/post/querymember",{
             keyWord:sText
-          },(data)=>{this.fetchSuccess(data)});
+          },(data)=>{this.fetchSuccess(data)},(error)=>{this.fetchError(error)});
 
       }
 
-
-
-
-  onPressFeed() {
-    /*
-   const { nav } = this.props;
-
-       nav.push({name: 'PageTemplate',title:'xxx'});
-    */
-    this.rootNavPage('PageTemplate',PageTemplate);
-   }
 
     render() {
       //this.props.nav.setState({title:'xx'});

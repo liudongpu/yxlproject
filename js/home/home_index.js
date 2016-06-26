@@ -17,10 +17,14 @@ import {
 import PageTemplate from '../page/page_template';
 import PeopleInfo from '../people/people_info';
 
+import SFuncStorage from '../../s/func/s_func_storage';
 
 import PStyleBase from '../../p/style/p_style_base';
 import CommonRoot from '../common/common_root';
 import UserLogin from '../user/user_login';
+import SFuncEvent from '../../s/func/s_func_event';
+import SFuncApi from '../../s/func/s_func_api';
+
 
 
 export default class HomeIndex extends CommonRoot {
@@ -32,10 +36,38 @@ export default class HomeIndex extends CommonRoot {
              dataSource: ds
            };
 
+           SFuncEvent.addEvent('home_index_refresh_data',()=>{this.fetchInit()});
+
       }
       componentDidMount () {
-              this.fetchData('');
+
+
+        this.fetchInit();
+
+
       }
+
+      fetchInit()
+      {
+        SFuncStorage.upItemCallBack(
+          'user','userLogin',(oUser)=>{
+            if(oUser!=null)
+            {
+              SFuncApi.inToken(oUser.token);
+              this.fetchData('');
+            }
+            else
+            {
+              this.fetchError();
+            }
+          }
+
+        );
+      }
+
+
+
+
       fetchSuccess(oData)
       {
         this.setState({
@@ -45,17 +77,13 @@ export default class HomeIndex extends CommonRoot {
 
       fetchError(oData)
       {
-        if(oData.status=='801')
-        {
-          this.rootNavPage('UserLogin',UserLogin);
-        }
-        else
-        {
 
-        }
+        this.rootNavPage('UserLogin',UserLogin);
+
       }
 
       fetchData (sText) {
+
 
           this.rootFuncApi().postWithError("api/genapp/post/querymember",{
             keyWord:sText

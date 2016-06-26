@@ -87,5 +87,11 @@ export default class SFuncApi
     }
 
 
+    static inToken(sToken)
+    {
+      apiZooConfig.token=sToken;
+    }
+
+
 
 }

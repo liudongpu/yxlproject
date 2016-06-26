@@ -40,11 +40,11 @@ export default class SFuncStorage
   //获取存储的值 默认返回空   sGroup表示分组  最好一种类型分一种 以方便清除存储  可以为空
   static upItemCallBack(sGroup,sStorageKey,fCallBack)
   {
-    AsyncStorage.getItem(sGroup+sStorageKey,(sValue)=>{  fCallBack(sValue==null?null:JSON.parse(sValue)) });
+    AsyncStorage.getItem(sGroup+sStorageKey,(err,sValue)=>{ fCallBack(sValue==null?null:JSON.parse(sValue)) });
   }
 
   //存入值 sGroup表示分组  最好一种类型分一种 以方便清除存储  可以为空
-  static inItem(sGroup,sStorageKey,oValue)
+  static inItem(sGroup,sStorageKey,oValue,fCallBack)
   {
     //如果存在group
     if(sGroup)
@@ -53,7 +53,7 @@ export default class SFuncStorage
       AsyncStorage.mergeItem(store_base_group+sGroup,JSON.stringify(sGroup));
     }
     //设置值
-     AsyncStorage.setItem(sGroup+sStorageKey, JSON.stringify(oValue));
+     AsyncStorage.setItem(sGroup+sStorageKey, JSON.stringify(oValue),fCallBack);
 
   }
 

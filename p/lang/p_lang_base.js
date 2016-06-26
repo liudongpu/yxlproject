@@ -52,6 +52,7 @@ const  rootList =
       'user_login_pa':'请输入11位有效手机号',
       'user_login_pb':'请输入密码',
       'user_login_button':'登录',
+      'user_set_logout':'退出登录',
 
       'load_process':'正在处理',
       'camera_select':'请选择',

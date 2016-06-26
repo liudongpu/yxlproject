@@ -45,8 +45,6 @@ export default  PStyleProject = StyleSheet.create({
   },
   userLoginButton:
   {
-
-    marginLeft:15,
     backgroundColor:'#fc5755',
     height:42,
     marginTop:40,
@@ -59,6 +57,12 @@ export default  PStyleProject = StyleSheet.create({
     color:'#ffffff',
     fontSize:20,
     marginTop:10,
+  },
+
+
+  userSetBtn:
+  {
+    margin:20,
   },
 
 

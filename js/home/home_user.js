@@ -19,6 +19,8 @@ import UserSet from '../user/user_set';
 import UserPassword from '../user/user_password';
 import UserAgree from '../user/user_agree';
 import UserAbout from '../user/user_about';
+import SFuncEvent from '../../s/func/s_func_event';
+import SFuncStorage from '../../s/func/s_func_storage';
 
 
 
@@ -43,10 +45,20 @@ export default class HomeUser extends CommonRoot {
                 ];
 
       this.state = {
-        dataSource: ds.cloneWithRows(data)
+        dataSource: ds.cloneWithRows(data),
+        loginName:SFuncStorage.upTempValue('user','loginName')
       };
+
+
+      SFuncEvent.addEvent('home_user_refresh_data',()=>{this.homeInit()});
     }
 
+    homeInit()
+    {
+      var sLogin=SFuncStorage.upTempValue('user','loginName');
+      
+      this.setState({loginName:sLogin});
+    }
 
 
 
@@ -58,7 +70,7 @@ export default class HomeUser extends CommonRoot {
           <View >
             <Image style={[this.rootStyleBase().homeUserViewBackImage]} source={this.rootStyleImage('home_user_bg')}>
               <Image style={[this.rootStyleBase().homeUserViewBackPeople]} source={this.rootStyleImage('people_info_img')}></Image>
-              <Text  style={this.rootStyleBase().homeUserViewBackText} >{this.rootLangBase('home_user_welcome')}11012345678</Text>
+              <Text  style={this.rootStyleBase().homeUserViewBackText} >{this.rootLangBase('home_user_welcome')}{this.state.loginName}</Text>
             </Image>
           </View>
           <View style={this.rootStyleBase().homeUserViewBack}>

@@ -8,18 +8,39 @@ import {
     Text,
     Platform,
     Navigator,
+    TouchableOpacity,
     StyleSheet
 } from 'react-native';
 
 
-import CommonPage from '../common/common_page';
+import CommonRoot from '../common/common_root';
+import PStyleProject from '../../p/style/p_style_project';
 
-export default class UserSet extends CommonPage {
+import SFuncStorage from '../../s/func/s_func_storage';
 
-  subTitle(){return 'page title';}
+import UserLogin from '../user/user_login';
 
-  subNode(){
-      return (<Text >user_set</Text>)
+export default class UserSet extends CommonRoot {
+
+  btnPress()
+  {
+    SFuncStorage.delItem('user','userLogin',()=>{
+
+      this.rootNavPage('UserLogin',UserLogin,{navType:'replace'});
+    });
+  }
+
+  render(){
+      return (
+        <View style={[this.rootStyleBase().container]}>
+          <View >
+            <TouchableOpacity style={[PStyleProject.userLoginButton,PStyleProject.userSetBtn]} onPress={()=>this.btnPress()}>
+              <Text style={PStyleProject.userLoginBtxt}>{this.rootLangBase('user_set_logout')}</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+      )
   }
 
 

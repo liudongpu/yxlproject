@@ -54,6 +54,8 @@ export default class HomeIndex extends CommonRoot {
             if(oUser!=null)
             {
               SFuncApi.inToken(oUser.token);
+              SFuncStorage.inTempValue('user','loginName',oUser.loginName);
+              SFuncEvent.fireEvent('home_user_refresh_data');
               this.fetchData('');
             }
             else

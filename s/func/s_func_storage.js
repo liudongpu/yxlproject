@@ -36,11 +36,15 @@ export default class SFuncStorage
   }
 
 
+  static _upItemKey(sGroup,sStorageKey)
+  {
+    return sGroup+'_'+sStorageKey;
+  }
 
   //获取存储的值 默认返回空   sGroup表示分组  最好一种类型分一种 以方便清除存储  可以为空
   static upItemCallBack(sGroup,sStorageKey,fCallBack)
   {
-    AsyncStorage.getItem(sGroup+sStorageKey,(err,sValue)=>{ fCallBack(sValue==null?null:JSON.parse(sValue)) });
+    AsyncStorage.getItem(this._upItemKey(sGroup,sStorageKey),(err,sValue)=>{ fCallBack(sValue==null?null:JSON.parse(sValue)) });
   }
 
   //存入值 sGroup表示分组  最好一种类型分一种 以方便清除存储  可以为空
@@ -49,12 +53,19 @@ export default class SFuncStorage
     //如果存在group
     if(sGroup)
     {
+      //var a=[];
+      //a.push(sGroup);
       //将group的值存入指定组
-      AsyncStorage.mergeItem(store_base_group+sGroup,JSON.stringify(sGroup));
+      //AsyncStorage.mergeItem(store_base_group+sGroup,JSON.stringify(a));
     }
     //设置值
-     AsyncStorage.setItem(sGroup+sStorageKey, JSON.stringify(oValue),fCallBack);
+     AsyncStorage.setItem(this._upItemKey(sGroup,sStorageKey), JSON.stringify(oValue),fCallBack);
 
+  }
+
+  static delItem(sGroup,sStorageKey,fCallBack)
+  {
+    AsyncStorage.removeItem(this._upItemKey(sGroup,sStorageKey),fCallBack);
   }
 
 }

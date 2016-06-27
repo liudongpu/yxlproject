@@ -4,6 +4,7 @@ import {
   Navigator,
   Text,
   TouchableOpacity,
+  BackAndroid,
   View
 } from 'react-native';
 import MainMain from '../main/main_main';
@@ -19,6 +20,27 @@ import PLangBase from '../../p/lang/p_lang_base';
 export default class LayoutMain extends Component {
   constructor(props) {
         super(props);
+
+
+    }
+
+
+    componentDidMount () {
+
+      //android注册返回事件
+      BackAndroid.addEventListener('hardwareBackPress', ()=> {
+
+          var iLength=this.refs.navigator.getCurrentRoutes().length;
+
+
+           if (iLength>1) {
+             this.refs.navigator.pop();
+             return true;
+           }
+           return false;
+      });
+
+
     }
 
   _renderScene(router, navigator) {
@@ -85,6 +107,7 @@ export default class LayoutMain extends Component {
 
       return (
           <Navigator
+          ref="navigator"
           style={{flex:1}}
           initialRoute={{name: 'MainMain',title:PLangBase.upLang('home_index'),component:MainMain}}
           renderScene={this._renderScene}

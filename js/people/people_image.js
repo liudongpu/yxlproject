@@ -47,7 +47,7 @@ export default class PeopleImage extends CommonRoot {
 
           this.rootNavMount('PeopleImage',()=>{this.fetchData('')});
 
-          SFuncEvent.addEvent(eventPeopleImageChange,(event)=>{this.fetchData('')});
+          //SFuncEvent.addEvent(eventPeopleImageChange,(event)=>{this.fetchData('')});
 
 
   }

@@ -26,6 +26,19 @@ export default  PStyleBase = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
     },
+    wHeightA:
+    {
+      height:10,
+    },
+    wHeightB:
+    {
+      height:20,
+    },
+    wHeightC:
+    {
+      height:30,
+    },
+
     wDirectionRow:
     {
 
@@ -66,7 +79,7 @@ export default  PStyleBase = StyleSheet.create({
     cFormPageText:
     {
       marginTop:18,
-      marginLeft:10,
+      marginLeft:15,
       marginBottom:12,
       fontSize:16,
 
@@ -98,6 +111,14 @@ export default  PStyleBase = StyleSheet.create({
     {
       flex:1
     },
+
+    cFormSwitch:
+    {
+
+      marginTop:10,
+      marginLeft:40
+    },
+
     cFormTextInput:
     {
       height:35,
@@ -335,7 +356,7 @@ export default  PStyleBase = StyleSheet.create({
       height:topWindow.height,
       alignItems: 'center',
       justifyContent: 'center',
-      
+
 
     },
     cModalLoadBox:

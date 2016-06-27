@@ -14,7 +14,6 @@ import {
 } from 'react-native';
 
 import PageInfo from '../page/page_info';
-import UserInfo from '../user/user_info';
 import UserSet from '../user/user_set';
 import UserPassword from '../user/user_password';
 import UserAgree from '../user/user_agree';

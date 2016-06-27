@@ -36,12 +36,12 @@ export default class HomeIndex extends CommonRoot {
              dataSource: ds
            };
 
-           SFuncEvent.addEvent('home_index_refresh_data',()=>{this.fetchInit()});
+           //SFuncEvent.addEvent('home_index_refresh_data',()=>{this.fetchInit()});
 
       }
       componentDidMount () {
 
-
+        //this.rootNavMount('MainMain',()=>{this.fetchInit()});
         this.fetchInit();
 
 
@@ -49,6 +49,7 @@ export default class HomeIndex extends CommonRoot {
 
       fetchInit()
       {
+        
         SFuncStorage.upItemCallBack(
           'user','userLogin',(oUser)=>{
             if(oUser!=null)
@@ -60,6 +61,8 @@ export default class HomeIndex extends CommonRoot {
             }
             else
             {
+              //如果没有登录  则注册加载完成时执行刷新逻辑
+              this.rootNavMount('MainMain',()=>{this.fetchInit()});
               this.fetchError();
             }
           }

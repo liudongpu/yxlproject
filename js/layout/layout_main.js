@@ -12,6 +12,7 @@ import PageTemplate from '../page/page_template';
 import PStyleBase from '../../p/style/p_style_base';
 import SComponentNavbar from '../../s/component/s_component_navbar';
 import PLangBase from '../../p/lang/p_lang_base';
+import SFuncTop from '../../s/func/s_func_top';
 
 
 

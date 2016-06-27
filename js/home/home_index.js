@@ -37,7 +37,7 @@ export default class HomeIndex extends CommonRoot {
            };
 
            //SFuncEvent.addEvent('home_index_refresh_data',()=>{this.fetchInit()});
-           
+
 
       }
       componentDidMount () {

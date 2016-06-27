@@ -21,6 +21,7 @@ import UserAgree from '../user/user_agree';
 import UserAbout from '../user/user_about';
 import SFuncEvent from '../../s/func/s_func_event';
 import SFuncStorage from '../../s/func/s_func_storage';
+import CommonForm from '../common/common_form';
 
 
 
@@ -37,7 +38,7 @@ export default class HomeUser extends CommonRoot {
 
 
     var   data = [
-                {img:this.rootStyleImage('icon_ua'),title:this.rootRouteList('UserInfo').title,target:UserInfo,link:'UserInfo',top:10},
+                {img:this.rootStyleImage('icon_ua'),title:this.rootRouteList('UserInfo').title,target:CommonForm,link:'UserInfo',top:10},
                 {img:this.rootStyleImage('icon_ub'),title:this.rootRouteList('UserSet').title,target:UserSet,link:'UserSet'},
                 {img:this.rootStyleImage('icon_uc'),title:this.rootRouteList('UserPassword').title,target:UserPassword,link:'UserPassword',top:10},
                 {img:this.rootStyleImage('icon_ud'),title:this.rootRouteList('UserAgree').title,target:UserAgree,link:'UserAgree'},
@@ -56,7 +57,7 @@ export default class HomeUser extends CommonRoot {
     homeInit()
     {
       var sLogin=SFuncStorage.upTempValue('user','loginName');
-      
+
       this.setState({loginName:sLogin});
     }
 

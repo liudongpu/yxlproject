@@ -26,7 +26,7 @@ const  rootList =
         name: 'UserLogin',title:'用户登录'
       },
       'UserInfo':{
-        name: 'UserInfo',title:'基本信息'
+        name: 'UserInfo',title:'基本信息',page:'pe/com_uhutu_yxlsite_z_page_PageMemberInfo'
       },
       'UserSet':{
         name: 'UserSet',title:'设置'

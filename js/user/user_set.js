@@ -21,7 +21,7 @@ import SFuncStorage from '../../s/func/s_func_storage';
 
 import UserLogin from '../user/user_login';
 
-var oTemp={flagNotice:1,flagMessage:1,flagLocal:1};
+var oTemp={flagNotice:0,flagMessage:0,flagLocal:0};
 
 export default class UserSet extends CommonRoot {
 

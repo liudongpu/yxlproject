@@ -125,7 +125,8 @@ export default  PStyleBase = StyleSheet.create({
 
       backgroundColor:'#ffffff',
       marginTop:10,
-      marginLeft:10
+      marginLeft:10,
+
     },
     cFormTextArea:
     {
@@ -134,7 +135,8 @@ export default  PStyleBase = StyleSheet.create({
       backgroundColor:'#ffffff',
       marginTop:10,
       fontSize:16,
-      marginLeft:10
+      marginLeft:10,
+      marginBottom:10,
     },
     cFormArrowBox:
     {

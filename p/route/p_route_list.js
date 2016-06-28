@@ -47,7 +47,7 @@ const  rootList =
         name: 'SeeAdvice',title:'公告列表'
       },
       'SeeAdadd':{
-        name: 'SeeAdadd',title:'发布公告'
+        name: 'SeeAdadd',title:'发布公告',page:'pa/com_uhutu_yxlsite_z_page_PageGeracomiumNotice'
       },
       'PeopleInfo':{
         name: 'PeopleInfo',title:'用户信息'

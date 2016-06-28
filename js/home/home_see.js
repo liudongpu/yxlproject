@@ -19,6 +19,7 @@ import PeopleQrcode from '../people/people_qrcode';
 
 
 import CommonRoot from '../common/common_root';
+import CommonForm from '../common/common_form';
 
 
 export default class HomeUser extends CommonRoot {
@@ -33,7 +34,7 @@ export default class HomeUser extends CommonRoot {
     var   data = [
                 {img:this.rootStyleImage('icon_da'),title:this.rootRouteList('PeopleQrcode').title,target:PeopleQrcode,link:'PeopleQrcode',top:10},
                 {img:this.rootStyleImage('icon_db'),title:this.rootRouteList('SeeAdvice').title,target:PageInfo,link:'PageInfo',top:10},
-                {img:this.rootStyleImage('icon_dc'),title:this.rootRouteList('SeeAdadd').title,target:PageInfo,link:'PageInfo'},
+                {img:this.rootStyleImage('icon_dc'),title:this.rootRouteList('SeeAdadd').title,target:CommonForm,link:'SeeAdadd'},
 
                 ];
 

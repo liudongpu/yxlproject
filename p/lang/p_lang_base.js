@@ -56,6 +56,8 @@ const  rootList =
       'user_login_pb':'请输入密码',
       'user_login_button':'登录',
       'user_set_logout':'退出登录',
+      'user_set_confirm':'确认要退出登录吗？',
+
 
       'load_process':'正在处理',
       'camera_select':'请选择',
@@ -64,6 +66,8 @@ const  rootList =
       'camera_lib':'从相册选择',
       'form_upload':'选择图片',
       'form_select':'请选择',
+      'alert_ok':'确定',
+      'alert_cancel':'取消',
 
 
 

@@ -20,6 +20,9 @@ import PStyleProject from '../../p/style/p_style_project';
 import SFuncStorage from '../../s/func/s_func_storage';
 
 import UserLogin from '../user/user_login';
+import SFuncTop from '../../s/func/s_func_top';
+
+
 
 var oTemp={flagNotice:0,flagMessage:0,flagLocal:0};
 
@@ -100,7 +103,7 @@ export default class UserSet extends CommonRoot {
           <View >
 
 
-            <TouchableOpacity style={[PStyleProject.userLoginButton,PStyleProject.userSetBtn]} onPress={()=>this.btnPress()}>
+            <TouchableOpacity style={[PStyleProject.userLoginButton,PStyleProject.userSetBtn]} onPress={()=>{SFuncTop.msgConfirm( this.rootLangBase('user_set_confirm'),'', ()=> this.btnPress())  }}>
               <Text style={PStyleProject.userLoginBtxt}>{this.rootLangBase('user_set_logout')}</Text>
             </TouchableOpacity>
           </View>

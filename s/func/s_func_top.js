@@ -95,7 +95,22 @@ export default class SFuncTop
         [
           //{text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
           //{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-          {text: 'OK', onPress: () => {  if(fOk!=undefined){fOk()} }},
+          {text: this.topLangBase().upLang('alert_ok'), onPress: () => {  if(fOk!=undefined){fOk()} }},
+        ]
+      )
+
+    }
+
+    static msgConfirm(sMessage,sTitle,fOk)
+    {
+      Alert.alert(
+        sTitle?sTitle:'',
+        sMessage,
+        [
+          //{text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+          //{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+          {text: this.topLangBase().upLang('alert_ok'), onPress: () => {  if(fOk!=undefined){fOk()} }},
+          {text: this.topLangBase().upLang('alert_cancel'), onPress: () => {}, style: 'cancel'},
         ]
       )
 
@@ -103,7 +118,8 @@ export default class SFuncTop
 
 
 
-    static crc(str){   
+
+    static crc(str){
         str=encodeURIComponent(str);
         var Crc32Table=new Array(256);
         var i,j;

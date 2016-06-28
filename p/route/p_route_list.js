@@ -38,7 +38,7 @@ const  rootList =
         name: 'UserAgree',title:'意见反馈',page:'pa/com_uhutu_yxlsite_z_page_PageUserAgree'
       },
       'UserAbout':{
-        name: 'UserAbout',title:'关于'
+        name: 'UserAbout',title:'关于',page:'/web/static/about'
       },
       'PeopleQrcode':{
         name: 'PeopleQrcode',title:'扫描二维码'

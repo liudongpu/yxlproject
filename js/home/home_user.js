@@ -20,6 +20,7 @@ import UserAbout from '../user/user_about';
 import SFuncEvent from '../../s/func/s_func_event';
 import SFuncStorage from '../../s/func/s_func_storage';
 import CommonForm from '../common/common_form';
+import CommonHttp from '../common/common_http';
 
 
 
@@ -40,7 +41,7 @@ export default class HomeUser extends CommonRoot {
                 {img:this.rootStyleImage('icon_ub'),title:this.rootRouteList('UserSet').title,target:UserSet,link:'UserSet'},
                 {img:this.rootStyleImage('icon_uc'),title:this.rootRouteList('UserPassword').title,target:UserPassword,link:'UserPassword',top:10},
                 {img:this.rootStyleImage('icon_ud'),title:this.rootRouteList('UserAgree').title,target:CommonForm,link:'UserAgree'},
-                {img:this.rootStyleImage('icon_ue'),title:this.rootRouteList('UserAbout').title,target:UserAbout,link:'UserAbout'}
+                {img:this.rootStyleImage('icon_ue'),title:this.rootRouteList('UserAbout').title,target:CommonHttp,link:'UserAbout'}
                 ];
 
       this.state = {

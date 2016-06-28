@@ -35,7 +35,7 @@ const  rootList =
         name: 'UserPassword',title:'修改密码'
       },
       'UserAgree':{
-        name: 'UserAgree',title:'意见反馈'
+        name: 'UserAgree',title:'意见反馈',page:'pa/com_uhutu_yxlsite_z_page_PageUserAgree'
       },
       'UserAbout':{
         name: 'UserAbout',title:'关于'

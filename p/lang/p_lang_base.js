@@ -56,6 +56,14 @@ const  rootList =
       'user_login_pb':'请输入密码',
       'user_login_button':'登录',
       'user_set_logout':'退出登录',
+      'user_password_a':'原密码',
+      'user_password_b':'新密码',
+      'user_password_c':'重复密码',
+      'user_password_ra':'请输入原密码',
+      'user_password_rb':'请输入新密码',
+      'user_password_rc':'请重复输入新密码',
+      'user_password_btn':'确认修改',
+
 
       'load_process':'正在处理',
       'camera_select':'请选择',
@@ -64,7 +72,7 @@ const  rootList =
       'camera_lib':'从相册选择',
       'form_upload':'选择图片',
       'form_select':'请选择',
-
+      'form_place':'请输入',
 
 
 

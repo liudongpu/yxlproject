@@ -57,6 +57,11 @@ export  class SCFormTextInput extends Component{
   }
 }
 
+
+
+
+
+
 export  class SCFormTextArea extends Component{
 
 
@@ -70,7 +75,9 @@ export  class SCFormTextArea extends Component{
   render() {
     var {pField,pStyle} = this.props;
     return (
-        <AutoGrowingTextInput autoCapitalize='none'  autoCorrect={false}  onChangeText={(text) => {SFuncForm.inFormValue(pField.pageUnique,pField.fieldData,text);this.setState({val:text})}}  style={pStyle.input} placeholder={pField.fieldRemark} value={this.state.val}></AutoGrowingTextInput>
+
+        <AutoGrowingTextInput autoCapitalize='none'  autoCorrect={false}  onChangeText={(text) => {SFuncForm.inFormValue(pField.pageUnique,pField.fieldData,text);this.setState({val:text})}}  style={[pStyle.input]} placeholder={pField.fieldRemark} value={this.state.val}></AutoGrowingTextInput>
+
     );
   }
 }

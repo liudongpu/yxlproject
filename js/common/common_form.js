@@ -230,6 +230,11 @@ export default class CommonForm  extends CommonRoot {
             //判断如果元素不是隐藏元素  则输出展示内容  隐藏元素不输出展示
             if(oField.fieldElement!='hidden')
             {
+              if(oField.fieldRemark=='')
+              {
+                oField.fieldRemark= this.rootLangBase('form_place')+  oField["fieldLabel"];
+              }
+
               aFields.push(
                 <View key={'field'+iField} style={this.rootStyleBase().cFormPageItem}>
                   <View style={this.rootStyleBase().cFormPageLeft}><Text style={this.rootStyleBase().cFormPageText}>{oField["fieldLabel"]}</Text></View>

@@ -16,7 +16,6 @@ import {
 import PageInfo from '../page/page_info';
 import UserSet from '../user/user_set';
 import UserPassword from '../user/user_password';
-import UserAgree from '../user/user_agree';
 import UserAbout from '../user/user_about';
 import SFuncEvent from '../../s/func/s_func_event';
 import SFuncStorage from '../../s/func/s_func_storage';
@@ -40,7 +39,7 @@ export default class HomeUser extends CommonRoot {
                 {img:this.rootStyleImage('icon_ua'),title:this.rootRouteList('UserInfo').title,target:CommonForm,link:'UserInfo',top:10},
                 {img:this.rootStyleImage('icon_ub'),title:this.rootRouteList('UserSet').title,target:UserSet,link:'UserSet'},
                 {img:this.rootStyleImage('icon_uc'),title:this.rootRouteList('UserPassword').title,target:UserPassword,link:'UserPassword',top:10},
-                {img:this.rootStyleImage('icon_ud'),title:this.rootRouteList('UserAgree').title,target:UserAgree,link:'UserAgree'},
+                {img:this.rootStyleImage('icon_ud'),title:this.rootRouteList('UserAgree').title,target:CommonForm,link:'UserAgree'},
                 {img:this.rootStyleImage('icon_ue'),title:this.rootRouteList('UserAbout').title,target:UserAbout,link:'UserAbout'}
                 ];
 

@@ -18,10 +18,10 @@ const options = {
   aspectX: 1, // android only - aspectX:aspectY, the cropping image's ratio of width to height
   aspectY: 1, // android only - aspectX:aspectY, the cropping image's ratio of width to height
   quality: 1, // 0 to 1, photos only
-  //angle: 0, // android only, photos only
-  allowsEditing: true, // Built in functionality to resize/reposition the image after selection
+  angle: 0, // android only, photos only
+  //allowsEditing: true, // Built in functionality to resize/reposition the image after selection
   noData: true, // photos only - disables the base64 `data` field from being generated (greatly improves performance on large photos)
-  
+
 };
 
 

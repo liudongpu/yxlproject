@@ -56,11 +56,12 @@ export default class SFuncApi
     static uploadFile(sUrl,fCallBack)
     {
       let formData = new FormData();
+
       //formData.append('token', result.data);
       var aNames=sUrl.split('/');
 
       var sImgName=aNames[aNames.length-1];
-      if(!sImgName)sImgName='img.jpg';
+      if(!sImgName||sImgName.indexOf('.')==-1)sImgName='img.jpg';
 
       formData.append('file', {uri:sUrl, name: sImgName, type: 'application/octex-stream'});
       let opt={};

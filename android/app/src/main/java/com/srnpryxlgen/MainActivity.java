@@ -1,6 +1,7 @@
-package com.yxlproject;
+package com.srnpryxlgen;
 
 import com.facebook.react.ReactActivity;
+import com.liuchungui.react_native_umeng_push.UmengPushPackage;
 import com.eguma.barcodescanner.BarcodeScanner;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.imagepicker.ImagePickerPackage;
@@ -38,6 +39,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new UmengPushPackage(),
             new BarcodeScanner(),
             new RCTCameraPackage(),
             new ImagePickerPackage()

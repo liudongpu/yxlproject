@@ -14,7 +14,7 @@ import SComponentNavbar from '../../s/component/s_component_navbar';
 import PLangBase from '../../p/lang/p_lang_base';
 import SFuncTop from '../../s/func/s_func_top';
 
-
+import UmengPush from 'react-native-umeng-push';
 
 
 
@@ -22,6 +22,20 @@ export default class LayoutMain extends Component {
   constructor(props) {
         super(props);
 
+        //获取DeviceToken
+        UmengPush.getDeviceToken(deviceToken => {
+            //console.warn("deviceToken: ", deviceToken);
+        });
+
+        //接收到推送消息回调
+        UmengPush.didReceiveMessage(message => {
+            //console.warn("didReceiveMessage:", message);
+        });
+
+        //点击推送消息打开应用回调
+        UmengPush.didOpenMessage(message => {
+            //console.warn("didOpenMessage:", message);
+        });
 
     }
 

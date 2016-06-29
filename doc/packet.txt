@@ -26,7 +26,13 @@ rnpm link react-native-image-picker
 
 
 
+
 #安装二维码相关
 npm install --save react-native-barcode-scanner-universal
 rnpm link react-native-camera
 rnpm link react-native-barcodescanner
+
+
+#安装友盟推送相关
+rnpm install react-native-umeng-push
+https://github.com/liuchungui/react-native-umeng-push

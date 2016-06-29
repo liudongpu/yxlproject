@@ -66,6 +66,7 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
+  NSLog(@"%@", deviceToken);
   //获取deviceToken
   [RCTUmengPush application:application didRegisterDeviceToken:deviceToken];
 }

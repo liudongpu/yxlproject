@@ -13,8 +13,8 @@ const options = {
   mediaType: 'photo', // 'photo' or 'video'
   videoQuality: 'medium', // 'low', 'medium', or 'high'
   durationLimit: 10, // video recording max time in seconds
-  //maxWidth: 1000, // photos only
-  //maxHeight: 1000, // photos only
+  maxWidth: 1000, // photos only
+  maxHeight: 1000, // photos only
   aspectX: 1, // android only - aspectX:aspectY, the cropping image's ratio of width to height
   aspectY: 1, // android only - aspectX:aspectY, the cropping image's ratio of width to height
   quality: 1, // 0 to 1, photos only

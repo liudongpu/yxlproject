@@ -130,5 +130,56 @@ export default  PStyleProject = StyleSheet.create({
   },
 
 
+  homeMsgList:
+  {
+
+  },
+  homeMsgListBack:
+  {
+    backgroundColor:'#ffffff',
+    borderBottomWidth:1,
+    borderBottomColor:'#ccc',
+  },
+
+  homeMsgListItem:
+  {
+    margin:10,
+
+  },
+  homeMsgListTop:
+  {
+    flex:3,
+    flexDirection : 'row',
+
+
+  },
+  homeMsgListTip:
+  {
+    backgroundColor:'#f45555',
+    color:'#ffffff',
+    fontSize:12,
+    height:20,
+    padding:3,
+    marginLeft:5,
+    borderRadius:4,
+
+  },
+  homeMsgListName:
+  {
+    fontSize:20,
+
+  },
+  homeMsgListTime:
+  {
+    flex:1,
+    textAlign:'right',
+    color:'#afafaf',
+  },
+  homeMsgListInfo:
+  {
+    marginTop:10,
+    color:'#afafaf',
+  },
+
 
 });

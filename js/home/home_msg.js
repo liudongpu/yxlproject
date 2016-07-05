@@ -24,6 +24,7 @@ import CommonRoot from '../common/common_root';
 import UserLogin from '../user/user_login';
 import SFuncEvent from '../../s/func/s_func_event';
 import SFuncApi from '../../s/func/s_func_api';
+import PStyleProject from '../../p/style/p_style_project';
 
 
 
@@ -85,8 +86,8 @@ export default class HomeMsg extends CommonRoot {
           <View  style={this.rootStyleBase().homeUserViewBack}>
 
             <View  style={this.rootStyleBase().wFlex}>
+                <View style={this.rootStyleBase().wHeightA}/>
                 <ListView
-
                 renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
                 dataSource={this.state.dataSource}
                 renderRow={this.renderNews.bind(this)}
@@ -114,34 +115,21 @@ export default class HomeMsg extends CommonRoot {
       style={this.rootStyleBase().cListViewImage}
        />
        */
-        var sShowName=news.member_name;
-        if(sShowName.length>2)
-        {
-          sShowName=sShowName.substring(sShowName.length-2,sShowName.length);
-        }
-        var aBgColors=['#CC3399','#FF9900','#666633','#99CC33','#CC6600','#336633','#FF6666'];
-
-
-        //var iIndex=Math.floor(Math.random()*aBgColors.length);
-        var iIndex=Math.floor(parseInt(news.member_code.substring(5),16)%aBgColors.length);
-
-        var sBgColor=aBgColors[iIndex];
+        var sShowName=news.fromName;
 
             return (
                 <TouchableOpacity onPress={()=>{this.onPressNews(news)}}>
-                    <View >
-                        <View style={this.rootStyleBase().cListViewBox}>
+                    <View style={PStyleProject.homeMsgListBack}>
+                        <View style={PStyleProject.homeMsgListItem}>
+                            <View style={PStyleProject.homeMsgListTop}>
+                                <Text style={PStyleProject.homeMsgListName}>{news.fromName}</Text>
+                                <Text style={PStyleProject.homeMsgListTip}>user</Text>
+                                <Text style={PStyleProject.homeMsgListTime}>{news.msgTime}</Text>
+                            </View>
+                            <View>
+                                <Text style={PStyleProject.homeMsgListInfo}>{news.msgContent}</Text>
+                            </View>
 
-                            <View  style={[this.rootStyleBase().cListViewLeft,{backgroundColor:sBgColor}]}>
-                              <Text  style={this.rootStyleBase().cListViewName}>{sShowName}</Text>
-                            </View>
-                            <View style={this.rootStyleBase().cListViewCenter}>
-                                <Text style={this.rootStyleBase().cListViewText}>{news.member_name}</Text>
-                                <Text style={this.rootStyleBase().cListViewDesc}>{iIndex}-description</Text>
-                            </View>
-                            <View style={this.rootStyleBase().cListViewRight}>
-                              <View style={[this.rootStyleBase().cListViewIcon,this.rootStyleBase().wArrowTip]}></View>
-                            </View>
                         </View>
                     </View>
                 </TouchableOpacity>

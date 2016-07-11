@@ -185,7 +185,7 @@ export default  PStyleProject = StyleSheet.create({
 
   userMsgListBox:
   {
-    height:Dimensions.get("window").height-topMargin-30,
+    height:Dimensions.get("window").height-98,
   }
 
 });

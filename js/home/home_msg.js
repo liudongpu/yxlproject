@@ -103,7 +103,7 @@ export default class HomeMsg extends CommonRoot {
 
     onPressNews(news)
     {
-      this.rootNavPage('UserMsg',UserMsg,{pCode:news.member_code,navName:news.member_name});
+      this.rootNavPage('UserMsg',UserMsg,{pCode:news.fromCode,navName:news.member_name});
     }
 
     renderNews(news) {

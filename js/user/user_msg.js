@@ -39,8 +39,12 @@ export default class UserMsg extends CommonRoot {
           super(props);
            var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
            this.state = {
-             dataSource: ds
+             dataSource: ds,
+             memberCode:this.rootNavParams('pCode'),
            };
+
+           this.listHeight = 0;
+           this.footerY = 0;
 
            //SFuncEvent.addEvent('home_index_refresh_data',()=>{this.fetchInit()});
 
@@ -79,7 +83,8 @@ export default class UserMsg extends CommonRoot {
 
 
           this.rootFuncApi().post("api/genapp/post/usermsg",{
-            keyWord:sText
+            keyWord:sText,
+            fromCode:this.state.memberCode
           },(data)=>{this.fetchSuccess(data)});
 
       }
@@ -92,23 +97,30 @@ export default class UserMsg extends CommonRoot {
 
 
           <View  style={[this.rootStyleBase().container,this.rootStyleBase().wFlex,this.rootStyleBase().homeUserViewBack]}>
-            <KeyboardAwareScrollView>
+            <KeyboardAwareScrollView  style={PStyleProject.userMsgListAll} enableAutoAutomaticScroll={false}>
               <View  style={PStyleProject.userMsgListBox}>
-                  <View style={this.rootStyleBase().wHeightA}/>
-                  <View>
+
+
                     <ListView
+                    ref='_listView'
+                    onLayout={(e)=>{this.listHeight = e.nativeEvent.layout.height;}}
                     renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
                     dataSource={this.state.dataSource}
                     renderRow={this.renderNews.bind(this)}
+
+                    renderFooter={this.myRenderFooter.bind(this)}
                      />
-                   </View>
-                   <View>
 
-                   </View>
+
               </View>
-              <TextInput
 
-               style={{height:30,backgroundColor:'#ff0000'}}/>
+              <View  style={PStyleProject.userMsgListPut}>
+                <TextInput
+                ref='_textInput'
+                onChangeText={(text) =>{this.state.inputContentText=text}}
+                 style={PStyleProject.userMsgListInput}/>
+              </View>
+
                </KeyboardAwareScrollView>
           </View>
 
@@ -116,6 +128,18 @@ export default class UserMsg extends CommonRoot {
 
       )
     }
+
+    myRenderFooter(e){
+      return <View onLayout={(e)=> {
+        this.footerY= e.nativeEvent.layout.y;
+
+        if (this.listHeight && this.footerY &&this.footerY>this.listHeight) {
+          var scrollDistance = this.listHeight - this.footerY;
+          this.refs._listView.scrollTo({y:-scrollDistance});
+        }
+      }}/>
+    }
+
 
     onPressNews(news)
     {
@@ -131,24 +155,39 @@ export default class UserMsg extends CommonRoot {
       style={this.rootStyleBase().cListViewImage}
        />
        */
-        var sShowName=news.fromName;
+        var sShowName=news.toName;
+
+        var styleRightContent=PStyleProject.userMsgListContentA;
+        var styleAlignRight={};
+        var styleContent=PStyleProject.userMsgViewContentA;
+        if(news.sendType==0)
+        {
+          styleRightContent=PStyleProject.userMsgListContentB;
+          styleAlignRight=PStyleProject.userMsgAlignRight;
+          styleContent=PStyleProject.userMsgViewContentB;
+          sShowName=news.fromName;
+
+        }
+
 
             return (
-                <TouchableOpacity onPress={()=>{this.onPressNews(news)}}>
-                    <View style={PStyleProject.homeMsgListBack}>
-                        <View style={PStyleProject.homeMsgListItem}>
-                            <View style={PStyleProject.homeMsgListTop}>
-                                <Text style={PStyleProject.homeMsgListName}>{news.fromName}</Text>
-                                <Text style={PStyleProject.homeMsgListTip}>user</Text>
-                                <Text style={PStyleProject.homeMsgListTime}>{news.msgTime}</Text>
-                            </View>
-                            <View>
-                                <Text style={PStyleProject.homeMsgListInfo}>{news.msgContent}</Text>
-                            </View>
 
-                        </View>
+                    <View style={PStyleProject.userMsgInfoBox}>
+                      <View style={PStyleProject.userMsgViewTime}>
+                        <Text style={PStyleProject.userMsgListTime}>{news.msgTime}</Text>
+                      </View>
+                      <View>
+                        <Text style={[PStyleProject.userMsgListName,styleAlignRight]}>{sShowName}</Text>
+                      </View>
+                      <View style={[PStyleProject.userMsgViewContent,styleContent]}>
+
+                          <Text style={[PStyleProject.userMsgListContent,styleRightContent,styleAlignRight]}>{news.msgContent}</Text>
+
+                      </View>
+
+
                     </View>
-                </TouchableOpacity>
+
             );
         }
 

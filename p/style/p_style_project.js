@@ -182,10 +182,119 @@ export default  PStyleProject = StyleSheet.create({
     color:'#afafaf',
   },
 
+  userMsgListAll:
+  {
 
+  },
   userMsgListBox:
   {
-    height:Dimensions.get("window").height-98,
-  }
+    height:Dimensions.get("window").height-118,
+  },
+  userMsgListPut:
+  {
+    height:50,
+    backgroundColor:'#fafafc',
+    borderTopColor:'#d1d1d1',
+    borderTopWidth:1,
+    flexDirection : 'column',
+    justifyContent:'center',
+    flex:2,
+
+  },
+  userMsgListInput:
+  {
+    height:40,
+    margin:5,
+    backgroundColor:'#ffffff',
+    borderColor:'#c5c8cd',
+    borderWidth:1,
+    borderRadius:5,
+    flex:1,
+    paddingLeft:10,
+  },
+  userMsgViewTime:
+  {
+    alignItems:'center',
+    borderRadius:5,
+    backgroundColor:'#d7d7d9',
+    width:160,
+    marginLeft:Dimensions.get("window").width/2-80,
+    marginTop:15,
+  },
+  userMsgListTime:
+  {
+
+    color:'#ffffff',
+
+    flex:1,
+    margin:5,
+    textAlign:'center',
+
+
+  },
+  userMsgListName:
+  {
+    margin:15,
+    color:'#a8a9ab',
+
+  },
+  userMsgViewContent:
+  {
+    margin:15,
+    marginTop:0,
+
+
+    borderRadius:10,borderColor:'#d1d1d1',borderWidth:1,
+
+    flex:1,
+
+
+  },
+  userMsgViewContentA:
+  {
+
+    backgroundColor:'#ffffff',
+    alignSelf:'flex-start',
+
+  },
+  userMsgViewContentB:
+  {
+
+    alignSelf:'flex-end',
+      backgroundColor:'#fc605e',
+  },
+
+  userMsgListContent:
+  {
+    margin:10,
+
+
+  },
+  userMsgListContentA:
+  {
+
+
+  },
+  userMsgListContentB:
+  {
+
+    color:'#ffffff',
+  },
+  userMsgInfoBox:
+  {
+    flex:1,
+  },
+  userMsgAlignRight:
+  {
+
+    textAlign:'right',
+  },
+
+  userMsgAlignCont:
+  {
+
+    color:'#ffffff'
+  },
+
 
 });

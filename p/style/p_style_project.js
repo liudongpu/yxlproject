@@ -5,6 +5,7 @@ import {
     , Dimensions, PixelRatio,Platform
 } from 'react-native';
 
+const topMargin=Platform.OS === 'ios' ? 68 : 48;
 
 
 
@@ -181,5 +182,10 @@ export default  PStyleProject = StyleSheet.create({
     color:'#afafaf',
   },
 
+
+  userMsgListBox:
+  {
+    height:Dimensions.get("window").height-topMargin-30,
+  }
 
 });

@@ -25,6 +25,8 @@ rnpm link react-native-image-picker
     <!-- -->
 
 
+#解决ios输入框键盘遮挡问题
+npm i react-native-smart-scroll-view --save
 
 
 #安装二维码相关

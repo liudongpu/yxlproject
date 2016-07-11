@@ -40,6 +40,9 @@ const  rootList =
       'UserAbout':{
         name: 'UserAbout',title:'关于',page:'/web/static/about'
       },
+      'UserMsg':{
+        name: 'UserMsg',title:'消息'
+      },
       'PeopleQrcode':{
         name: 'PeopleQrcode',title:'扫描二维码'
       },

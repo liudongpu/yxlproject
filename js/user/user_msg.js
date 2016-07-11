@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 
 import PageTemplate from '../page/page_template';
-import UserMsg from '../user/user_msg';
+import PeopleInfo from '../people/people_info';
 
 import SFuncStorage from '../../s/func/s_func_storage';
 
@@ -25,10 +25,15 @@ import UserLogin from '../user/user_login';
 import SFuncEvent from '../../s/func/s_func_event';
 import SFuncApi from '../../s/func/s_func_api';
 import PStyleProject from '../../p/style/p_style_project';
+import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
+import dismissKeyboard from 'dismissKeyboard';
+
+import SmartScrollView from 'react-native-smart-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 
 
-export default class HomeMsg extends CommonRoot {
+export default class UserMsg extends CommonRoot {
 
       constructor(props) {
           super(props);
@@ -45,6 +50,7 @@ export default class HomeMsg extends CommonRoot {
 
         //this.rootNavMount('MainMain',()=>{this.fetchInit()});
         this.fetchInit();
+
 
 
       }
@@ -83,19 +89,29 @@ export default class HomeMsg extends CommonRoot {
       //this.props.nav.setState({title:'xx'});
 
       return (
-          <View  style={this.rootStyleBase().homeUserViewBack}>
-
-            <View  style={this.rootStyleBase().wFlex}>
-                <View style={this.rootStyleBase().wHeightA}/>
-                <ListView
-                renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
-                dataSource={this.state.dataSource}
-                renderRow={this.renderNews.bind(this)}
-                 />
 
 
-            </View>
+          <View  style={[this.rootStyleBase().container,this.rootStyleBase().wFlex,this.rootStyleBase().homeUserViewBack]}>
+            <KeyboardAwareScrollView>
+              <View  style={PStyleProject.userMsgListBox}>
+                  <View style={this.rootStyleBase().wHeightA}/>
+                  <View>
+                    <ListView
+                    renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
+                    dataSource={this.state.dataSource}
+                    renderRow={this.renderNews.bind(this)}
+                     />
+                   </View>
+                   <View>
+
+                   </View>
+              </View>
+              <TextInput
+
+               style={{height:30,backgroundColor:'#ff0000'}}/>
+               </KeyboardAwareScrollView>
           </View>
+
 
 
       )
@@ -103,7 +119,7 @@ export default class HomeMsg extends CommonRoot {
 
     onPressNews(news)
     {
-      this.rootNavPage('UserMsg',UserMsg,{pCode:news.member_code,navName:news.member_name});
+      this.rootNavPage('PeopleInfo',PeopleInfo,{pCode:news.member_code,navName:news.member_name});
     }
 
     renderNews(news) {

@@ -9,6 +9,9 @@ import {
 
 const topWindow = {width,height}=Dimensions.get("window");
 
+
+const topMargin=Platform.OS === 'ios' ? 68 : 48;
+
 //导航条的颜色
 const topColor={
 
@@ -394,7 +397,7 @@ export default  PStyleBase = StyleSheet.create({
     container: {
       flex: 1,
       //justifyContent: 'center',
-      marginTop:Platform.OS === 'ios' ? 68 : 48,
+      marginTop:topMargin,
       flexDirection: 'column',
       backgroundColor: '#FFFFFF',
     },

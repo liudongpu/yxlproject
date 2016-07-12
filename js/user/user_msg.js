@@ -41,11 +41,13 @@ export default class UserMsg extends CommonRoot {
            this.state = {
              dataSource: ds,
              memberCode:this.rootNavParams('pCode'),
+             inputContentText:''
            };
 
            this.listHeight = 0;
            this.footerY = 0;
 
+           this.userMsgNowCode='';
            //SFuncEvent.addEvent('home_index_refresh_data',()=>{this.fetchInit()});
 
 
@@ -72,9 +74,14 @@ export default class UserMsg extends CommonRoot {
 
       fetchSuccess(oData)
       {
-        this.setState({
-            dataSource : this.state.dataSource.cloneWithRows(oData.infos)
-        });
+        var sLastCode=oData.infos[oData.infos.length-1].msgCode;
+        if(sLastCode!=this.userMsgNowCode)
+        {
+          this.userMsgNowCode=sLastCode;
+          this.setState({
+              dataSource : this.state.dataSource.cloneWithRows(oData.infos)
+          });
+        }
       }
 
 
@@ -97,7 +104,9 @@ export default class UserMsg extends CommonRoot {
 
 
           <View  style={[this.rootStyleBase().container,this.rootStyleBase().wFlex,this.rootStyleBase().homeUserViewBack]}>
-            <KeyboardAwareScrollView  style={PStyleProject.userMsgListAll} >
+            <KeyboardAwareScrollView  style={PStyleProject.userMsgListAll} ref="scroll"
+              onKeyboardWillHide={()=>{this.onPressButton();this.refs.scroll.scrollToPosition(0, 0, true);}}
+             >
               <View  style={PStyleProject.userMsgListBox}>
 
 
@@ -118,10 +127,10 @@ export default class UserMsg extends CommonRoot {
                 <View style={PStyleProject.userMsgInputBox} >
                 <TextInput
                 ref='_textInput'
-                onChangeText={(text) =>{this.state.inputContentText=text}}
-                 style={PStyleProject.userMsgListInput}/>
+                onChangeText={(text) =>{this.setState({inputContentText:text})}}
+                 style={PStyleProject.userMsgListInput} value={this.state.inputContentText}/>
                  </View>
-                 <TouchableOpacity  style={PStyleProject.userMsgBtnBox} onPress={this._onPressButton}>
+                 <TouchableOpacity  style={PStyleProject.userMsgBtnBox} onPress={()=>this.onPressButton()}>
                   <View style={PStyleProject.userMsgBtnView}>
                     <Text style={PStyleProject.userMsgBtnText}>{this.rootLangBase('user_msg_send')}</Text>
                   </View>
@@ -134,6 +143,19 @@ export default class UserMsg extends CommonRoot {
 
 
       )
+    }
+
+    onPressButton()
+    {
+
+      this.rootFuncApi().post("api/genapp/post/usermsg",{
+        type:1,
+        fromCode:this.state.memberCode,
+        content:this.state.inputContentText,
+
+      },(data)=>{this.fetchSuccess(data)});
+
+      this.setState({inputContentText:''});
     }
 
     myRenderFooter(e){

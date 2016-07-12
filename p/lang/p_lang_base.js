@@ -37,6 +37,7 @@ const  rootList =
       'user_set_notice':'接收消息',
       'user_set_local':'本地消息',
       'user_set_message':'接收咨询',
+      'user_msg_send':'发送',
       'people_info_carda':'照片管理',
       'people_info_cardb':'查房历史',
       'people_info_cardc':'健康数据',

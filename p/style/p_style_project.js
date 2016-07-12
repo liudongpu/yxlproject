@@ -196,10 +196,15 @@ export default  PStyleProject = StyleSheet.create({
     backgroundColor:'#fafafc',
     borderTopColor:'#d1d1d1',
     borderTopWidth:1,
-    flexDirection : 'column',
-    justifyContent:'center',
-    flex:2,
+    flexDirection : 'row',
 
+    flex:1,
+
+
+  },
+  userMsgInputBox:
+  {
+    flex:1,
   },
   userMsgListInput:
   {
@@ -209,9 +214,33 @@ export default  PStyleProject = StyleSheet.create({
     borderColor:'#c5c8cd',
     borderWidth:1,
     borderRadius:5,
-    flex:1,
+
+
     paddingLeft:10,
   },
+  userMsgBtnBox:
+  {
+
+    width:80,
+  },
+  userMsgBtnView:
+  {
+    flex:1,
+    borderColor:'#c5c8cd',
+    backgroundColor:'#efeff2',
+    borderWidth:1,
+    borderRadius:5,
+    height:40,
+    width:70,
+    margin:5,
+  },
+  userMsgBtnText:
+  {
+    lineHeight:30,
+    fontSize:16,
+    textAlign:'center'
+  },
+
   userMsgViewTime:
   {
     alignItems:'center',

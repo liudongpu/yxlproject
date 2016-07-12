@@ -97,7 +97,7 @@ export default class UserMsg extends CommonRoot {
 
 
           <View  style={[this.rootStyleBase().container,this.rootStyleBase().wFlex,this.rootStyleBase().homeUserViewBack]}>
-            <KeyboardAwareScrollView  style={PStyleProject.userMsgListAll} enableAutoAutomaticScroll={false}>
+            <KeyboardAwareScrollView  style={PStyleProject.userMsgListAll} >
               <View  style={PStyleProject.userMsgListBox}>
 
 
@@ -115,10 +115,17 @@ export default class UserMsg extends CommonRoot {
               </View>
 
               <View  style={PStyleProject.userMsgListPut}>
+                <View style={PStyleProject.userMsgInputBox} >
                 <TextInput
                 ref='_textInput'
                 onChangeText={(text) =>{this.state.inputContentText=text}}
                  style={PStyleProject.userMsgListInput}/>
+                 </View>
+                 <TouchableOpacity  style={PStyleProject.userMsgBtnBox} onPress={this._onPressButton}>
+                  <View style={PStyleProject.userMsgBtnView}>
+                    <Text style={PStyleProject.userMsgBtnText}>{this.rootLangBase('user_msg_send')}</Text>
+                  </View>
+                 </TouchableOpacity>
               </View>
 
                </KeyboardAwareScrollView>

@@ -324,6 +324,36 @@ export default  PStyleProject = StyleSheet.create({
 
     color:'#ffffff'
   },
+  peopleAgreeItemBox:
+  {
+
+  },
+  peopleAgreeItemDate:
+  {
+    backgroundColor:'#f9f9fa',
+    color:'#999999',
+    lineHeight:30,
+    height:40,
+    borderColor:'#cccccc',
+    borderWidth:1,
+    paddingLeft:10
+  },
+  peopleAgreeItemInfo:
+  {
+    margin:10,
+    fontSize:14,
+  },
+  peopleAgreeItemName:
+  {
+    margin:10,
+    fontSize:14,
+  },
+  peopleAgreeItemAgree:
+  {
+    margin:10,
+    color:'#937558',
+    fontSize:14,
+  },
 
 
 });

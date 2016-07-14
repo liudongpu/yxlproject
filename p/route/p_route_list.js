@@ -61,6 +61,21 @@ const  rootList =
       'PeopleAgree':{
         name: 'PeopleAgree',title:'查房历史'
       },
+      'PeopleReport':{
+        name: 'PeopleReport',title:'健康数据'
+      },
+      'PeopleReportA':{
+        name: 'PeopleReportA',title:'血压'
+      },
+      'PeopleReportB':{
+        name: 'PeopleReportB',title:'血氧'
+      },
+      'PeopleReportC':{
+        name: 'PeopleReportC',title:'血糖'
+      },
+      'PeopleReportD':{
+        name: 'PeopleReportD',title:'体温'
+      },
       'PeoplePressureAdd':{
         name: 'PeoplePressureAdd',title:'添加血压',page:'pa/com_uhutu_yxlsite_z_page_DataPressure'
       },

@@ -17,7 +17,7 @@ import CommonRoot from '../common/common_root';
 import CommonForm from '../common/common_form';
 import PeopleImage from './people_image';
 import PeopleAgree from './people_agree';
-
+import PeopleReport from './people_report';
 
 export default class PeopleInfo  extends CommonRoot {
 
@@ -42,7 +42,7 @@ export default class PeopleInfo  extends CommonRoot {
               <View style={this.rootStyleBase().peopleInfoCard}>
                 {this._nodeCard('people_info_carda','PeopleImage',PeopleImage)}
                 {this._nodeCard('people_info_cardb','PeopleAgree',PeopleAgree)}
-                {this._nodeCard('people_info_cardc','PeopleImage',PeopleImage)}
+                {this._nodeCard('people_info_cardc','PeopleReport',PeopleReport)}
 
 
               </View>

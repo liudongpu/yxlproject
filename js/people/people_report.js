@@ -37,6 +37,7 @@ export default class PeopleReport  extends CommonRoot {
               ];
 
     this.state = {
+      memberCode:this.rootNavParams('pCode'),
       dataSource: ds.cloneWithRows(data)
     };
 
@@ -62,7 +63,7 @@ export default class PeopleReport  extends CommonRoot {
 
   onPressNews(news) {
     var oProp={};
-    oProp[PConfigBase.upDefineConfig().nparamsPage]='http://wx.jk.yxl9.cn/yhmanage/web/wxface/'+news.url+'?u_member_code=MI150520100001';
+    oProp[PConfigBase.upDefineConfig().nparamsPage]='http://wx.jk.yxl9.cn/yhmanage/web/wxface/'+news.url+'?u_member_code='+this.state.memberCode;
       this.rootNavPage(news.link,news.target,oProp);
   }
 

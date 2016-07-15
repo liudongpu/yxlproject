@@ -10,6 +10,7 @@ import {
     Navigator,
     TouchableOpacity,
     ListView,
+    InteractionManager,
     RecyclerViewBackedScrollView,
     StyleSheet
 } from 'react-native';
@@ -87,6 +88,10 @@ export default class UserMsg extends CommonRoot {
           this.setState({
               dataSource : this.state.dataSource.cloneWithRows(oData.infos)
           });
+          //console.warn('a');
+
+          //this.refs._listView.scrollTo({y:-99999999});
+
         }
       }
 
@@ -106,11 +111,17 @@ export default class UserMsg extends CommonRoot {
     render() {
       //this.props.nav.setState({title:'xx'});
 
+
+      const Component = Platform.select({
+        ios: () => KeyboardAwareScrollView,
+        android: () => View,
+      })();
+
       return (
 
 
           <View  style={[this.rootStyleBase().container,this.rootStyleBase().wFlex,this.rootStyleBase().homeUserViewBack]}>
-            <KeyboardAwareScrollView  style={PStyleProject.userMsgListAll} ref="scroll"
+            <Component  style={PStyleProject.userMsgListAll} ref="scroll"
               onKeyboardWillHide={()=>{this.onPressButton();this.refs.scroll.scrollToPosition(0, 0, true);}}
              >
               <View  style={PStyleProject.userMsgListBox}>
@@ -122,8 +133,15 @@ export default class UserMsg extends CommonRoot {
                     renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
                     dataSource={this.state.dataSource}
                     renderRow={this.renderNews.bind(this)}
-
+                    initialListSize={20}
                     renderFooter={this.myRenderFooter.bind(this)}
+
+                    onContentSizeChange={(contentWidth, contentHeight) => {
+                      //console.warn('onContentSizeChange');
+                      //console.warn(contentHeight);
+                      //this.refs._listView.scrollTo({y: contentHeight})
+                      this.refs._listView.initialListSize=20;
+                      }}
                      />
 
 
@@ -143,7 +161,7 @@ export default class UserMsg extends CommonRoot {
                  </TouchableOpacity>
               </View>
 
-               </KeyboardAwareScrollView>
+               </Component>
           </View>
 
 
@@ -153,6 +171,7 @@ export default class UserMsg extends CommonRoot {
 
     onPressButton()
     {
+
 
       this.rootFuncApi().post("api/genapp/post/usermsg",{
         type:1,
@@ -167,9 +186,11 @@ export default class UserMsg extends CommonRoot {
     myRenderFooter(e){
       return <View onLayout={(e)=> {
         this.footerY= e.nativeEvent.layout.y;
+        //console.warn('myRenderFooter');
 
         if (this.listHeight && this.footerY &&this.footerY>this.listHeight) {
           var scrollDistance = this.listHeight - this.footerY;
+
           this.refs._listView.scrollTo({y:-scrollDistance});
         }
       }}/>

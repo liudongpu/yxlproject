@@ -188,7 +188,7 @@ export default  PStyleProject = StyleSheet.create({
   },
   userMsgListBox:
   {
-    height:Dimensions.get("window").height-118,
+    height:Dimensions.get("window").height-(Platform.OS === 'ios' ?118:128),
   },
   userMsgListPut:
   {

@@ -57,8 +57,14 @@ export default class UserMsg extends CommonRoot {
         //this.rootNavMount('MainMain',()=>{this.fetchInit()});
         this.fetchInit();
 
+        this.userMsgTimer=setInterval(()=>{this.fetchInit()},2000);
 
 
+      }
+
+      componentWillUnmount(){
+        clearInterval(this.userMsgTimer);
+        this.userMsgTimer=null;
       }
 
       fetchInit()

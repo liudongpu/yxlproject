@@ -43,6 +43,9 @@ const  rootList =
       'UserMsg':{
         name: 'UserMsg',title:'消息'
       },
+      'UserNotice':{
+        name: 'UserNotice',title:'公告列表'
+      },
       'PeopleQrcode':{
         name: 'PeopleQrcode',title:'扫描二维码'
       },

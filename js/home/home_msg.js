@@ -46,7 +46,7 @@ export default class HomeMsg extends CommonRoot {
         //this.rootNavMount('MainMain',()=>{this.fetchInit()});
         this.fetchInit();
 
-
+        this.userMsgTimer=setInterval(()=>{this.fetchInit()},2000);
       }
 
       fetchInit()

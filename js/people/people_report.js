@@ -20,6 +20,7 @@ import CommonForm from '../common/common_form';
 import PeopleImage from './people_image';
 import PStyleProject from '../../p/style/p_style_project';
 import CommonHttp from '../common/common_url';
+import SFuncTop from '../../s/func/s_func_top';
 
 
 export default class PeopleReport  extends CommonRoot {
@@ -63,7 +64,7 @@ export default class PeopleReport  extends CommonRoot {
 
   onPressNews(news) {
     var oProp={};
-    oProp[PConfigBase.upDefineConfig().nparamsPage]='http://wx.jk.yxl9.cn/yhmanage/web/wxface/'+news.url+'?u_member_code='+this.state.memberCode;
+    oProp[PConfigBase.upDefineConfig().nparamsPage]=SFuncTop.topConfigBase().upApiConfig().yhUrl+'/yhmanage/web/wxface/'+news.url+'?u_member_code='+this.state.memberCode;
       this.rootNavPage(news.link,news.target,oProp);
   }
 

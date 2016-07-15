@@ -7,7 +7,8 @@ const apiConfig=
 {
   dev:{
     apiUrl:'https://dev-yxl.ntw.srnpr.com/',
-    uploadUrl:'http://ali-cfile.ichsy.com/cfiles/upload/zoofile',
+    uploadUrl:'http://art-upload.iqhsy.com/mfile/upload/art',
+    yhUrl:'http://wx.jk.yxl9.cn',
     apiKey:'tesetkey'
   }
 }

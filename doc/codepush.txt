@@ -5,6 +5,7 @@ code-push release-react YxlGenIos --deploymentName Production ios
 code-push release-react YxlGenAndroid --deploymentName Production android
 
 code-push deployment ls YxlGenIos -k
+code-push deployment ls YxlGenAndroid -k
 
 
 

@@ -15,6 +15,7 @@ import PLangBase from '../../p/lang/p_lang_base';
 import SFuncTop from '../../s/func/s_func_top';
 
 import UmengPush from 'react-native-umeng-push';
+import codePush from "react-native-code-push";
 
 
 
@@ -55,7 +56,7 @@ export default class LayoutMain extends Component {
            return false;
       });
 
-
+      codePush.sync();
     }
 
   _renderScene(router, navigator) {

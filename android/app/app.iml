@@ -80,7 +80,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/jni" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/shaders" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/build/.DS_Store" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/assets" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/blame" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/builds" />
@@ -145,5 +144,6 @@
     <orderEntry type="module" module-name="react-native-umeng-push" exported="" />
     <orderEntry type="module" module-name="react-native-barcodescanner" exported="" />
     <orderEntry type="module" module-name="react-native-image-picker" exported="" />
+    <orderEntry type="module" module-name="react-native-code-push" exported="" />
   </component>
 </module>

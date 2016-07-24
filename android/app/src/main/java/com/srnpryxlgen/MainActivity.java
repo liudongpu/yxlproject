@@ -1,6 +1,7 @@
 package com.srnpryxlgen;
 
 import com.facebook.react.ReactActivity;
+import com.microsoft.codepush.react.CodePush;
 import com.liuchungui.react_native_umeng_push.UmengPushPackage;
 import com.eguma.barcodescanner.BarcodeScanner;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
@@ -12,6 +13,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends ReactActivity {
+
+
+    @Override
+    protected String getJSBundleFile() {
+        return CodePush.getJSBundleFile();
+    }
 
     /**
      * Returns the name of the main component registered from JavaScript.
@@ -39,6 +46,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new CodePush(this.getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), this, BuildConfig.DEBUG),
             new UmengPushPackage(),
             new BarcodeScanner(),
             new RCTCameraPackage(),

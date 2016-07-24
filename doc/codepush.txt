@@ -1,6 +1,17 @@
 
 
+code-push release-react YxlGenIos --deploymentName Production ios
+
+code-push release-react YxlGenAndroid --deploymentName Production android
+
+code-push deployment ls YxlGenIos -k
 
 
 
-code-push release-react YxlProject --deploymentName Production ios
+code-push app ls
+code-push app add YxlGenIos
+C0_I8i1zEaOAjVmfBtG4Xpmk5Fc7V1GqB5TvZ
+code-push app add YxlGenAndroid
+o0Y62mKA7_P2s5auHEp4Nl2nGyvOV1GqB5TvZ
+
+code-push deployment ls YxlGenAndroid -k

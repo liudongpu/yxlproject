@@ -10,6 +10,12 @@ const apiConfig=
     uploadUrl:'http://art-upload.iqhsy.com/mfile/upload/art',
     yhUrl:'http://wx.jk.yxl9.cn',
     apiKey:'tesetkey'
+  },
+  product:{
+    apiUrl:'http://yxlgen.api.yxl9.cn/',
+    uploadUrl:'http://art-upload.iqhsy.com/mfile/upload/art',
+    yhUrl:'http://wx.jk.yxl9.cn',
+    apiKey:'tesetkey'
   }
 }
 

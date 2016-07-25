@@ -8,6 +8,9 @@ code-push deployment ls YxlGenIos -k
 code-push deployment ls YxlGenAndroid -k
 
 
+cd ~/YxlProject/android && ./gradlew assembleRelease
+cd ~/YxlProject/android/app/build/outputs/apk/
+
 
 code-push app ls
 code-push app add YxlGenIos

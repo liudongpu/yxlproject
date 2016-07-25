@@ -1,6 +1,6 @@
 
 //定义环境变量   默认为dev   正式发布时需要改成product
-const modelRun='dev';
+const modelRun='product';
 
 //
 const apiConfig=

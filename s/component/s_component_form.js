@@ -114,11 +114,18 @@ export  class SCFormButton extends Component{
 
 export  class SCFormSelect extends Component{
 
+  constructor(props)
+  {
+    super(props);
+    this.state={text:SFuncTop.topLangBase().upLang('form_select')};
+  }
+
+
   render() {
-    var {pField,pStyle} = this.props;
+    var {pField,pStyle,pPress} = this.props;
     return (
-      <TouchableOpacity style={pStyle.box} >
-        <View style={pStyle.show} ><Text>{SFuncTop.topLangBase().upLang('form_select')}</Text></View>
+      <TouchableOpacity style={pStyle.box} onPress={()=>pPress()}>
+        <View style={pStyle.show} ><Text>{this.state.text}</Text></View>
         <View style={pStyle.arrow}></View>
       </TouchableOpacity>
     );

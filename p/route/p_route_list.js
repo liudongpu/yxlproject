@@ -19,6 +19,10 @@ const  rootList =
       'PageInfo':{
         name: 'PageInfo',title:'测试页2'
       },
+      'CommonSelect':
+      {
+        name: 'CommonSelect',title:'请选择'
+      },
       'PageNew':{
         name: 'PageNew',title:'测试页3'
       },

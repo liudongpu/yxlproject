@@ -20,7 +20,7 @@ import SFuncTop from '../../s/func/s_func_top';
 import SFuncForm from '../../s/func/s_func_form';
 import SFuncCamera from '../../s/func/s_func_camera';
 import SFuncEvent from '../../s/func/s_func_event';
-
+import CommonSelect from '../common/common_select';
 
 
 import {
@@ -271,6 +271,22 @@ export default class CommonForm  extends CommonRoot {
     }
   }
 
+
+  pressSelect(oField)
+  {
+    //console.warn(JSON.stringify(oField));
+
+    this.rootNavPage('CommonSelect',CommonSelect,{field:oField});
+
+    //this.refs[oField.fieldId].setState({text:'aa'});
+    SFuncEvent.addEvent('event_common_form_on_select_change',(oChange)=>this.selectChange(oChange));
+  }
+
+  selectChange(oChange)
+  {
+    this.refs[oChange.field.fieldId].setState({text:oChange.text});
+  }
+
   //form上的组件系列
   _formComponent(oField)
   {
@@ -280,7 +296,7 @@ export default class CommonForm  extends CommonRoot {
       }
       else if(oField["fieldElement"]=="select")
       {
-        return (<SCFormSelect pField={oField} pStyle={{box:this.rootStyleBase().cFormArrowBox,show:this.rootStyleBase().cFormArrowShow,   arrow:[this.rootStyleBase().cFormArrowRight,this.rootStyleBase().wArrowTip]}}></SCFormSelect>);
+        return (<SCFormSelect ref={oField.fieldId} pField={oField} pPress={()=>{this.pressSelect(oField)}} pStyle={{box:this.rootStyleBase().cFormArrowBox,show:this.rootStyleBase().cFormArrowShow,   arrow:[this.rootStyleBase().cFormArrowRight,this.rootStyleBase().wArrowTip]}}></SCFormSelect>);
       }
       else if(oField["fieldElement"]=="upload")
       {

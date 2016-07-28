@@ -68,6 +68,7 @@ export default class PeopleAgree  extends CommonRoot {
     return (
       <View style={PStyleProject.peopleAgreeItemBox}>
         <Text style={PStyleProject.peopleAgreeItemDate}>{news.create_time}</Text>
+        <Text style={PStyleProject.peopleAgreeItemInfo}>{this.rootLangBase('people_agree_agi')}</Text>
         <Text style={PStyleProject.peopleAgreeItemInfo}>{news.tour_info}</Text>
         <Text style={PStyleProject.peopleAgreeItemName}>{news.doctor_name}</Text>
         <Text style={PStyleProject.peopleAgreeItemAgree}>{this.rootLangBase('people_agree_agt')}</Text>

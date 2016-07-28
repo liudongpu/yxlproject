@@ -66,6 +66,7 @@ const  rootList =
       'user_password_btn':'确认修改',
 
       'user_set_confirm':'确认要退出登录吗？',
+      'people_agree_agi':'查房记录：',
       'people_agree_agt':'查房建议：',
 
 

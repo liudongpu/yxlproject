@@ -26,7 +26,8 @@
 		30F2FD881FCD46E9B2E4374F /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1889835A8E974BC1BEC127DE /* libRCTCamera.a */; };
 		38C169D76F03432E915E02DF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7CB404F4D048EDAFED8934 /* libz.tbd */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		928B70061D45F3D90037B015 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 928B70051D45F3D90037B015 /* icon.png */; };
+		92C96A371D4B3C89001FEA0A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92C96A361D4B3C89001FEA0A /* Default-568h@2x.png */; };
+		92C96A391D4B3E74001FEA0A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92C96A381D4B3E74001FEA0A /* Default-568h@2x.png */; };
 		E34C6B11D486487BBBF52E8D /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E6E1149021446EA65C6F4E /* libCodePush.a */; };
 		FEB836E3B0E44A3599987ED5 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDEBA2A3754F44F48EEF9550 /* libRNImagePicker.a */; };
 /* End PBXBuildFile section */
@@ -167,8 +168,9 @@
 		7AAB8A91FCB645C69C7A839B /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8A6B732230024A108D0BEEFE /* RCTUmengPush.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTUmengPush.xcodeproj; path = "../node_modules/react-native-umeng-push/ios/RCTUmengPush.xcodeproj"; sourceTree = "<group>"; };
-		928B70051D45F3D90037B015 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../Downloads/icon.png; sourceTree = "<group>"; };
 		92C4758A1D1D526E002A811D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		92C96A361D4B3C89001FEA0A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		92C96A381D4B3E74001FEA0A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "YxlProject/Default-568h@2x.png"; sourceTree = "<group>"; };
 		BDEBA2A3754F44F48EEF9550 /* libRNImagePicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNImagePicker.a; sourceTree = "<group>"; };
 		CD957DB3D37748C9A4D35150 /* libRCTUmengPush.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTUmengPush.a; sourceTree = "<group>"; };
 		D6D6AD1805B7407BA0B9BFFE /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
@@ -284,7 +286,7 @@
 		13B07FAE1A68108700A75B9A /* YxlProject */ = {
 			isa = PBXGroup;
 			children = (
-				928B70051D45F3D90037B015 /* icon.png */,
+				92C96A381D4B3E74001FEA0A /* Default-568h@2x.png */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -352,6 +354,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				92C96A361D4B3C89001FEA0A /* Default-568h@2x.png */,
 				13B07FAE1A68108700A75B9A /* YxlProject */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* YxlProjectTests */,
@@ -454,6 +457,9 @@
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 43BEUQ76F8;
 					};
 				};
 			};
@@ -649,7 +655,8 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				928B70061D45F3D90037B015 /* icon.png in Resources */,
+				92C96A371D4B3C89001FEA0A /* Default-568h@2x.png in Resources */,
+				92C96A391D4B3E74001FEA0A /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +768,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -778,6 +787,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = YxlProject;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -785,6 +795,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -801,6 +813,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = YxlProject;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

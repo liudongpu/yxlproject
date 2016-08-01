@@ -60,7 +60,10 @@ const  rootList =
         name: 'SeeAdadd',title:'发布公告',page:'pa/com_uhutu_yxlsite_z_page_PageGeracomiumNotice'
       },
       'PeopleInfo':{
-        name: 'PeopleInfo',title:'用户信息'
+        name: 'PeopleInfo',title:'用户明细'
+      },
+      'PeopleBase':{
+        name: 'PeopleBase',title:'基本信息',page:'pb/com_uhutu_yxlsite_z_page_PageMemberBase'
       },
       'PeopleImage':{
         name: 'PeopleImage',title:'照片列表'

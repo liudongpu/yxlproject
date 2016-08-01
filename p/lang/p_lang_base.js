@@ -30,9 +30,12 @@ const  rootList =
 
 
       'home_index':'首页',
+
       'home_category':'消息',
       'home_see':'发现',
       'home_user':'我的',
+      'home_index_room':'房间：',
+      'home_index_age':'    年龄：',
       'home_user_welcome':'欢迎您：',
       'user_set_notice':'接收消息',
       'user_set_local':'本地消息',

@@ -166,7 +166,7 @@ export default class HomeIndex extends CommonRoot {
                             </View>
                             <View style={this.rootStyleBase().cListViewCenter}>
                                 <Text style={this.rootStyleBase().cListViewText}>{news.member_name}</Text>
-                                <Text style={this.rootStyleBase().cListViewDesc}>{iIndex}-description</Text>
+                                <Text style={this.rootStyleBase().cListViewDesc}>{this.rootLangBase('home_index_room')}{news.room_name}{this.rootLangBase('home_index_age')}{news.member_age}</Text>
                             </View>
                             <View style={this.rootStyleBase().cListViewRight}>
                               <View style={[this.rootStyleBase().cListViewIcon,this.rootStyleBase().wArrowTip]}></View>

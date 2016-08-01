@@ -43,6 +43,12 @@ export default class PConfigBase
        return apiConfig[modelRun];
      }
 
+     //判断是否正式版
+     static upFlagProduct()
+     {
+       return modelRun!="dev";
+     }
+
 
      static upDefineConfig()
      {

@@ -61,6 +61,23 @@ export  class SCFormTextInput extends Component{
 
 
 
+export  class SCFormBookText extends Component{
+
+
+  render() {
+
+    var {pField,pStyle} = this.props;
+    var sVal=SFuncForm.upFormValueDefaultEmpty(pField.pageUnique,pField.fieldData);
+      return (  <Text style={pStyle}>{sVal}</Text>)
+
+  }
+}
+
+
+
+
+
+
 
 export  class SCFormTextArea extends Component{
 

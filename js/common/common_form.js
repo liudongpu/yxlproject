@@ -30,6 +30,7 @@ import {
   SCFormSelect,
   SCFormUpload,
   SCFormTextInput,
+  SCFormBookText,
   SCFormTextArea,
 } from '../../s/component/s_component_form';
 
@@ -51,6 +52,7 @@ export default class CommonForm  extends CommonRoot {
        this.state = {
          pageModel: {},
          modalShow:false,
+         pageType:'',
          modalText:'',
          fireEvent:'',
 
@@ -120,6 +122,7 @@ export default class CommonForm  extends CommonRoot {
 
         aPromise.push(new Promise((resolve)=>{this.fetchData(oModel,oValue,resolve)}));
       }
+      this.setState({pageType:oModel.struct.pageType});
 
     }
 
@@ -290,6 +293,13 @@ export default class CommonForm  extends CommonRoot {
   //form上的组件系列
   _formComponent(oField)
   {
+
+      if(this.state.pageType=='pb')
+      {
+        return (<SCFormBookText pField={oField} pStyle={this.rootStyleBase().cFormPageText}></SCFormBookText>);
+      }
+
+
       if(oField["fieldElement"]=="date")
       {
         return (<SCFormDate pField={oField}   pStyle={{input:this.rootStyleBase().cFormTextInput}}></SCFormDate>);

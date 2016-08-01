@@ -29,7 +29,12 @@ export default class PeopleInfo  extends CommonRoot {
         };
   }
 
-
+  peopleBase()
+  {
+    var oParam={};
+    oParam[this.rootConfigBase().upDefineConfig().nParamsForm]={member_code:this.state.memberCode};
+    this.rootNavPage("PeopleBase",CommonForm,oParam);
+  }
 
   render(){
       return (
@@ -37,7 +42,9 @@ export default class PeopleInfo  extends CommonRoot {
           <View style={this.rootStyleBase().peopleInfoTop}>
             <View style={[this.rootStyleBase().peopleInfoBg]}>
               <View style={this.rootStyleBase().peopleInfoRadius}>
-                <Image style={[this.rootStyleBase().peopleInfoImg,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_img')}></Image>
+                <TouchableOpacity onPress={()=>{this.peopleBase()}} >
+                  <Image style={[this.rootStyleBase().peopleInfoImg,{resizeMode:Image.resizeMode.stretch}]} source={this.rootStyleImage('people_info_img')}></Image>
+                </TouchableOpacity>
               </View>
               <View style={this.rootStyleBase().peopleInfoCard}>
                 {this._nodeCard('people_info_carda','PeopleImage',PeopleImage)}

@@ -13,6 +13,7 @@ import PStyleBase from '../../p/style/p_style_base';
 import SComponentNavbar from '../../s/component/s_component_navbar';
 import PLangBase from '../../p/lang/p_lang_base';
 import SFuncTop from '../../s/func/s_func_top';
+import SFuncStorage from '../../s/func/s_func_storage';
 
 import UmengPush from 'react-native-umeng-push';
 import codePush from "react-native-code-push";
@@ -26,6 +27,7 @@ export default class LayoutMain extends Component {
         //获取DeviceToken
         UmengPush.getDeviceToken(deviceToken => {
             //console.warn("deviceToken: ", deviceToken);
+            SFuncStorage.inTempValue('pushinfo','token',deviceToken);
         });
 
         //接收到推送消息回调

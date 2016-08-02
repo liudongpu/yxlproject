@@ -18,8 +18,9 @@ import PageTemplate from '../page/page_template';
 import PeopleInfo from '../people/people_info';
 
 import SFuncStorage from '../../s/func/s_func_storage';
-
 import PStyleBase from '../../p/style/p_style_base';
+
+import PCallSystem from '../../p/call/p_call_system';
 import CommonRoot from '../common/common_root';
 import UserLogin from '../user/user_login';
 import SFuncEvent from '../../s/func/s_func_event';
@@ -59,6 +60,8 @@ export default class HomeIndex extends CommonRoot {
               SFuncStorage.inTempValue('user','loginName',oUser.loginName);
               SFuncEvent.fireEvent('home_user_refresh_data');
               this.fetchData('');
+
+              PCallSystem.refreshPushInfo();
             }
             else
             {

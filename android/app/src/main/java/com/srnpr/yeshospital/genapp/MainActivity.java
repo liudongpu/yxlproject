@@ -1,4 +1,4 @@
-package com.srnpryxlgen;
+package com.srnpr.yeshospital.genapp;
 
 import com.facebook.react.ReactActivity;
 import com.microsoft.codepush.react.CodePush;
@@ -8,6 +8,8 @@ import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+import com.srnpr.yeshospital.genapp.BuildConfig;
+import com.srnpr.yeshospital.genapp.R;
 
 import java.util.Arrays;
 import java.util.List;

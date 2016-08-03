@@ -1,4 +1,4 @@
-package com.srnpryxlgen;
+package com.srnpr.yeshospital.genapp;
 
 
 import com.liuchungui.react_native_umeng_push.UmengPushApplication;

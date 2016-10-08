@@ -84,7 +84,7 @@ export default class LayoutMain extends Component {
                     underlayColor='transparent'
                     onPress={() => {if (index > 0) {navigator.pop()}}}>
                     <Text style={PStyleBase.navLeftButton}>
-                      {'<后退'}
+                      {'<'}
                     </Text>
                   </TouchableOpacity>
                 </View>

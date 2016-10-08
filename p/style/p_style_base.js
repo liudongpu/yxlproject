@@ -433,8 +433,9 @@ export default  PStyleBase = StyleSheet.create({
     // 左面导航按钮
     navLeftButton: {
       color: '#ffffff',
-      fontSize: 14,
-      marginLeft: 13,
+      fontSize: 16,
+      marginLeft: 12,
+      fontWeight: 'bold',
       marginTop:16,
     },
     navLeft:

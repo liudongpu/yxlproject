@@ -110,7 +110,7 @@ export default class HomeIndex extends CommonRoot {
             <TextInput
               style={this.rootStyleBase().homeIndexTextInput}
               onChangeText={(text) => {  this.fetchData(text)}}
-              placeholder='  search'
+              placeholder='  搜索'
               autoCapitalize='none'
               autoCorrect={false}
               value={this.state.text}

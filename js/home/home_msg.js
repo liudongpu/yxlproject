@@ -123,7 +123,7 @@ export default class HomeMsg extends CommonRoot {
                         <View style={PStyleProject.homeMsgListItem}>
                             <View style={PStyleProject.homeMsgListTop}>
                                 <Text style={PStyleProject.homeMsgListName}>{news.fromName}</Text>
-                                <Text style={PStyleProject.homeMsgListTip}>user</Text>
+                                
                                 <Text style={PStyleProject.homeMsgListTime}>{news.msgTime}</Text>
                             </View>
                             <View>

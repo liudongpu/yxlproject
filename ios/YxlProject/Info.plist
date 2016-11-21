@@ -22,6 +22,10 @@
 	<string>2</string>
 	<key>CodePushDeploymentKey</key>
 	<string>C0_I8i1zEaOAjVmfBtG4Xpmk5Fc7V1GqB5TvZ</string>
+  <key>NSCameraUsageDescription</key>
+  <string>NSCameraUsageDescription</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>NSMicrophoneUsageDescription</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>

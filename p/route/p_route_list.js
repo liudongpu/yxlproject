@@ -68,6 +68,9 @@ const  rootList =
       'PeopleImage':{
         name: 'PeopleImage',title:'照片列表'
       },
+      'PeopleWebrtc':{
+        name: 'PeopleWebrtc',title:'视频聊天'
+      },
       'PeopleAgree':{
         name: 'PeopleAgree',title:'查房历史'
       },

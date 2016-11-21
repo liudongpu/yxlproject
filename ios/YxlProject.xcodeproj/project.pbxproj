@@ -956,7 +956,7 @@
 					"$(SRCROOT)/../node_modules/react-native-umeng-push/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-code-push/ios/CodePush/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				"LIBRARY_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/../node_modules/react-native-webrtc/ios/**";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1003,7 +1003,7 @@
 					"$(SRCROOT)/../node_modules/react-native-umeng-push/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-code-push/ios/CodePush/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				"LIBRARY_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/../node_modules/react-native-webrtc/ios/**";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

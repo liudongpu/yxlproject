@@ -29,6 +29,35 @@ import {
 
 const configuration = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const pcPeers = {};
 let localStream;
 
@@ -206,8 +235,15 @@ socket.on('connect', function(data) {
   console.log('connect');
   getLocalStream(true, function(stream) {
     localStream = stream;
+    if(container!=null)
+    {
     container.setState({selfViewSrc: stream.toURL()});
     container.setState({status: 'ready', info: 'Please enter or create room ID'});
+    }
+    else
+    {
+      console.warn('container null');
+    }
   });
 });
 
@@ -263,13 +299,13 @@ export default class PeopleWebrtc  extends CommonRoot {
     container = this;
   }
   _press(event) {
-    this.refs.roomID.blur();
-    this.setState({status: 'connect', info: 'Connecting'});
-    join(this.state.roomID);
+    container.refs.roomID.blur();
+    container.setState({status: 'connect', info: 'Connecting'});
+    join(container.state.roomID);
   }
   _switchVideoType() {
-    const isFront = !this.state.isFront;
-    this.setState({isFront});
+    const isFront = !container.state.isFront;
+    container.setState({isFront:isFront});
     getLocalStream(isFront, function(stream) {
       if (localStream) {
         for (const id in pcPeers) {

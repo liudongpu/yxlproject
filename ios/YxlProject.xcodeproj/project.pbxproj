@@ -26,9 +26,8 @@
 		30F2FD881FCD46E9B2E4374F /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1889835A8E974BC1BEC127DE /* libRCTCamera.a */; };
 		38C169D76F03432E915E02DF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7CB404F4D048EDAFED8934 /* libz.tbd */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		927C77A31DDDA0EF00C21248 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C77A21DDDA0EF00C21248 /* WebRTC.framework */; };
-		927C77A41DDDA3CA00C21248 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C77A21DDDA0EF00C21248 /* WebRTC.framework */; };
-		927C77A51DDDA3CA00C21248 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 927C77A21DDDA0EF00C21248 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		925B46181DE43FE1004917EB /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925B46051DE4384C004917EB /* WebRTC.framework */; };
+		925B46191DE43FE1004917EB /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 925B46051DE4384C004917EB /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		927C77A71DDDA42200C21248 /* libRCTWebRTC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C779E1DDDA07700C21248 /* libRCTWebRTC.a */; };
 		927C77A91DDDA44700C21248 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C77A81DDDA44700C21248 /* AVFoundation.framework */; };
 		927C77AB1DDDA45400C21248 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927C77AA1DDDA45300C21248 /* AudioToolbox.framework */; };
@@ -162,13 +161,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		927C77A61DDDA3CA00C21248 /* Embed Frameworks */ = {
+		925B461A1DE43FE2004917EB /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				927C77A51DDDA3CA00C21248 /* WebRTC.framework in Embed Frameworks */,
+				925B46191DE43FE1004917EB /* WebRTC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,8 +202,8 @@
 		7AAB8A91FCB645C69C7A839B /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8A6B732230024A108D0BEEFE /* RCTUmengPush.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTUmengPush.xcodeproj; path = "../node_modules/react-native-umeng-push/ios/RCTUmengPush.xcodeproj"; sourceTree = "<group>"; };
+		925B46051DE4384C004917EB /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = "../node_modules/react-native-webrtc/ios/WebRTC.framework"; sourceTree = "<group>"; };
 		927C778E1DDDA07700C21248 /* RCTWebRTC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebRTC.xcodeproj; path = "../node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj"; sourceTree = "<group>"; };
-		927C77A21DDDA0EF00C21248 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = "../node_modules/react-native-webrtc/ios/WebRTC.framework"; sourceTree = "<group>"; };
 		927C77A81DDDA44700C21248 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		927C77AA1DDDA45300C21248 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		927C77AC1DDDA47800C21248 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -247,11 +246,9 @@
 				927C77AB1DDDA45400C21248 /* AudioToolbox.framework in Frameworks */,
 				927C77A91DDDA44700C21248 /* AVFoundation.framework in Frameworks */,
 				927C77A71DDDA42200C21248 /* libRCTWebRTC.a in Frameworks */,
-				927C77A41DDDA3CA00C21248 /* WebRTC.framework in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
-				927C77A31DDDA0EF00C21248 /* WebRTC.framework in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
@@ -261,6 +258,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				FEB836E3B0E44A3599987ED5 /* libRNImagePicker.a in Frameworks */,
 				30F2FD881FCD46E9B2E4374F /* libRCTCamera.a in Frameworks */,
+				925B46181DE43FE1004917EB /* WebRTC.framework in Frameworks */,
 				1BDBDF326DE44DAD935C36B2 /* libRCTUmengPush.a in Frameworks */,
 				E34C6B11D486487BBBF52E8D /* libCodePush.a in Frameworks */,
 				38C169D76F03432E915E02DF /* libz.tbd in Frameworks */,
@@ -369,6 +367,7 @@
 		2EEF0FFAF7244A68858FC21E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				925B46051DE4384C004917EB /* WebRTC.framework */,
 				927C77BA1DDDA4BE00C21248 /* libstdc++.tbd */,
 				927C77B81DDDA4B200C21248 /* libsqlite3.tbd */,
 				927C77B61DDDA4AA00C21248 /* libc.tbd */,
@@ -425,7 +424,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				927C77A21DDDA0EF00C21248 /* WebRTC.framework */,
 				92C96A361D4B3C89001FEA0A /* Default-568h@2x.png */,
 				13B07FAE1A68108700A75B9A /* YxlProject */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -515,7 +513,8 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				927C77A61DDDA3CA00C21248 /* Embed Frameworks */,
+				925B461A1DE43FE2004917EB /* Embed Frameworks */,
+				9218E2DA1DE4482700DF2A3D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -769,6 +768,19 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
 		};
+		9218E2DA1DE4482700DF2A3D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n\n# removes unused architectures.\n\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\n\ndo\n\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\n\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\n\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\n\ndo\n\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\n\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\n\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\n\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\n\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\n\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\n\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\n\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -890,6 +902,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/../node_modules/react-native-webrtc/ios";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -902,6 +915,8 @@
 				INFOPLIST_FILE = YxlProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/../node_modules/react-native-webrtc/ios";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",

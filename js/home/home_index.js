@@ -135,8 +135,8 @@ export default class HomeIndex extends CommonRoot {
 
     onPressNews(news)
     {
-      //this.rootNavPage('PeopleInfo',PeopleInfo,{pCode:news.member_code,navName:news.member_name});
-      this.rootNavPage('PeopleWebrtc',PeopleWebrtc,{pCode:news.member_code,navName:news.member_name});
+      this.rootNavPage('PeopleInfo',PeopleInfo,{pCode:news.member_code,navName:news.member_name});
+      //this.rootNavPage('PeopleWebrtc',PeopleWebrtc,{pCode:news.member_code,navName:news.member_name});
     }
 
     renderNews(news) {

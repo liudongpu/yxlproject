@@ -12,9 +12,9 @@ const apiConfig=
     apiKey:'tesetkey'
   },
   product:{
-    apiUrl:'http://yxlgen.api.yxl9.cn/',
-    uploadUrl:'http://art-upload.iqhsy.com/mfile/upload/art',
-    yhUrl:'http://wx.jk.yxl9.cn',
+    apiUrl:'https://app-gen-api.yinxl.com/',
+    uploadUrl:'https://art-upload.iqhsy.com/mfile/upload/art',
+    yhUrl:'https://app-wx-page.yinxl.com',
     apiKey:'tesetkey'
   }
 }

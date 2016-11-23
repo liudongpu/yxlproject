@@ -1,6 +1,8 @@
 npm install rnpm --global
 
-
+解决问题：
+amd64
+http://blog.csdn.net/u012563492/article/details/50753699
 
 
 

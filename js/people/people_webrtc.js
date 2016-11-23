@@ -30,248 +30,258 @@ import {
 const configuration = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
 
 
+var webrtc={
+  temp:{
+    socket:null,
+    localStream:null,
+    rtcMoudle:null,
+    pcPeers:{}
+  },
+  init:function(){
 
+    webrtc.temp.socket = io.connect('https://react-native-webrtc.herokuapp.com', {transports: ['websocket']});
 
+    webrtc.temp.socket.on('exchange', function(data){
+      webrtc.exchange(data);
+    });
+    webrtc.temp.socket.on('leave', function(socketId){
+      webrtc.leave(socketId);
+    });
 
+    webrtc.temp.socket.on('connect', function(data) {
+      console.log('connect');
+      webrtc.getLocalStream(false, function(stream) {
+        webrtc.temp.localStream = stream;
+        if(webrtc.temp.rtcMoudle!=null)
+        {
+        webrtc.temp.rtcMoudle.setState({selfViewSrc: stream.toURL()});
+        webrtc.temp.rtcMoudle.setState({status: 'ready', info: 'Please enter or create room ID'});
+        }
+        else
+        {
+          console.warn('rtcMoudle null');
+        }
+      });
+    });
+  },
+  getLocalStream:function(isFront, callback) {
+    MediaStreamTrack.getSources(sourceInfos => {
+      console.log(sourceInfos);
+      let videoSourceId;
+      for (const i = 0; i < sourceInfos.length; i++) {
+        const sourceInfo = sourceInfos[i];
+        if(sourceInfo.kind == "video" && sourceInfo.facing == (isFront ? "front" : "back")) {
+          videoSourceId = sourceInfo.id;
+        }
+      }
+      getUserMedia({
+        audio: true,
+        video: {
+          mandatory: {
+            minWidth: 500, // Provide your own width, height and frame rate here
+            minHeight: 300,
+            minFrameRate: 30
+          },
+          facingMode: (isFront ? "user" : "environment"),
+          optional: [{ sourceId: sourceInfos.id }]
+        }
+      }, function (stream) {
+        console.log('dddd', stream);
+        callback(stream);
+      }, webrtc.logError);
+    });
+  },
 
+   join:function(roomID) {
+    webrtc.temp.socket.emit('join', roomID, function(socketIds){
+      console.log('join', socketIds);
+      for (const i in socketIds) {
+        const socketId = socketIds[i];
+        webrtc.createPC(socketId, true);
+      }
+    });
+  },
+  createPC:function(socketId, isOffer) {
+    const pc = new RTCPeerConnection(configuration);
+    webrtc.temp.pcPeers[socketId] = pc;
 
+    pc.onicecandidate = function (event) {
+      console.log('onicecandidate', event.candidate);
+      if (event.candidate) {
+        webrtc.temp.socket.emit('exchange', {'to': socketId, 'candidate': event.candidate });
+      }
+    };
 
+    function createOffer() {
+      pc.createOffer(function(desc) {
+        console.log('createOffer', desc);
+        pc.setLocalDescription(desc, function () {
+          console.log('setLocalDescription', pc.localDescription);
+          webrtc.temp.socket.emit('exchange', {'to': socketId, 'sdp': pc.localDescription });
+        }, webrtc.logError);
+      }, webrtc.logError);
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const pcPeers = {};
-let localStream;
-
-function getLocalStream(isFront, callback) {
-  MediaStreamTrack.getSources(sourceInfos => {
-    console.log(sourceInfos);
-    let videoSourceId;
-    for (const i = 0; i < sourceInfos.length; i++) {
-      const sourceInfo = sourceInfos[i];
-      if(sourceInfo.kind == "video" && sourceInfo.facing == (isFront ? "front" : "back")) {
-        videoSourceId = sourceInfo.id;
+    pc.onnegotiationneeded = function () {
+      console.log('onnegotiationneeded');
+      if (isOffer) {
+        createOffer();
       }
     }
-    getUserMedia({
-      audio: true,
-      video: {
-        mandatory: {
-          minWidth: 500, // Provide your own width, height and frame rate here
-          minHeight: 300,
-          minFrameRate: 30
-        },
-        facingMode: (isFront ? "user" : "environment"),
-        optional: [{ sourceId: sourceInfos.id }]
+
+    pc.oniceconnectionstatechange = function(event) {
+      console.log('oniceconnectionstatechange', event.target.iceConnectionState);
+      if (event.target.iceConnectionState === 'completed') {
+        setTimeout(() => {
+          webrtc.getStats();
+        }, 1000);
       }
-    }, function (stream) {
-      console.log('dddd', stream);
-      callback(stream);
-    }, logError);
-  });
-}
-
-function join(roomID) {
-  socket.emit('join', roomID, function(socketIds){
-    console.log('join', socketIds);
-    for (const i in socketIds) {
-      const socketId = socketIds[i];
-      createPC(socketId, true);
-    }
-  });
-}
-
-function createPC(socketId, isOffer) {
-  const pc = new RTCPeerConnection(configuration);
-  pcPeers[socketId] = pc;
-
-  pc.onicecandidate = function (event) {
-    console.log('onicecandidate', event.candidate);
-    if (event.candidate) {
-      socket.emit('exchange', {'to': socketId, 'candidate': event.candidate });
-    }
-  };
-
-  function createOffer() {
-    pc.createOffer(function(desc) {
-      console.log('createOffer', desc);
-      pc.setLocalDescription(desc, function () {
-        console.log('setLocalDescription', pc.localDescription);
-        socket.emit('exchange', {'to': socketId, 'sdp': pc.localDescription });
-      }, logError);
-    }, logError);
-  }
-
-  pc.onnegotiationneeded = function () {
-    console.log('onnegotiationneeded');
-    if (isOffer) {
-      createOffer();
-    }
-  }
-
-  pc.oniceconnectionstatechange = function(event) {
-    console.log('oniceconnectionstatechange', event.target.iceConnectionState);
-    if (event.target.iceConnectionState === 'completed') {
-      setTimeout(() => {
-        getStats();
-      }, 1000);
-    }
-    if (event.target.iceConnectionState === 'connected') {
-      createDataChannel();
-    }
-  };
-  pc.onsignalingstatechange = function(event) {
-    console.log('onsignalingstatechange', event.target.signalingState);
-  };
-
-  pc.onaddstream = function (event) {
-    console.log('onaddstream', event.stream);
-    container.setState({info: 'One peer join!'});
-
-    const remoteList = container.state.remoteList;
-    remoteList[socketId] = event.stream.toURL();
-    container.setState({ remoteList: remoteList });
-  };
-  pc.onremovestream = function (event) {
-    console.log('onremovestream', event.stream);
-  };
-
-  pc.addStream(localStream);
-  function createDataChannel() {
-    if (pc.textDataChannel) {
-      return;
-    }
-    const dataChannel = pc.createDataChannel("text");
-
-    dataChannel.onerror = function (error) {
-      console.log("dataChannel.onerror", error);
+      if (event.target.iceConnectionState === 'connected') {
+        createDataChannel();
+      }
+    };
+    pc.onsignalingstatechange = function(event) {
+      console.log('onsignalingstatechange', event.target.signalingState);
     };
 
-    dataChannel.onmessage = function (event) {
-      console.log("dataChannel.onmessage:", event.data);
-      container.receiveTextData({user: socketId, message: event.data});
+    pc.onaddstream = function (event) {
+      console.log('onaddstream', event.stream);
+      webrtc.temp.rtcMoudle.setState({info: 'One peer join!'});
+
+      const remoteList = webrtc.temp.rtcMoudle.state.remoteList;
+      remoteList[socketId] = event.stream.toURL();
+      webrtc.temp.rtcMoudle.setState({ remoteList: remoteList });
+    };
+    pc.onremovestream = function (event) {
+      console.log('onremovestream', event.stream);
     };
 
-    dataChannel.onopen = function () {
-      console.log('dataChannel.onopen');
-      container.setState({textRoomConnected: true});
-    };
+    pc.addStream(webrtc.temp.localStream);
+    function createDataChannel() {
+      if (pc.textDataChannel) {
+        return;
+      }
+      const dataChannel = pc.createDataChannel("text");
 
-    dataChannel.onclose = function () {
-      console.log("dataChannel.onclose");
-    };
+      dataChannel.onerror = function (error) {
+        console.log("dataChannel.onerror", error);
+      };
 
-    pc.textDataChannel = dataChannel;
-  }
-  return pc;
-}
+      dataChannel.onmessage = function (event) {
+        console.log("dataChannel.onmessage:", event.data);
+        webrtc.temp.rtcMoudle.receiveTextData({user: socketId, message: event.data});
+      };
 
-function exchange(data) {
-  const fromId = data.from;
-  let pc;
-  if (fromId in pcPeers) {
-    pc = pcPeers[fromId];
-  } else {
-    pc = createPC(fromId, false);
-  }
+      dataChannel.onopen = function () {
+        console.log('dataChannel.onopen');
+        webrtc.temp.rtcMoudle.setState({textRoomConnected: true});
+      };
 
-  if (data.sdp) {
-    console.log('exchange sdp', data);
-    pc.setRemoteDescription(new RTCSessionDescription(data.sdp), function () {
-      if (pc.remoteDescription.type == "offer")
-        pc.createAnswer(function(desc) {
-          console.log('createAnswer', desc);
-          pc.setLocalDescription(desc, function () {
-            console.log('setLocalDescription', pc.localDescription);
-            socket.emit('exchange', {'to': fromId, 'sdp': pc.localDescription });
-          }, logError);
-        }, logError);
-    }, logError);
-  } else {
-    console.log('exchange candidate', data);
-    pc.addIceCandidate(new RTCIceCandidate(data.candidate));
-  }
-}
+      dataChannel.onclose = function () {
+        console.log("dataChannel.onclose");
+      };
 
-function leave(socketId) {
-  console.log('leave', socketId);
-  const pc = pcPeers[socketId];
-  const viewIndex = pc.viewIndex;
-  pc.close();
-  delete pcPeers[socketId];
-
-  const remoteList = container.state.remoteList;
-  delete remoteList[socketId]
-  container.setState({ remoteList: remoteList });
-  container.setState({info: 'One peer leave!'});
-}
-
-socket.on('exchange', function(data){
-  exchange(data);
-});
-socket.on('leave', function(socketId){
-  leave(socketId);
-});
-
-socket.on('connect', function(data) {
-  console.log('connect');
-  getLocalStream(true, function(stream) {
-    localStream = stream;
-    if(container!=null)
-    {
-    container.setState({selfViewSrc: stream.toURL()});
-    container.setState({status: 'ready', info: 'Please enter or create room ID'});
+      pc.textDataChannel = dataChannel;
     }
-    else
-    {
-      console.warn('container null');
+    return pc;
+  },
+
+
+   exchange:function(data) {
+    const fromId = data.from;
+    let pc;
+    if (fromId in webrtc.temp.pcPeers) {
+      pc = webrtc.temp.pcPeers[fromId];
+    } else {
+      pc = webrtc.createPC(fromId, false);
     }
-  });
-});
 
-function logError(error) {
-  console.log("logError", error);
-}
+    if (data.sdp) {
+      console.log('exchange sdp', data);
+      pc.setRemoteDescription(new RTCSessionDescription(data.sdp), function () {
+        if (pc.remoteDescription.type == "offer")
+          pc.createAnswer(function(desc) {
+            console.log('createAnswer', desc);
+            pc.setLocalDescription(desc, function () {
+              console.log('setLocalDescription', pc.localDescription);
+              webrtc.temp.socket.emit('exchange', {'to': fromId, 'sdp': pc.localDescription });
+            }, webrtc.logError);
+          }, webrtc.logError);
+      }, webrtc.logError);
+    } else {
+      console.log('exchange candidate', data);
+      pc.addIceCandidate(new RTCIceCandidate(data.candidate));
+    }
+  },
+   leave:function(socketId) {
+    console.log('leave', socketId);
+    const pc = webrtc.temp.pcPeers[socketId];
+    const viewIndex = pc.viewIndex;
+    pc.close();
+    delete webrtc.temp.pcPeers[socketId];
+    const remoteList = webrtc.temp.rtcMoudle.state.remoteList;
+    delete remoteList[socketId]
+    webrtc.temp.rtcMoudle.setState({ remoteList: remoteList });
+    webrtc.temp.rtcMoudle.setState({info: 'One peer leave!'});
+  },
 
-function mapHash(hash, func) {
-  const array = [];
-  for (const key in hash) {
-    const obj = hash[key];
-    array.push(func(obj, key));
+   logError:function(error) {
+    console.log("logError", error);
+  },
+
+   mapHash:function(hash, func) {
+    const array = [];
+    for (const key in hash) {
+      const obj = hash[key];
+      array.push(func(obj, key));
+    }
+    return array;
+  },
+
+   getStats:function() {
+    const pc = webrtc.temp.pcPeers[Object.keys(webrtc.temp.pcPeers)[0]];
+    if (pc.getRemoteStreams()[0] && pc.getRemoteStreams()[0].getAudioTracks()[0]) {
+      const track = pc.getRemoteStreams()[0].getAudioTracks()[0];
+      console.log('track', track);
+      pc.getStats(track, function(report) {
+        console.log('getStats report', report);
+      }, webrtc.logError);
+    }
   }
-  return array;
-}
 
-function getStats() {
-  const pc = pcPeers[Object.keys(pcPeers)[0]];
-  if (pc.getRemoteStreams()[0] && pc.getRemoteStreams()[0].getAudioTracks()[0]) {
-    const track = pc.getRemoteStreams()[0].getAudioTracks()[0];
-    console.log('track', track);
-    pc.getStats(track, function(report) {
-      console.log('getStats report', report);
-    }, logError);
-  }
-}
 
-let container;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -283,7 +293,7 @@ export default class PeopleWebrtc  extends CommonRoot {
       super(props);
       this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => true});
       this.state = {
-        info: 'Initializing',
+        info: 'Initializin',
         status: 'init',
         roomID: '',
         isFront: true,
@@ -293,52 +303,53 @@ export default class PeopleWebrtc  extends CommonRoot {
         textRoomData: [],
         textRoomValue: '',
       };
+      webrtc.init();
   }
 
   componentDidMount() {
-    container = this;
+    webrtc.temp.rtcMoudle = this;
   }
   _press(event) {
-    container.refs.roomID.blur();
-    container.setState({status: 'connect', info: 'Connecting'});
-    join(container.state.roomID);
+    webrtc.temp.rtcMoudle.refs.roomID.blur();
+    webrtc.temp.rtcMoudle.setState({status: 'connect', info: 'Connecting'});
+    webrtc.join(webrtc.temp.rtcMoudle.state.roomID);
   }
   _switchVideoType() {
-    const isFront = !container.state.isFront;
-    container.setState({isFront:isFront});
-    getLocalStream(isFront, function(stream) {
-      if (localStream) {
-        for (const id in pcPeers) {
-          const pc = pcPeers[id];
-          pc && pc.removeStream(localStream);
+    const isFront = !webrtc.temp.rtcMoudle.state.isFront;
+    webrtc.temp.rtcMoudle.setState({isFront:isFront});
+    webrtc.getLocalStream(isFront, function(stream) {
+      if (webrtc.temp.localStream) {
+        for (const id in webrtc.temp.pcPeers) {
+          const pc = webrtc.temp.pcPeers[id];
+          pc && pc.removeStream(webrtc.temp.localStream);
         }
-        localStream.release();
+        webrtc.temp.localStream.release();
       }
-      localStream = stream;
-      container.setState({selfViewSrc: stream.toURL()});
+      webrtc.temp.localStream = stream;
+      webrtc.temp.rtcMoudle.setState({selfViewSrc: stream.toURL()});
 
-      for (const id in pcPeers) {
-        const pc = pcPeers[id];
-        pc && pc.addStream(localStream);
+      for (const id in webrtc.temp.pcPeers) {
+        const pc = webrtc.temp.pcPeers[id];
+        pc && pc.addStream(webrtc.temp.localStream);
       }
     });
   }
   receiveTextData(data) {
-    const textRoomData = this.state.textRoomData.slice();
+    const textRoomData = webrtc.temp.rtcMoudle.state.textRoomData.slice();
     textRoomData.push(data);
-    this.setState({textRoomData, textRoomValue: ''});
+    webrtc.temp.rtcMoudle.setState({textRoomData, textRoomValue: ''});
   }
   _textRoomPress() {
-    if (!this.state.textRoomValue) {
+    if (!webrtc.temp.rtcMoudle.state.textRoomValue) {
       return
     }
-    const textRoomData = this.state.textRoomData.slice();
-    textRoomData.push({user: 'Me', message: this.state.textRoomValue});
-    for (const key in pcPeers) {
-      const pc = pcPeers[key];
-      pc.textDataChannel.send(this.state.textRoomValue);
+    const textRoomData = webrtc.temp.rtcMoudle.state.textRoomData.slice();
+    textRoomData.push({user: 'Me', message: webrtc.temp.rtcMoudle.state.textRoomValue});
+    for (const key in webrtc.temp.pcPeers) {
+      const pc = webrtc.temp.pcPeers[key];
+      pc.textDataChannel.send(webrtc.temp.rtcMoudle.state.textRoomValue);
     }
-    this.setState({textRoomData, textRoomValue: ''});
+    webrtc.temp.rtcMoudle.setState({textRoomData, textRoomValue: ''});
   }
   _renderTextRoom() {
     return (
@@ -393,7 +404,7 @@ export default class PeopleWebrtc  extends CommonRoot {
         }
         <RTCView streamURL={this.state.selfViewSrc} style={styles.selfView}/>
         {
-          mapHash(this.state.remoteList, function(remote, index) {
+          webrtc.mapHash(this.state.remoteList, function(remote, index) {
             return <RTCView key={index} streamURL={remote} style={styles.remoteView}/>
           })
         }

@@ -16,7 +16,7 @@ import {
 
 import PageTemplate from '../page/page_template';
 import PeopleInfo from '../people/people_info';
-import PeopleWebrtc from '../people/people_webrtc';
+//import PeopleWebrtc from '../people/people_webrtc';
 
 import SFuncStorage from '../../s/func/s_func_storage';
 import PStyleBase from '../../p/style/p_style_base';

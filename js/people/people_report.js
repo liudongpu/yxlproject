@@ -23,6 +23,8 @@ import CommonHttp from '../common/common_url';
 import SFuncTop from '../../s/func/s_func_top';
 
 
+import PeopleWebrtc from '../people/people_webrtc';
+
 export default class PeopleReport  extends CommonRoot {
 
   constructor(props) {
@@ -57,10 +59,18 @@ export default class PeopleReport  extends CommonRoot {
             dataSource={this.state.dataSource}
             renderRow={this.renderNews.bind(this)}
              />
+             <TouchableOpacity onPress={()=>{this.onPressVideo()}}>
+               <View style={[this.rootStyleBase().cListViewLeft,{backgroundColor:'#FF6666',marginBottom:60}]}>
+                 <Text style={{color:'#ffffff'}}>视频</Text>
+               </View>
+             </TouchableOpacity>
            </View>
         </View>
 
       )
+  }
+  onPressVideo(){
+    this.rootNavPage('PeopleWebrtc',PeopleWebrtc,{pCode:this.state.memberCode});
   }
 
   onPressNews(news) {

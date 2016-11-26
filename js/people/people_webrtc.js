@@ -8,9 +8,11 @@ import {
   TouchableHighlight,
   View,
   TextInput,
+  Dimensions,
   ListView,
 } from 'react-native';
 import CommonRoot from '../common/common_root';
+const topWindow = {width,height}=Dimensions.get("window");
 
 
 import io from 'socket.io-client/socket.io';
@@ -55,7 +57,7 @@ var webrtc={
         if(webrtc.temp.rtcMoudle!=null)
         {
         webrtc.temp.rtcMoudle.setState({selfViewSrc: stream.toURL()});
-        webrtc.temp.rtcMoudle.setState({status: 'ready', info: 'Please enter or create room ID'});
+        webrtc.temp.rtcMoudle.setState({status: 'ready', info: '请点击连接开始视频'});
         }
         else
         {
@@ -146,7 +148,7 @@ var webrtc={
 
     pc.onaddstream = function (event) {
       console.log('onaddstream', event.stream);
-      webrtc.temp.rtcMoudle.setState({info: 'One peer join!'});
+      webrtc.temp.rtcMoudle.setState({info: '连接成功!'});
 
       const remoteList = webrtc.temp.rtcMoudle.state.remoteList;
       remoteList[socketId] = event.stream.toURL();
@@ -222,7 +224,7 @@ var webrtc={
     const remoteList = webrtc.temp.rtcMoudle.state.remoteList;
     delete remoteList[socketId]
     webrtc.temp.rtcMoudle.setState({ remoteList: remoteList });
-    webrtc.temp.rtcMoudle.setState({info: 'One peer leave!'});
+    webrtc.temp.rtcMoudle.setState({info: '连接失败!'});
   },
 
    logError:function(error) {
@@ -293,9 +295,9 @@ export default class PeopleWebrtc  extends CommonRoot {
       super(props);
       this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => true});
       this.state = {
-        info: 'Initializin',
+        info: '正在初始化视频，请稍等……',
         status: 'init',
-        roomID: '',
+        roomID: '1',
         isFront: true,
         selfViewSrc: null,
         remoteList: {},
@@ -310,8 +312,8 @@ export default class PeopleWebrtc  extends CommonRoot {
     webrtc.temp.rtcMoudle = this;
   }
   _press(event) {
-    webrtc.temp.rtcMoudle.refs.roomID.blur();
-    webrtc.temp.rtcMoudle.setState({status: 'connect', info: 'Connecting'});
+
+    webrtc.temp.rtcMoudle.setState({status: 'connect', info: '正在连接中……'});
     webrtc.join(webrtc.temp.rtcMoudle.state.roomID);
   }
   _switchVideoType() {
@@ -372,33 +374,20 @@ export default class PeopleWebrtc  extends CommonRoot {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <View style={this.rootStyleBase().container}>
         <Text style={styles.welcome}>
           {this.state.info}
         </Text>
-        {this.state.textRoomConnected && this._renderTextRoom()}
-        <View style={{flexDirection: 'row'}}>
-          <Text>
-            {this.state.isFront ? "Use front camera" : "Use back camera"}
-          </Text>
-          <TouchableHighlight
-            style={{borderWidth: 1, borderColor: 'black'}}
-            onPress={this._switchVideoType}>
-            <Text>Switch camera</Text>
-          </TouchableHighlight>
-        </View>
+        {this.state.textRoomConnected }
+
         { this.state.status == 'ready' ?
           (<View>
-            <TextInput
-              ref='roomID'
-              autoCorrect={false}
-              style={{width: 200, height: 40, borderColor: 'gray', borderWidth: 1}}
-              onChangeText={(text) => this.setState({roomID: text})}
-              value={this.state.roomID}
-            />
+
             <TouchableHighlight
               onPress={this._press}>
-              <Text>Enter room</Text>
+              <View style={styles.cListViewLeft}>
+                <Text style={{color:'#ffffff'}}>连接</Text>
+              </View>
             </TouchableHighlight>
           </View>) : null
         }
@@ -415,12 +404,13 @@ export default class PeopleWebrtc  extends CommonRoot {
 
 const styles = StyleSheet.create({
   selfView: {
-    width: 200,
+    width: topWindow.width,
     height: 150,
   },
   remoteView: {
-    width: 200,
-    height: 150,
+    width: topWindow.width,
+    height: 300,
+    marginTop:10,
   },
   container: {
     flex: 1,
@@ -434,5 +424,20 @@ const styles = StyleSheet.create({
   },
   listViewContainer: {
     height: 150,
+  },
+  cListViewLeft:
+  {
+    width : 50,
+    height : 50,
+
+    marginLeft:10,
+    marginRight:10,
+    marginTop:5,
+    marginBottom:10,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    backgroundColor:'#FF9900',
   },
 });

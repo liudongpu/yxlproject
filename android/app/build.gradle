@@ -90,8 +90,8 @@ android {
         applicationId "com.srnpr.yeshospital.genapp"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 3
-        versionName "1.0"
+        versionCode 4
+        versionName "1.2"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -146,6 +146,7 @@ dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
+    compile project(':WebRTCModule')
 }
 
 // Run this once to be able to run the application with BUCK

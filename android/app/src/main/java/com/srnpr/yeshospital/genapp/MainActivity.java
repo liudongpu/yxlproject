@@ -8,6 +8,7 @@ import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+import com.oney.WebRTCModule.WebRTCModulePackage;
 import com.srnpr.yeshospital.genapp.BuildConfig;
 import com.srnpr.yeshospital.genapp.R;
 
@@ -52,7 +53,8 @@ public class MainActivity extends ReactActivity {
             new UmengPushPackage(),
             new BarcodeScanner(),
             new RCTCameraPackage(),
-            new ImagePickerPackage()
+            new ImagePickerPackage(),
+                new WebRTCModulePackage()
         );
     }
 }

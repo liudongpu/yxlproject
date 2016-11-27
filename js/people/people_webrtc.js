@@ -17,7 +17,7 @@ const topWindow = {width,height}=Dimensions.get("window");
 
 import io from 'socket.io-client/socket.io';
 
-const socket = io.connect('https://react-native-webrtc.herokuapp.com', {transports: ['websocket']});
+//const socket = io.connect('https://web-rtc-server.yinxl.com', {transports: ['websocket']});
 
 import {
   RTCPeerConnection,
@@ -29,8 +29,8 @@ import {
   getUserMedia,
 } from 'react-native-webrtc';
 
-const configuration = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
-
+//const configuration = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
+const configuration = {"iceServers": [{"url": "stun:stun.iptel.org"}]};
 
 var webrtc={
   temp:{
@@ -41,7 +41,7 @@ var webrtc={
   },
   init:function(){
 
-    webrtc.temp.socket = io.connect('https://react-native-webrtc.herokuapp.com', {transports: ['websocket']});
+    webrtc.temp.socket = io.connect('https://web-rtc-server.yinxl.com', {transports: ['websocket']});
 
     webrtc.temp.socket.on('exchange', function(data){
       webrtc.exchange(data);

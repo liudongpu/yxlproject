@@ -30,7 +30,7 @@ import {
 } from 'react-native-webrtc';
 
 //const configuration = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
-const configuration = {"iceServers": [{"url": "stun:stun.iptel.org"}]};
+const configuration = {"iceServers": [{"url": "turn:webrtc-turn-server.yinxl.com:3478","username": "yinxlrtc","credential": "wwwyinxlcom"}]};
 
 var webrtc={
   temp:{

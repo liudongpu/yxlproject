@@ -1,0 +1,14 @@
+wget http://turnserver.open-sys.org/downloads/v4.5.0.5/
+
+
+
+turnserver -a -o
+
+
+
+tls-listening-port=5349
+listening-ip=123.56.162.16
+lt-cred-mech
+user=yinxlrtc:wwwyinxlcom
+cert=/opt/gconfig/yconfig/files/keys/yinxl_com.pem
+pkey=/opt/gconfig/yconfig/files/keys/yinxl_com.key

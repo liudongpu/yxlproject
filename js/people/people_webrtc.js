@@ -92,6 +92,7 @@ var webrtc={
         callback(stream);
       }, webrtc.logError);
     });
+    
   },
 
    join:function(roomID) {

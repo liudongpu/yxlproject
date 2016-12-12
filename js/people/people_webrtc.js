@@ -14,6 +14,7 @@ import {
 import CommonRoot from '../common/common_root';
 const topWindow = {width,height}=Dimensions.get("window");
 
+import SFuncStorage from '../../s/func/s_func_storage';
 
 import io from 'socket.io-client/socket.io';
 
@@ -92,7 +93,7 @@ var webrtc={
         callback(stream);
       }, webrtc.logError);
     });
-    
+
   },
 
    join:function(roomID) {
@@ -295,10 +296,16 @@ export default class PeopleWebrtc  extends CommonRoot {
   constructor(props) {
       super(props);
       this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => true});
+
+      var sLogin=SFuncStorage.upTempValue('user','loginName');
+      var sMemberCode=this.rootNavParams('pCode');
+
       this.state = {
         info: '正在初始化视频，请稍等……',
         status: 'init',
-        roomID: '1',
+        memberCode:sMemberCode,
+        userCode:sLogin,
+        roomID: sLogin,
         isFront: true,
         selfViewSrc: null,
         remoteList: {},
@@ -312,10 +319,28 @@ export default class PeopleWebrtc  extends CommonRoot {
   componentDidMount() {
     webrtc.temp.rtcMoudle = this;
   }
+
+  componentWillUnmount(){
+
+    webrtc.temp.socket.disconnect();
+  }
+
   _press(event) {
+
+    var oUser = {
+            userCode: webrtc.temp.rtcMoudle.state.userCode,
+            memberCode: webrtc.temp.rtcMoudle.state.memberCode,
+            clientType: 'appclient',
+            roomCode:''
+
+        };
+    webrtc.temp.socket.emit('rtc_user',JSON.stringify(oUser));
 
     webrtc.temp.rtcMoudle.setState({status: 'connect', info: '正在连接中……'});
     webrtc.join(webrtc.temp.rtcMoudle.state.roomID);
+
+
+
   }
   _switchVideoType() {
     const isFront = !webrtc.temp.rtcMoudle.state.isFront;

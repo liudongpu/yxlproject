@@ -1,14 +1,22 @@
+
+##### 服务安装
 wget http://turnserver.open-sys.org/downloads/v4.5.0.5/
-
-
 
 turnserver -a -o
 
-
-
+配置文件修改为：
 tls-listening-port=5349
 listening-ip=123.56.162.16
 lt-cred-mech
 user=yinxlrtc:wwwyinxlcom
 cert=/opt/gconfig/yconfig/files/keys/yinxl_com.pem
 pkey=/opt/gconfig/yconfig/files/keys/yinxl_com.key
+
+
+
+##### rtc插件配置修改
+android中WebRTCModule类WebRTCModule方法增加如下方法
+setAudioOutput("speaker");
+setKeepScreenOn(true);
+
+ios:

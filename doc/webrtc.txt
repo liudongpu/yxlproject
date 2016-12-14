@@ -16,7 +16,7 @@ pkey=/opt/gconfig/yconfig/files/keys/yinxl_com.key
 
 ##### rtc插件配置修改
 android中WebRTCModule类WebRTCModule方法增加如下方法
-setAudioOutput("speaker");
+//setAudioOutput("speaker");
 setKeepScreenOn(true);
 
 ios:

@@ -25,6 +25,7 @@
 {
   [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
 
+  [[UIApplication sharedApplication] setIdleTimerDisabled:YES];//屏幕常亮
   //注册友盟推送
   [RCTUmengPush registerWithAppkey:@"57737d6d67e58e1d09001a02" launchOptions:launchOptions];
   

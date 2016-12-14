@@ -17,12 +17,14 @@
 
 #import "RCTLog.h"
 
+#import <AVFoundation/AVFoundation.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+
   //注册友盟推送
   [RCTUmengPush registerWithAppkey:@"57737d6d67e58e1d09001a02" launchOptions:launchOptions];
   

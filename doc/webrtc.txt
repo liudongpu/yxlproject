@@ -20,3 +20,5 @@ android中WebRTCModule类WebRTCModule方法增加如下方法
 setKeepScreenOn(true);
 
 ios:
+RTCVideoViewManager.m中layoutSubviews最后一行增加
+[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];

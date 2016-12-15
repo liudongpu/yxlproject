@@ -36,6 +36,18 @@ const  rootList =
       'icon_dc':require('../../images/icons/icon_dc.png'),
       'icon_camera':require('../../images/icons/icon_camera.png'),
 
+
+      'detail_member':require('../../images/detail/detail_member.png'),
+      'detail_photo':require('../../images/detail/detail_photo.png'),
+      'detail_agree':require('../../images/detail/detail_agree.png'),
+      'detail_report':require('../../images/detail/detail_report.png'),
+      'detail_pressure':require('../../images/detail/detail_pressure.png'),
+      'detail_oxygen':require('../../images/detail/detail_oxygen.png'),
+      'detail_glucose':require('../../images/detail/detail_glucose.png'),
+      'detail_temperature':require('../../images/detail/detail_temperature.png'),
+      'detail_webrtc':require('../../images/detail/detail_webrtc.png'),
+      'detail_census':require('../../images/detail/detail_census.png'),
+
       'people_info_carda':require('../../images/home/people_carda.png'),
       'people_info_cardb':require('../../images/home/people_cardb.png'),
       'people_info_cardc':require('../../images/home/people_cardc.png'),

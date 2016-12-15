@@ -518,7 +518,7 @@ export default  PStyleBase = StyleSheet.create({
 
     peopleInfoBg:
     {
-      height: 180,
+      height: 110,
       width:topWindow.width,
       alignItems:'center',
       overflow:'hidden',
@@ -598,6 +598,7 @@ export default  PStyleBase = StyleSheet.create({
       flex:1,
       alignItems:'center'
     },
+
     peopleInfoItemImage:
     {
       width:100,
@@ -608,7 +609,62 @@ export default  PStyleBase = StyleSheet.create({
       margin:10,
       flex:1,
       textAlign:'center',
-    }
+    },
+    peopleInfoTip:
+    {
+      backgroundColor:'#f8f8f8',
+      height:40,
+      paddingTop:10,
+    },
+    peopleInfoTipText:
+    {
+
+      color:'#2f2f2f',
+
+
+    },
+
+    peopleInfoDetail:
+    {
+
+      flexDirection: 'row',
+
+      borderBottomColor:'#f8f8f8',
+      borderBottomWidth:1,
+      justifyContent:'flex-start',
+      alignItems:'flex-start',
+    },
+    peopleInfoDetailBox:
+    {
+      flex:1,
+
+      borderLeftColor:'#f8f8f8',
+      borderLeftWidth:1,
+      paddingTop:15,
+    },
+    peopleInfoDetailTop:
+    {
+      marginTop:25,
+      alignItems:'center',
+    },
+    peopleInfoDetailBottom:
+    {
+      marginTop:20,
+      flex:1,
+      marginBottom:20,
+    },
+    peopleInfoDetailImage:
+    {
+      width:30,
+      height:30,
+
+
+    },
+    peopleInfoDetailText:
+    {
+
+      textAlign:'center',
+    },
 
 
 });

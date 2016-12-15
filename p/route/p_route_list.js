@@ -92,6 +92,9 @@ const  rootList =
       'PeopleReportE':{
         name: 'PeopleReportE',title:'调查评估'
       },
+      'PeopleCensus':{
+        name: 'PeopleCensus',title:'调查评估'
+      },
       'PeoplePressureAdd':{
         name: 'PeoplePressureAdd',title:'添加血压',page:'pa/com_uhutu_yxlsite_z_page_DataPressure'
       },

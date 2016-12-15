@@ -427,20 +427,22 @@ export default  PStyleBase = StyleSheet.create({
     navCenter:
     {
       flex:1,
-      width:topWindow.width-100,
+      width:topWindow.width-125,
     },
 
     // 左面导航按钮
     navLeftButton: {
       color: '#ffffff',
       fontSize: 16,
-      marginLeft: 12,
+
       fontWeight: 'bold',
-      marginTop:16,
+
     },
     navLeft:
     {
-      width:50
+      width:50,
+      paddingTop:Platform.OS === 'ios' ? 16 : 8,
+      paddingLeft:12,
     },
     navRight:
     {

@@ -106,7 +106,7 @@ export default class LayoutMain extends Component {
                   </TouchableOpacity>
                 </View>
               )}else {
-                return <View  style={PStyleBase.navRight}></View>;
+                return <View  style={PStyleBase.navRight}><Text style={PStyleBase.navRightButton}>{''}</Text></View>;
               }
           },
           // 标题

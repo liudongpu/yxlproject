@@ -444,7 +444,9 @@ export default  PStyleBase = StyleSheet.create({
     navCenter:
     {
       flex:1,
-      width:topWindow.width-125,
+
+      width:topWindow.width-150,
+
     },
 
     // 左面导航按钮
@@ -461,14 +463,18 @@ export default  PStyleBase = StyleSheet.create({
     },
     navLeft:
     {
-      width:50,
+      width:80,
       paddingTop:Platform.OS === 'ios' ? 16 : 16,
       paddingBottom:10,
-      paddingLeft:12,
+      paddingLeft:10,
+
+
     },
     navRight:
     {
-      width:50
+      width:80,
+
+
     },
     navTitle:{
       marginTop:16,
@@ -478,7 +484,7 @@ export default  PStyleBase = StyleSheet.create({
 
       justifyContent: 'center',
       fontWeight: 'bold',
-      flex: 1,
+
 
     },
     mainMainTable:

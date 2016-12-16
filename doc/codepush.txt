@@ -1,8 +1,8 @@
 
 
-code-push release-react YxlGenIos --targetBinaryVersion '1.3' --deploymentName Production ios
+code-push release-react YxlGenIos --targetBinaryVersion '1.5' --deploymentName Production ios
 
-code-push release-react YxlGenAndroid --targetBinaryVersion '1.4' --deploymentName Production android
+code-push release-react YxlGenAndroid --targetBinaryVersion '1.5' --deploymentName Production android
 
 code-push deployment ls YxlGenIos -k
 code-push deployment ls YxlGenAndroid -k

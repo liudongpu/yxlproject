@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   View,
   TextInput,
+  ScrollView,
   Dimensions,
   ListView,
 } from 'react-native';
@@ -58,7 +59,7 @@ var webrtc={
         if(webrtc.temp.rtcMoudle!=null)
         {
         webrtc.temp.rtcMoudle.setState({selfViewSrc: stream.toURL()});
-        webrtc.temp.rtcMoudle.setState({status: 'ready', info: '请点击连接开始视频'});
+        webrtc.temp.rtcMoudle.setState({status: 'ready', info: '请点击连接……'});
         }
         else
         {
@@ -301,7 +302,7 @@ export default class PeopleWebrtc  extends CommonRoot {
       var sMemberCode=this.rootNavParams('pCode');
 
       this.state = {
-        info: '正在初始化视频，请稍等……',
+        info: '正在初始化，请稍等……',
         status: 'init',
         memberCode:sMemberCode,
         userCode:sLogin,
@@ -401,69 +402,124 @@ export default class PeopleWebrtc  extends CommonRoot {
   render() {
     return (
       <View style={this.rootStyleBase().container}>
-        <Text style={styles.welcome}>
-          {this.state.info}
-        </Text>
-        {this.state.textRoomConnected }
 
-        { this.state.status == 'ready' ?
-          (<View>
 
-            <TouchableHighlight
-              onPress={this._press}>
-              <View style={styles.cListViewLeft}>
-                <Text style={{color:'#ffffff'}}>连接</Text>
-              </View>
-            </TouchableHighlight>
-          </View>) : null
-        }
-        <RTCView streamURL={this.state.selfViewSrc} style={styles.selfView}/>
-        {
-          webrtc.mapHash(this.state.remoteList, function(remote, index) {
-            return <RTCView key={index} streamURL={remote} style={styles.remoteView}/>
-          })
-        }
+
+
+        <View style={styles.main}>
+
+          <ScrollView style={styles.video}>
+            {
+              webrtc.mapHash(this.state.remoteList, function(remote, index) {
+                return <RTCView key={index} streamURL={remote} style={styles.remoteView}/>
+              })
+            }
+          </ScrollView>
+          <View style={styles.option}>
+
+
+            <View  style={styles.optionLeft}>
+
+
+              { this.state.status == 'ready' ?
+                (<View>
+
+                  <TouchableHighlight
+                    onPress={this._press}>
+                    <View style={styles.iconBtn}>
+                      <Text style={styles.iconText}>连接</Text>
+                    </View>
+                  </TouchableHighlight>
+                </View>) : null
+              }
+            </View>
+            <View  style={styles.optionCenter}>
+              <Text style={styles.welcome}>
+                {this.state.info}
+              </Text>
+            </View>
+            <View style={styles.optionRight}>
+              <RTCView streamURL={this.state.selfViewSrc} style={styles.selfView}/>
+            </View>
+
+          </View>
+
+        </View>
+
+
       </View>
     );
   }
 };
 
 const styles = StyleSheet.create({
+  main:{
+    flexDirection:'column',
+    justifyContent:'flex-end',
+    flex:1,
+  },
+  video:
+  {
+    flex:1,
+  },
+  option:{
+    height:122,
+    padding:10,
+    borderTopWidth:1,
+    borderTopColor:'#cccccc',
+    flexDirection:'row',
+    backgroundColor:'#f8f8f8',
+  },
+  optionLeft:
+  {
+
+    width:100,
+  },
+  optionCenter:
+  {
+    flex:1,
+
+  },
+  optionRight:
+  {
+    width:100,
+  },
   selfView: {
-    width: topWindow.width,
-    height: 150,
+    width:100,
+    height: 100,
   },
   remoteView: {
     width: topWindow.width,
-    height: 300,
+    height:300,
     marginTop:10,
   },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#F5FCFF',
-  },
+
   welcome: {
-    fontSize: 20,
+
     textAlign: 'center',
     margin: 10,
   },
   listViewContainer: {
     height: 150,
   },
-  cListViewLeft:
+  iconBtn:
   {
-    width : 50,
-    height : 50,
+    width : 90,
+    height : 90,
 
     marginLeft:10,
     marginRight:10,
     marginTop:5,
     marginBottom:10,
-    borderRadius: 25,
+    borderRadius: 45,
     justifyContent: 'center',
     alignItems: 'center',
 
     backgroundColor:'#FF9900',
   },
+  iconText:
+  {
+    color:'#ffffff',
+    fontSize:25,
+  }
 });

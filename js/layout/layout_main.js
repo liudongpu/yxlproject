@@ -79,15 +79,17 @@ export default class LayoutMain extends Component {
           LeftButton(route, navigator, index, navState) {
             if (index > 0) {
               return (
+                <TouchableOpacity
+                  underlayColor='transparent'
+                  onPress={() => {if (index > 0) {navigator.pop()}}}>
                 <View  style={PStyleBase.navLeft}>
-                  <TouchableOpacity
-                    underlayColor='transparent'
-                    onPress={() => {if (index > 0) {navigator.pop()}}}>
-                    <Text style={PStyleBase.navLeftButton}>
-                      {'<'}
-                    </Text>
-                  </TouchableOpacity>
+
+                    <View style={PStyleBase.navLeftButton}>
+
+                    </View>
+
                 </View>
+                </TouchableOpacity>
               );
             } else {
               return <View  style={PStyleBase.navLeft}></View>;

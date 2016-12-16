@@ -432,16 +432,21 @@ export default  PStyleBase = StyleSheet.create({
 
     // 左面导航按钮
     navLeftButton: {
-      color: '#ffffff',
-      fontSize: 16,
-
-      fontWeight: 'bold',
+      transform:[{rotate:'45deg'}],
+      borderBottomWidth:2,
+      borderBottomColor:'#ffffff',
+      borderLeftColor:'#ffffff',
+      borderLeftWidth:2,
+      width:10,
+      height:10,
+      marginLeft:2,
 
     },
     navLeft:
     {
       width:50,
-      paddingTop:Platform.OS === 'ios' ? 16 : 8,
+      paddingTop:Platform.OS === 'ios' ? 16 : 16,
+      paddingBottom:10,
       paddingLeft:12,
     },
     navRight:

@@ -109,7 +109,7 @@ export default class HomeUser extends CommonRoot {
                             </View>
 
                             <View style={[this.rootStyleBase().cListIconRight,news.top?{}:this.rootStyleBase().cListIconBorder]}>
-                                <Text style={this.rootStyleBase().cListIconLink}>{'>'}</Text>
+                                <View style={[this.rootStyleBase().cListViewTarget,this.rootStyleBase().wArrowTarget]}></View>
                             </View>
                         </View>
                     </View>

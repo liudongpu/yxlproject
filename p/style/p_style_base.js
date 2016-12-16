@@ -55,6 +55,14 @@ export default  PStyleBase = StyleSheet.create({
       borderRightColor:'#C8C8CD',
       borderRightWidth:2
     },
+    wArrowTarget:
+    {
+      transform:[{rotate:'45deg'}],
+      borderTopWidth:1,
+      borderTopColor:'#C8C8CD',
+      borderRightColor:'#C8C8CD',
+      borderRightWidth:1
+    },
 
     cFormPageBack:
     {
@@ -76,7 +84,7 @@ export default  PStyleBase = StyleSheet.create({
     },
     cFormPageLeft:
     {
-      width:80,
+      width:90,
 
     },
     cFormPageText:
@@ -352,6 +360,15 @@ export default  PStyleBase = StyleSheet.create({
       height:10,
       marginTop:10,
       marginRight:15
+
+
+    },
+    cListViewTarget:
+    {
+
+      width:8,
+      height:8,
+      marginRight:20
 
 
     },

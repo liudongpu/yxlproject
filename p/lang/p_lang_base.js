@@ -45,7 +45,7 @@ const  rootList =
       'people_info_cardb':'查房历史',
       'people_info_cardc':'健康数据',
       'people_info_add_text':'   系统服务 ',
-      'people_info_add_line':'——————',
+      'people_info_add_line':'   维护数据 ',
       'people_info_icona':'血压',
       'people_info_iconb':'血氧',
       'people_info_iconc':'血糖',
@@ -59,7 +59,7 @@ const  rootList =
       'detail_oxygen':'血氧',
       'detail_glucose':'血糖',
       'detail_temperature':'体温',
-      'detail_webrtc':'视频通话',
+      'detail_webrtc':'远程医疗',
       'detail_census':'调查评估',
 
 

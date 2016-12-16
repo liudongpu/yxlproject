@@ -65,7 +65,7 @@ export default class PeopleInfo  extends CommonRoot {
 
             </View>
 
-            <View style={this.rootStyleBase().peopleInfoDetail}>
+            <View style={[this.rootStyleBase().peopleInfoDetail,this.rootStyleBase().peopleInfoDetailBorder]}>
               {this._nodeDetail('detail_member','PeopleBase')}
               {this._nodeDetail('detail_photo','PeopleImage',PeopleImage,1)}
               {this._nodeDetail('detail_agree','PeopleAgree',PeopleAgree,1)}
@@ -73,23 +73,36 @@ export default class PeopleInfo  extends CommonRoot {
             </View>
             <View style={this.rootStyleBase().peopleInfoDetail}>
               {this._nodeDetail('detail_report','PeopleReport',PeopleReport,1)}
-              {this._nodeDetail('detail_pressure','PeoplePressureAdd')}
-              {this._nodeDetail('detail_oxygen','PeopleOxygenAdd')}
+              {this._nodeDetail('detail_census','PeopleCensus',CommonHttp,2)}
+              {this._nodeDetail('detail_webrtc','PeopleWebrtc',PeopleWebrtc,1)}
+
+
             </View>
-            <View style={this.rootStyleBase().peopleInfoDetail}>
+            <View style={[this.rootStyleBase().peopleInfoTip]}>
+
+                <Text style={this.rootStyleBase().peopleInfoTipText}>
+                    {this.rootLangBase('people_info_add_line')}
+                </Text>
+
+            </View>
+            <View style={[this.rootStyleBase().peopleInfoDetail,this.rootStyleBase().peopleInfoDetailBorder]}>
+              {this._nodeDetail('detail_pressure','PeoplePressureAdd')}
               {this._nodeDetail('detail_glucose','PeopleGlucoseAdd')}
               {this._nodeDetail('detail_temperature','PeopleTemperatureAdd')}
-              {this._nodeDetail('detail_webrtc','PeopleWebrtc',PeopleWebrtc,1)}
+
             </View>
             <View style={this.rootStyleBase().peopleInfoDetail}>
-              {this._nodeDetail('detail_census','PeopleCensus',CommonHttp,2)}
+              {this._nodeDetail('detail_oxygen','PeopleOxygenAdd')}
               {this._nodeEmpty()}
               {this._nodeEmpty()}
             </View>
-
-
             <View style={[this.rootStyleBase().peopleInfoTip]}>
+
+
             </View>
+
+
+
           </ScrollView>
 
         </View>

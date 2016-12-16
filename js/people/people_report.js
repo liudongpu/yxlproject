@@ -37,7 +37,7 @@ export default class PeopleReport  extends CommonRoot {
               {img:this.rootStyleImage('people_info_iconb'),title:this.rootRouteList('PeopleReportB').title,target:CommonHttp,link:'PeopleReportB',url:'/yhmanage/web/wxface/app_oxygen'},
               {img:this.rootStyleImage('people_info_iconc'),title:this.rootRouteList('PeopleReportC').title,target:CommonHttp,link:'PeopleReportC',url:'/yhmanage/web/wxface/app_glucose'},
               {img:this.rootStyleImage('people_info_icond'),title:this.rootRouteList('PeopleReportD').title,target:CommonHttp,link:'PeopleReportD',url:'/yhmanage/web/wxface/app_temperature'},
-              {img:this.rootStyleImage('people_info_iconb'),title:this.rootRouteList('PeopleReportE').title,target:CommonHttp,link:'PeopleReportE',url:'/yhmanage/web/census/census_list'},
+
               ];
 
     this.state = {
@@ -59,11 +59,7 @@ export default class PeopleReport  extends CommonRoot {
             dataSource={this.state.dataSource}
             renderRow={this.renderNews.bind(this)}
              />
-             <TouchableOpacity onPress={()=>{this.onPressVideo()}}>
-               <View style={[this.rootStyleBase().cListViewLeft,{backgroundColor:'#FF6666',marginBottom:60}]}>
-                 <Text style={{color:'#ffffff'}}>视频</Text>
-               </View>
-             </TouchableOpacity>
+             
            </View>
         </View>
 

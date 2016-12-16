@@ -622,11 +622,12 @@ export default  PStyleBase = StyleSheet.create({
       backgroundColor:'#f8f8f8',
       height:40,
       paddingTop:10,
+
     },
     peopleInfoTipText:
     {
 
-      color:'#2f2f2f',
+      color:'#77757c',
 
 
     },
@@ -636,29 +637,34 @@ export default  PStyleBase = StyleSheet.create({
 
       flexDirection: 'row',
 
-      borderBottomColor:'#f8f8f8',
-      borderBottomWidth:1,
+
       justifyContent:'flex-start',
       alignItems:'flex-start',
     },
+    peopleInfoDetailBorder:
+    {
+      borderBottomColor:'#efeff4',
+      borderBottomWidth:1,
+    },
+
     peopleInfoDetailBox:
     {
       flex:1,
 
-      borderLeftColor:'#f8f8f8',
+      borderLeftColor:'#efeff4',
       borderLeftWidth:1,
-      paddingTop:15,
+      paddingTop:10,
     },
     peopleInfoDetailTop:
     {
-      marginTop:25,
+      marginTop:20,
       alignItems:'center',
     },
     peopleInfoDetailBottom:
     {
-      marginTop:20,
+      marginTop:15,
       flex:1,
-      marginBottom:20,
+      marginBottom:30,
     },
     peopleInfoDetailImage:
     {

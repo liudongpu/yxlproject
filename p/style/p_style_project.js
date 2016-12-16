@@ -36,7 +36,8 @@ export default  PStyleProject = StyleSheet.create({
     flex:1,
     marginTop:20,
     backgroundColor:'#ffffff',
-    height:35,
+    height:40,
+
 
 
   },
@@ -139,7 +140,7 @@ export default  PStyleProject = StyleSheet.create({
   {
     backgroundColor:'#ffffff',
     borderBottomWidth:1,
-    borderBottomColor:'#ccc',
+    borderBottomColor:'#ebebeb',
   },
 
   homeMsgListItem:
@@ -184,11 +185,12 @@ export default  PStyleProject = StyleSheet.create({
 
   userMsgListAll:
   {
-
+    
   },
   userMsgListBox:
   {
     height:Dimensions.get("window").height-(Platform.OS === 'ios' ?118:128),
+    flex:1,
   },
   userMsgListPut:
   {
@@ -198,7 +200,6 @@ export default  PStyleProject = StyleSheet.create({
     borderTopWidth:1,
     flexDirection : 'row',
 
-    flex:1,
 
 
   },
@@ -230,13 +231,16 @@ export default  PStyleProject = StyleSheet.create({
     backgroundColor:'#efeff2',
     borderWidth:1,
     borderRadius:5,
+    paddingTop:5,
     height:40,
     width:70,
     margin:5,
+    justifyContent:'center',
   },
   userMsgBtnText:
   {
-    lineHeight:30,
+    flex:1,
+
     fontSize:16,
     textAlign:'center'
   },

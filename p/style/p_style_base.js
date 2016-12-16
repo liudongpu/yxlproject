@@ -132,7 +132,7 @@ export default  PStyleBase = StyleSheet.create({
 
     cFormTextInput:
     {
-      height:35,
+      height:40,
 
       backgroundColor:'#ffffff',
       marginTop:10,
@@ -526,7 +526,7 @@ export default  PStyleBase = StyleSheet.create({
     },
     homeIndexTextInput:
     {
-      height: 30,
+      height: 40,
       borderColor: '#C8C8CD',
       borderWidth: 1,
       margin:10,

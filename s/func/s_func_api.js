@@ -70,7 +70,7 @@ export default class SFuncApi
 
       fetch(apiUrl.upload,opt).then((response) => response.json())
       .then((responseData) => {
-          if(responseData.status==1)
+          if(responseData.resultCode==1)
           {
             fCallBack(responseData);
           }

@@ -7,13 +7,13 @@ const apiConfig=
 {
   dev:{
     apiUrl:'https://dev-yxl.ntw.srnpr.com/',
-    uploadUrl:'http://art-upload.iqhsy.com/mfile/upload/art',
+    uploadUrl:'https://app-wx-page.yinxl.com/yhmanage/upload/realsave',
     yhUrl:'http://wx.jk.yxl9.cn',
     apiKey:'tesetkey'
   },
   product:{
     apiUrl:'https://app-gen-api.yinxl.com/',
-    uploadUrl:'https://art-upload.iqhsy.com/mfile/upload/art',
+    uploadUrl:'https://app-wx-page.yinxl.com/yhmanage/upload/realsave',
     yhUrl:'https://app-wx-page.yinxl.com',
     apiKey:'tesetkey'
   }

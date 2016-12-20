@@ -51,7 +51,7 @@ export default class SFuncCamera
       // uri (on android)
       //const source = {uri: response.uri, isStatic: true};
       fLoading(true);
-      SFuncApi.uploadFile(response.uri,(o)=>{fLoading(false);fCallBack(o.fileUrl);});
+      SFuncApi.uploadFile(response.uri,(o)=>{fLoading(false);fCallBack(o.resultObject);});
       //fetch('',opt).then((response)=>
     }
     });

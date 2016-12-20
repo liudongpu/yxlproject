@@ -22,3 +22,11 @@ setKeepScreenOn(true);
 ios:
 RTCVideoViewManager.m中layoutSubviews最后一行增加
 [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+
+UInt32 doChangeDefaultRoute = 1;
+
+    AudioSessionSetProperty (
+                             kAudioSessionProperty_OverrideCategoryDefaultToSpeaker,
+                             sizeof (doChangeDefaultRoute),
+                             &doChangeDefaultRoute
+                             );

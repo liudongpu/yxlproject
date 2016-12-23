@@ -1,0 +1,6 @@
+git clone https://git.coding.net/CocoaPods/Specs.git ~/.cocoapods/repos/master
+
+
+
+
+(JS_DIR=`pwd`;cd node_modules/react-native; npm r start -- --root $JS_DIR)

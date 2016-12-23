@@ -26,3 +26,7 @@ code-push app add YxlGenAndroid
 o0Y62mKA7_P2s5auHEp4Nl2nGyvOV1GqB5TvZ
 
 code-push deployment ls YxlGenAndroid -k
+
+
+codepush 私服搭建
+https://github.com/lisong/code-push-server/blob/master/docs/react-native-code-push.md

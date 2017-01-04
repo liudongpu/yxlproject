@@ -9,6 +9,7 @@ import {
   View,
   TextInput,
   ScrollView,
+  Modal,
   Dimensions,
   ListView,
 } from 'react-native';
@@ -313,6 +314,7 @@ export default class PeopleWebrtc  extends CommonRoot {
         textRoomConnected: false,
         textRoomData: [],
         textRoomValue: '',
+        modalVisible:false
       };
       webrtc.init();
   }
@@ -343,6 +345,10 @@ export default class PeopleWebrtc  extends CommonRoot {
 
 
   }
+  _setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
   _switchVideoType() {
     const isFront = !webrtc.temp.rtcMoudle.state.isFront;
     webrtc.temp.rtcMoudle.setState({isFront:isFront});
@@ -408,6 +414,19 @@ export default class PeopleWebrtc  extends CommonRoot {
 
         <View style={styles.main}>
 
+        <Modal
+
+          visible={this.state.modalVisible}
+          onRequestClose={() => {this._setModalVisible(false)}}
+          >
+          <View style={[styles.modalContainer]}>
+            <View style={[styles.modalInnerContainer]}>
+              <Text>This modal was presented  animation.</Text>
+
+            </View>
+          </View>
+        </Modal>
+
           <ScrollView style={styles.video}>
             {
               webrtc.mapHash(this.state.remoteList, function(remote, index) {
@@ -425,7 +444,7 @@ export default class PeopleWebrtc  extends CommonRoot {
                 (<View>
 
                   <TouchableHighlight
-                    onPress={this._press}>
+                    onPress={() => {this._setModalVisible(true)}}>
                     <View style={styles.iconBtn}>
                       <Text style={styles.iconText}>连接</Text>
                     </View>
@@ -521,5 +540,14 @@ const styles = StyleSheet.create({
   {
     color:'#ffffff',
     fontSize:25,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20,
+  },
+  modalInnerContainer: {
+    borderRadius: 10,
+    alignItems: 'center',
   }
 });

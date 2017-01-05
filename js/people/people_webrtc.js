@@ -9,6 +9,7 @@ import {
   View,
   TextInput,
   ScrollView,
+  TouchableOpacity,
   Modal,
   Dimensions,
   ListView,
@@ -35,6 +36,10 @@ import {
 //const configuration = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
 const configuration = {"iceServers": [{"url": "turn:webrtc-turn-server.yinxl.com:3478","username": "yinxlrtc","credential": "wwwyinxlcom"}]};
 
+var rtcData={};
+
+var rtcUserGroup='';
+
 var webrtc={
   temp:{
     socket:null,
@@ -52,6 +57,10 @@ var webrtc={
     webrtc.temp.socket.on('leave', function(socketId){
       webrtc.leave(socketId);
     });
+    webrtc.temp.socket.on('rtc_refresh', function(data){
+      rtcData=JSON.parse(data);
+      //webrtc.temp.rtcMoudle._setModalVisible(true);
+    });
 
     webrtc.temp.socket.on('connect', function(data) {
       console.log('connect');
@@ -68,6 +77,8 @@ var webrtc={
         }
       });
     });
+    //连接成功后发送一条空消息  触发notice_all
+    webrtc.temp.socket.emit('rtc_user','');
   },
   getLocalStream:function(isFront, callback) {
     MediaStreamTrack.getSources(sourceInfos => {
@@ -302,9 +313,16 @@ export default class PeopleWebrtc  extends CommonRoot {
       var sLogin=SFuncStorage.upTempValue('user','loginName');
       var sMemberCode=this.rootNavParams('pCode');
 
+
+      var dsDoc = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
+
       this.state = {
         info: '正在初始化，请稍等……',
         status: 'init',
+        docDataSource:dsDoc.cloneWithRows(['row 1', 'row 2']),
+        docAllSum:0,
+        selectGroup:'',
         memberCode:sMemberCode,
         userCode:sLogin,
         roomID: sLogin,
@@ -334,9 +352,13 @@ export default class PeopleWebrtc  extends CommonRoot {
             userCode: webrtc.temp.rtcMoudle.state.userCode,
             memberCode: webrtc.temp.rtcMoudle.state.memberCode,
             clientType: 'appclient',
-            roomCode:''
+            roomCode:'',
+            userGroup:encodeURIComponent(rtcUserGroup),
 
         };
+
+
+
     webrtc.temp.socket.emit('rtc_user',JSON.stringify(oUser));
 
     webrtc.temp.rtcMoudle.setState({status: 'connect', info: '正在连接中……'});
@@ -346,7 +368,57 @@ export default class PeopleWebrtc  extends CommonRoot {
 
   }
   _setModalVisible(visible) {
-    this.setState({modalVisible: visible});
+    if(visible==true)
+    {
+
+      var oData=[];
+      var mGroup = new Map();
+
+      var iAllSum=0;
+
+      for(var p in rtcData)
+      {
+        var oThis=rtcData[p];
+        if(oThis.clientType=='webbrowser')
+        {
+
+            if(mGroup.get(oThis.userGroup)==undefined)
+            {
+              mGroup.set(oThis.userGroup,{group:oThis.userGroup,sum:0,use:0});
+            }
+
+            iAllSum++;
+            mGroup.get(oThis.userGroup).sum=mGroup.get(oThis.userGroup).sum+1;
+
+            if(oThis.roomCode=='')
+            {
+              mGroup.get(oThis.userGroup).use=mGroup.get(oThis.userGroup).use+1;
+            }
+
+
+        }
+
+        //oData.push(oThis.userCode);
+      }
+
+      mGroup.forEach((value,index)=>{//value为值，index实际上就是key
+          oData.push(value);
+        });
+
+      this.setState({
+          modalVisible:visible,
+          docAllSum:iAllSum,
+          docDataSource : this.state.docDataSource.cloneWithRows(oData)
+      });
+
+
+    }
+    else
+    {
+      this.setState({modalVisible: visible});
+    }
+
+
   }
 
   _switchVideoType() {
@@ -405,23 +477,65 @@ export default class PeopleWebrtc  extends CommonRoot {
       </View>
     );
   }
+
+  onPressNews(news){
+
+    this._setModalVisible(false);
+
+
+    rtcUserGroup=news.group;
+    this._press();
+  }
+
+  renderNews(news) {
+
+    var aBgColors=['#DDDDDD','#99CC33'];
+
+    var iIndex=news.use==0?0:1;
+    //var iIndex=Math.floor(iSource%aBgColors.length);
+    //var iIndex=3;
+
+    var sBgColor=aBgColors[iIndex];
+    return (
+        <TouchableOpacity onPress={()=>{this.onPressNews(news)}}>
+            <View style={[styles.modalItem,{backgroundColor:sBgColor}]}>
+              <Text style={styles.modalItemText}>{news.group}(在线{news.sum}医生)    空闲:{news.use}医生</Text>
+            </View>
+        </TouchableOpacity>
+    );
+  }
   render() {
     return (
       <View style={this.rootStyleBase().container}>
-
-
-
-
         <View style={styles.main}>
-
         <Modal
-
           visible={this.state.modalVisible}
+          transparent={true}
           onRequestClose={() => {this._setModalVisible(false)}}
           >
           <View style={[styles.modalContainer]}>
             <View style={[styles.modalInnerContainer]}>
-              <Text>This modal was presented  animation.</Text>
+              <Text>请选择科室(共计在线{this.state.docAllSum}医生)：</Text>
+              <ListView
+              dataSource={this.state.docDataSource}
+              renderRow={this.renderNews.bind(this)}
+              style={[styles.modalList]}
+               />
+               <View style={[styles.modalButtonBox]}>
+                 <TouchableOpacity onPress={this._setModalVisible.bind(this, true)}>
+                  <View style={styles.modalButtonView}>
+                    <Text style={styles.modalButtonText}>刷新</Text>
+                  </View>
+
+                </TouchableOpacity>
+                <TouchableOpacity onPress={this._setModalVisible.bind(this, false)}>
+                 <View style={styles.modalButtonView}>
+                   <Text style={styles.modalButtonText}>关闭</Text>
+                 </View>
+
+               </TouchableOpacity>
+               </View>
+
 
             </View>
           </View>
@@ -545,9 +659,45 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
+
+    backgroundColor:'rgba(0, 0, 0, 0.5)',
   },
   modalInnerContainer: {
-    borderRadius: 10,
-    alignItems: 'center',
+
+
+    backgroundColor: '#fff',
+     padding: 20,
+
+  },
+  modalList:{
+    height:300,
+
+  },
+  modalItem:{
+    flex:1,
+
+    marginTop:10,
+    padding:5,
+  },
+  modalItemText:{
+    color:'#ffffff',
+  },
+  modalButtonBox:{
+    flexDirection:'row',
+    marginBottom:20,
+  },
+  modalButtonView:{
+    backgroundColor: '#FF6666',
+    paddingTop:10,
+    borderRadius:5,
+    marginRight:20,
+    height:40,
+    width:60,
+  },
+  modalButtonText:{
+    color:'#ffffff',
+    textAlign:'center',
+
+
   }
 });

@@ -499,7 +499,7 @@ export default class PeopleWebrtc  extends CommonRoot {
     return (
         <TouchableOpacity onPress={()=>{this.onPressNews(news)}}>
             <View style={[styles.modalItem,{backgroundColor:sBgColor}]}>
-              <Text style={styles.modalItemText}>{news.group}(在线{news.sum}医生)    空闲:{news.use}医生</Text>
+              <Text style={styles.modalItemText}>{news.group}(在线{news.sum}个医生)    空闲:{news.use}个医生</Text>
             </View>
         </TouchableOpacity>
     );
@@ -515,7 +515,7 @@ export default class PeopleWebrtc  extends CommonRoot {
           >
           <View style={[styles.modalContainer]}>
             <View style={[styles.modalInnerContainer]}>
-              <Text>请选择科室(共计在线{this.state.docAllSum}医生)：</Text>
+              <Text>请选择科室(共计在线{this.state.docAllSum}个医生)：</Text>
               <ListView
               dataSource={this.state.docDataSource}
               renderRow={this.renderNews.bind(this)}

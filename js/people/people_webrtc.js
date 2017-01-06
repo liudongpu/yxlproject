@@ -557,12 +557,12 @@ export default class PeopleWebrtc  extends CommonRoot {
               { this.state.status == 'ready' ?
                 (<View>
 
-                  <TouchableHighlight
+                  <TouchableOpacity
                     onPress={() => {this._setModalVisible(true)}}>
                     <View style={styles.iconBtn}>
                       <Text style={styles.iconText}>连接</Text>
                     </View>
-                  </TouchableHighlight>
+                  </TouchableOpacity>
                 </View>) : null
               }
             </View>

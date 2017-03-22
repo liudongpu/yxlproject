@@ -344,6 +344,12 @@ export default class PeopleWebrtc  extends CommonRoot {
   componentWillUnmount(){
 
     webrtc.temp.socket.disconnect();
+    webrtc.temp.pcPeers={};
+    if(webrtc.temp.localStream){
+
+      webrtc.temp.localStream.getTracks().forEach(t => t.stop());
+      webrtc.temp.localStream.release();
+    }
   }
 
   _press(event) {

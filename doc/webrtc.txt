@@ -19,6 +19,20 @@ android中WebRTCModule类WebRTCModule方法增加如下方法
 //setAudioOutput("speaker");
 setKeepScreenOn(true);
 
+
+android RTCVideoViewManager
+AudioManager audioManager = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
+    //audioManager.setMode(AudioManager.ROUTE_SPEAKER);
+    audioManager.setSpeakerphoneOn(true);
+    WebRTCView view = new WebRTCView(context);
+    // view.setPreserveEGLContextOnPause(true);
+    view.setKeepScreenOn(true);
+
+android WebRTCModule类WebRTCModule方法
+AudioManager audioManager = (AudioManager) reactContext.getSystemService(reactContext.AUDIO_SERVICE);
+        //audioManager.setMode(AudioManager.ROUTE_SPEAKER);
+        audioManager.setSpeakerphoneOn(true);
+
 ios:
 RTCVideoViewManager.m中layoutSubviews最后一行增加
 [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
